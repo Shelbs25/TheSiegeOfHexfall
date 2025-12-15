@@ -1,11 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-    </head>
-    <body>
-       <h1>Warrior</h1>
+<head>
+  <meta charset="UTF-8">
+  <title>Warrior – Character Sheet</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #2c2c2c;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #0a0a4f;
+      padding: 20px 30px;
+      border-radius: 12px;
+      width: 1000px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+      
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Health Bar */
+    .health-container {
+      margin-bottom: 15px;
+    }
+
+    .health-bar {
+      background: #555;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+    }
+
+    .health-fill {
+      background: #d32f2f;
+      height: 100%;
+      width: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .health-text {
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    /* Buttons */
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 6px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background: #444;
+      color: #fff;
+    }
+
+    button:hover {
+      background: #666;
+    }
+
+    /* Stats */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      font-size: 24px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 18px;
+      margin-top: 5px;
+    }
+      
+    .indent {
+  margin-left: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>🗡️ Warrior</h1>
+
+    <!-- Health -->
+    <div class="health-container">
+      <div class="health-bar">
+        <div id="healthFill" class="health-fill"></div>
+      </div>
+      <div class="health-text">
+        Health: <span id="healthValue">6</span> / 6
+      </div>
+
+      <div class="buttons">
+        <button onclick="changeHealth(-1)">−</button>
+        <button onclick="changeHealth(1)">+</button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        🛡️
+        <span>Defense: 2</span>
+      </div>
+      <div class="stat">
+        ⚔️
+        <span>Attack: 3</span>
+      </div>
+    </div>
+      
+      <div class="actions-container">
+
+  <!-- Turn Actions -->
+  <section class="actions-section">
+    <h2>Turn Actions</h2>
+    <ul>
+      <li><strong>Move -</strong> Move up to 2 adjacent tiles</li>
+      <li><strong>Action -</strong> Choose one:</li>
+        <ul>
+            <li>Attack</li>
+            <li>Seal a Portal</li>
+            <li>Loot a Ruin</li>
+            <li>End Turn</li>
+        </ul>
+        <!--
+        <li><strong>Interact:</strong> ____________________________</li>
+      <li><strong>End Turn:</strong> ____________________________</li>
+      -->
+    </ul>
+  </section>
+
+  <!-- Special Actions -->
+  <section class="actions-section">
+    <h2>Special Actions</h2>
     
-    </body>
+      <p class="indent">
+        <strong>Shield Wall –</strong> Once per round reduce incoming damage by 1.
+      </p>
+
+      <!--
+      <li><strong>Cooldown / Limit:</strong> ____________________</li>
+      <li><strong>Notes:</strong> _______________________________</li>
+      -->
+
+  </section>
+
+</div>
+
+  </div>
+
+  <script>
+    const maxHealth = 6;
+    let currentHealth = 6;
+
+    function changeHealth(amount) {
+      currentHealth += amount;
+
+      if (currentHealth < 0) currentHealth = 0;
+      if (currentHealth > maxHealth) currentHealth = maxHealth;
+
+      updateHealthBar();
+    }
+
+    function updateHealthBar() {
+      const healthFill = document.getElementById("healthFill");
+      const healthValue = document.getElementById("healthValue");
+
+      const percent = (currentHealth / maxHealth) * 100;
+      healthFill.style.width = percent + "%";
+      healthValue.textContent = currentHealth;
+    }
+  </script>
+
+</body>
 </html>
