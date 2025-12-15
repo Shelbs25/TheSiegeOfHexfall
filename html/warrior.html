@@ -47,7 +47,7 @@
     }
 
     .health-bar {
-      background: #555;
+      background: gold;
       border-radius: 10px;
       overflow: hidden;
       height: 24px;
@@ -83,9 +83,11 @@
       color: #fff;
     }
 
+    /*
     button:hover {
       background: #666;
     }
+    */
 
     /* Stats */
     .stats {
@@ -195,7 +197,83 @@
       box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
     }
 
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 15px;
+    }
 
+    /* Hamburger */
+    .menu-btn {
+      position: absolute;
+      left:-70px;
+
+      background: none;
+      border: none;
+      padding: 6px;
+
+      font-size: 32px;
+      color: #000; /* or white depending on card */
+      cursor: pointer;
+    }
+
+    /* Title */
+    .card-header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    /* SIDE MENU */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 240px;
+      height: 100%;
+      background: #1b1b1b;
+      padding-top: 60px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .side-menu a {
+      color: #ddd;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+
+    .side-menu a:hover {
+      background: #333;
+      color: #fff;
+    }
+
+    /* OPEN STATE */
+    .side-menu.open {
+      left: 0;
+    }
+
+    /* OVERLAY */
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      z-index: 900;
+    }
+
+    #overlay.show {
+      display: block;
+    }
+
+      
     /* Mobile tweaks */
     @media (max-width: 480px) {
       h1 {
@@ -216,11 +294,27 @@
 
 <body>
 
+    <nav id="sideMenu" class="side-menu">
+      <a href="../index.html">Home</a>
+      <!--<a href="warrior.html">Warrior</a>-->
+      <a href="ranger.html">Ranger</a>
+      <a href="mage.html">Mage</a>
+      <a href="Barbarian.html">Barbarian</a>
+      <a href="rules.html">Rules</a>
+    </nav>
+
+    <div id="overlay" onclick="toggleMenu()"></div>
+
+
   <div class="page-wrapper">
 
     <!-- Warrior Card -->
     <div class="card">
-      <h1>🗡️ Warrior</h1>
+        <div class="card-header">
+          <button class="menu-btn" onclick="toggleMenu()">☰</button>
+          <h1>Warrior</h1>
+        </div>
+
 
       <!-- Health -->
       <div class="health-container">
@@ -322,7 +416,7 @@
       </ol>
 
       <h3>Step 3 – Move</h3>
-      <p class="indent">Monsters move 1 tile toward their target.</p>
+      <p>Monsters move 1 tile toward their target.</p>
 
       <h3>Step 4 – Attack</h3>
       <ul>
@@ -356,6 +450,13 @@
       healthValue.textContent = currentHealth;
     }
   </script>
+
+    <script>
+        function toggleMenu() {
+        document.getElementById("sideMenu").classList.toggle("open");
+        document.getElementById("overlay").classList.toggle("show");
+      }
+    </script>
 
 </body>
 </html>
