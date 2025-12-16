@@ -1,462 +1,515 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Warrior – Character Sheet</title>
+    <head>
+      <meta charset="UTF-8">
+      <title>Warrior – Character Sheet</title>
 
-  <!-- REQUIRED for mobile -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- REQUIRED for mobile -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-image: url(../Img.html/warriortheme.png);
-      color: black;
-      min-height: 100vh;
-      padding: 20px;
-      margin: 0;
-    }
+        <style> 
+            body {
+              font-family: Arial, sans-serif;
+              background-image: url(../Img.html/warriortheme.png);
+              color: black;
+              min-height: 100vh;
+              padding: 20px;
+              margin: 0;
+            }
 
-    /* Page wrapper */
-    .page-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
+            /* Page wrapper */
+            .page-wrapper {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 20px;
+            }
 
-    /* Card */
-    .card {
-      background: gold;
-      padding: 25px;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 360px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    }
+            /* Card */
+            .card {
+              background: gold;
+              padding: 25px;
+              border-radius: 12px;
+              width: 100%;
+              max-width: 360px;
+              box-shadow: 0 0 20px rgba(0,0,0,0.6);
+            }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 24px;
-    }
+            h1 {
+              text-align: center;
+              margin-bottom: 20px;
+              font-size: 24px;
+            }
 
-    /* Health Bar */
-    .health-container {
-      margin-bottom: 20px;
-    }
+            /* Health Bar */
+            .health-container {
+              margin-bottom: 20px;
+            }
 
-    .health-bar {
-      background: gold;
-      border-radius: 10px;
-      overflow: hidden;
-      height: 24px;
-    }
+            .health-bar {
+              background: gold;
+              border-radius: 10px;
+              overflow: hidden;
+              height: 24px;
+            }
 
-    .health-fill {
-      background: #d32f2f;
-      height: 100%;
-      width: 100%;
-      transition: width 0.3s ease;
-    }
+            .health-fill {
+              background: #d32f2f;
+              height: 100%;
+              width: 100%;
+              transition: width 0.3s ease;
+            }
 
-    .health-text {
-      text-align: center;
-      margin-top: 6px;
-    }
+            .health-text {
+              text-align: center;
+              margin-top: 6px;
+            }
 
-    /* Buttons */
-    .buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 12px;
-    }
+            /* Buttons */
+            .buttons {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 12px;
+            }
 
-    button {
-      width: 48%;
-      min-height: 44px;
-      font-size: 18px;
-      cursor: pointer;
-      border: none;
-      border-radius: 6px;
-      background: saddlebrown;
-      color: #fff;
-    }
+            button {
+              width: 48%;
+              min-height: 44px;
+              font-size: 18px;
+              cursor: pointer;
+              border: none;
+              border-radius: 6px;
+              background: saddlebrown;
+              color: #fff;
+            }
 
-    /*
-    button:hover {
-      background: #666;
-    }
-    */
+            /*
+            button:hover {
+              background: #666;
+            }
+            */
 
-    /* Stats */
-    .stats {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-      font-size: 22px;
-    }
+            /* Stats */
+            .stats {
+              display: flex;
+              justify-content: space-around;
+              margin-top: 20px;
+              font-size: 22px;
+            }
 
-    .stat {
-      text-align: center;
-    }
+            .stat {
+              text-align: center;
+            }
 
-    .stat span {
-      display: block;
-      font-size: 16px;
-      margin-top: 4px;
-    }
+            .stat span {
+              display: block;
+              font-size: 16px;
+              margin-top: 4px;
+            }
 
-    /* Actions */
-    .actions-container {
-      width: 100%;
-      max-width: 360px;
-    }
+            /* Actions */
+            .actions-container {
+              width: 100%;
+              max-width: 360px;
+            }
 
-    .actions-section {
-      background: gold;
-      padding: 15px 20px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.4);
-    }
-      
-      .actions-sectionMON {
-      background: #0a0a4f;
-      padding: 15px 20px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.4);
-    }
+            .actions-section {
+              background: gold;
+              padding: 15px 20px;
+              border-radius: 10px;
+              margin-bottom: 15px;
+              box-shadow: 0 0 12px rgba(0,0,0,0.4);
+            }
 
-    .actions-section h2 {
-      margin-top: 0;
-      font-size: 18px;
-      border-bottom: 1px solid #555;
-      padding-bottom: 5px;
-    }
+              .actions-sectionMON {
+              background: #0a0a4f;
+              padding: 15px 20px;
+              border-radius: 10px;
+              margin-bottom: 15px;
+              box-shadow: 0 0 12px rgba(0,0,0,0.4);
+            }
 
-    .actions-section ul {
-      list-style: none;
-      padding-left: 0;
-    }
+            .actions-section h2 {
+              margin-top: 0;
+              font-size: 18px;
+              border-bottom: 1px solid #555;
+              padding-bottom: 5px;
+            }
 
-    .actions-section li {
-      margin: 6px 0;
-      font-size: 14px;
-    }
+            .actions-section ul {
+              list-style: none;
+              padding-left: 0;
+            }
 
-    .sub-actions {
-      margin-left: 20px;
-      font-size: 13px;
-    }
+            .actions-section li {
+              margin: 6px 0;
+              font-size: 14px;
+            }
 
-    .indent {
-      margin-left: 20px;
-      font-size: 14px;
-    }
-      
-      .monster-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 10px 0 20px;
-    }
+            .sub-actions {
+              margin-left: 20px;
+              font-size: 13px;
+            }
 
-    .monster-table th,
-    .monster-table td {
-      border: 1px solid #aaa;
-      padding: 8px;
-      text-align: center;
-    }
+            .indent {
+              margin-left: 20px;
+              font-size: 14px;
+            }
 
-    .monster-table th {
-      background: #1a1a6b;
-    }
+              .monster-table {
+              width: 100%;
+              border-collapse: collapse;
+              margin: 10px 0 20px;
+            }
 
-      .monster-section {
-      background: #3b0000;       /* dark red */
-      color: #ffecec;            /* light text */
-      border: 2px solid #a30000;
-    }
-      
-      .monster-section h2,
-    .monster-section h3 {
-      color: #ffb3b3;
-    }
+            .monster-table th,
+            .monster-table td {
+              border: 1px solid #aaa;
+              padding: 8px;
+              text-align: center;
+            }
 
-    .monster-section .monster-table th {
-      background: #5a0000;
-      color: #fff;
-    }
+            .monster-table th {
+              background: #1a1a6b;
+            }
 
-    .monster-section .monster-table td {
-      color: #ffecec;
-    }   
+              .monster-section {
+              background: #3b0000;       /* dark red */
+              color: #ffecec;            /* light text */
+              border: 2px solid #a30000;
+            }
 
-    .monster-section {
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
-    }
+              .monster-section h2,
+            .monster-section h3 {
+              color: #ffb3b3;
+            }
 
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      margin-bottom: 15px;
-    }
+            .monster-section .monster-table th {
+              background: #5a0000;
+              color: #fff;
+            }
 
-    /* Hamburger */
-    .menu-btn {
-      position: absolute;
-      left:-70px;
+            .monster-section .monster-table td {
+              color: #ffecec;
+            }   
 
-      background: none;
-      border: none;
-      padding: 6px;
+            .monster-section {
+              box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            }
 
-      font-size: 32px;
-      color: #000; /* or white depending on card */
-      cursor: pointer;
-    }
+            .card-header {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+              margin-bottom: 15px;
+            }
 
-    /* Title */
-    .card-header h1 {
-      margin: 0;
-      font-size: 22px;
-    }
+            /* Hamburger */
+            .menu-btn {
+              position: absolute;
+              left:-70px;
 
-    /* SIDE MENU */
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: -260px;
-      width: 240px;
-      height: 100%;
-      background: #1b1b1b;
-      padding-top: 60px;
+              background: none;
+              border: none;
+              padding: 6px;
 
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+              font-size: 32px;
+              color: #000; /* or white depending on card */
+              cursor: pointer;
+            }
 
-      transition: left 0.3s ease;
-      z-index: 1000;
-    }
+            /* Title */
+            .card-header h1 {
+              margin: 0;
+              font-size: 22px;
+            }
 
-    .side-menu a {
-      color: #ddd;
-      text-decoration: none;
-      padding: 10px 20px;
-      font-size: 18px;
-    }
+            /* SIDE MENU */
+            .side-menu {
+              position: fixed;
+              top: 0;
+              left: -260px;
+              width: 240px;
+              height: 100%;
+              background: #1b1b1b;
+              padding-top: 60px;
 
-    .side-menu a:hover {
-      background: #333;
-      color: #fff;
-    }
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
 
-    /* OPEN STATE */
-    .side-menu.open {
-      left: 0;
-    }
+              transition: left 0.3s ease;
+              z-index: 1000;
+            }
 
-    /* OVERLAY */
-    #overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-      display: none;
-      z-index: 900;
-    }
+            .side-menu a {
+              color: #ddd;
+              text-decoration: none;
+              padding: 10px 20px;
+              font-size: 18px;
+            }
 
-    #overlay.show {
-      display: block;
-    }
+            .side-menu a:hover {
+              background: #333;
+              color: #fff;
+            }
 
-      
-    /* Mobile tweaks */
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 22px;
-      }
+            /* OPEN STATE */
+            .side-menu.open {
+              left: 0;
+            }
 
-      .stats {
-        font-size: 20px;
-      }
+            /* OVERLAY */
+            #overlay {
+              position: fixed;
+              inset: 0;
+              background: rgba(0,0,0,0.4);
+              display: none;
+              z-index: 900;
+            }
 
-      button {
-        font-size: 18px;
-      }
-    }
-      
-  </style>
-</head>
-
-<body>
-
-    <nav id="sideMenu" class="side-menu">
-      <a href="../index.html">Home</a>
-      <!--<a href="warrior.html">Warrior</a>-->
-      <a href="Ranger.html">Ranger</a>
-      <a href="mage.html">Mage</a>
-      <a href="Barbarian.html">Barbarian</a>
-    <a href="Instructions.html">Instructions</a>
-    </nav>
-
-    <div id="overlay" onclick="toggleMenu()"></div>
+            #overlay.show {
+              display: block;
+            }
 
 
-  <div class="page-wrapper">
+            /* Mobile tweaks */
+            @media (max-width: 480px) {
+              h1 {
+                font-size: 22px;
+              }
 
-    <!-- Warrior Card -->
-    <div class="card">
-        <div class="card-header">
-          <button class="menu-btn" onclick="toggleMenu()">☰</button>
-          <h1>Warrior</h1>
-        </div>
+            .stats {
+                font-size: 20px;
+              }
 
+            button {
+                font-size: 18px;
+              }
+            }
 
-      <!-- Health -->
-      <div class="health-container">
-        <div class="health-bar">
-          <div id="healthFill" class="health-fill"></div>
-        </div>
-        <div class="health-text">
-          Health: <span id="healthValue">6</span> / 6
-        </div>
+            .reset-container {
+              display: flex;
+              justify-content: center;
+              margin: 30px 0 10px;
+            }
 
-        <div class="buttons">
-          <button onclick="changeHealth(-1)">−</button>
-          <button onclick="changeHealth(1)">+</button>
-        </div>
-      </div>
+            .damage {
+              animation: shake 0.3s;
+            }
 
-      <!-- Stats -->
-      <div class="stats">
-        <div class="stat">
-          🛡️
-          <span>Defense: 2</span>
-        </div>
-        <div class="stat">
-          ⚔️
-          <span>Attack: 3</span>
-        </div>
-      </div>
-    </div>
+            .heal {
+              animation: pulse 0.3s;
+            }
 
-    <!-- Actions -->
-    <div class="actions-container">
+            @keyframes shake {
+              0% { transform: translateX(0); }
+              25% { transform: translateX(-5px); }
+              50% { transform: translateX(5px); }
+              75% { transform: translateX(-5px); }
+              100% { transform: translateX(0); }
+            }
 
-      <section class="actions-section">
-        <h2>Turn Actions</h2>
-        <ul>
-          <li><strong>Move –</strong> Move up to 2 adjacent tiles</li>
-          <li><strong>Action –</strong> Choose one:</li>
-        </ul>
-        <ul class="sub-actions">
-          <li>Attack</li>
-          <li>Seal a Portal</li>
-          <li>Loot a Ruin</li>
-          <li>End Turn</li>
-        </ul>
-      </section>
-
-      <section class="actions-section">
-        <h2>Special Actions</h2>
-        <p class="indent">
-          <strong>Shield Wall –</strong> Once per round, reduce incoming damage by 1.
-        </p>
-      </section>
+            @keyframes pulse {
+              0% { transform: scale(1); }
+              50% { transform: scale(1.03); }
+              100% { transform: scale(1); }
+            }
         
-        <section class="actions-section monster-section">
-        <h2>Monster Phase</h2>
+        </style>
+    </head>
 
-      <!-- Monsters Table -->
-      <!--<h3>Monsters</h3>-->
+    <body>
 
-      <table class="monster-table">
-        <tr>
-          <th>Monster</th>
-          <th>Attack</th>
-          <th>Defense</th>
-          <th>Health</th>
-        </tr>
-        <tr>
-          <td>Grunt</td>
-          <td>2</td>
-          <td>0</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>Brute</td>
-          <td>3</td>
-          <td>1</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td>Boss</td>
-          <td>4</td>
-          <td>2</td>
-          <td>8</td>
-        </tr>
-      </table>
+        <nav id="sideMenu" class="side-menu">
+          <a href="../index.html">Home</a>
+          <!--<a href="warrior.html">Warrior</a>-->
+          <a href="Ranger.html">Ranger</a>
+          <a href="mage.html">Mage</a>
+          <a href="Barbarian.html">Barbarian</a>
+        <a href="Instructions.html">Instructions</a>
+        </nav>
 
-      <!-- Monster Phase Steps -->
-      <h3>Step 1 – Spawn</h3>
-      <ul>
-        <li>Each open Portal spawns 1 Grunt.</li>
-        <li>Beginning Round 5, each open Portal spawns 1 Grunt and 1 Brute.</li>
-      </ul>
+        <div id="overlay" onclick="toggleMenu()"></div>
 
-      <h3>Step 2 – Target Priority</h3>
-      <ol>
-        <li>Adjacent Hero</li>
-        <li>Nearest Hero</li>
-        <li>Nearest Village</li>
-      </ol>
 
-      <h3>Step 3 – Move</h3>
-      <p>Monsters move 1 tile toward their target.</p>
+      <div class="page-wrapper">
 
-      <h3>Step 4 – Attack</h3>
-      <ul>
-        <li>Monsters attack if on the same tile as their target.</li>
-        <li>Villages take 1 damage per attacking Monster.</li>
-      </ul>
-    </section>
+        <!-- Warrior Card -->
+        <div class="card">
+            <div class="card-header">
+              <button class="menu-btn" onclick="toggleMenu()">☰</button>
+              <h1>Warrior</h1>
+            </div>
+
+
+          <!-- Health -->
+          <div class="health-container">
+            <div class="health-bar">
+              <div id="healthFill" class="health-fill"></div>
+            </div>
+            <div class="health-text">
+              Health: <span id="healthValue">6</span> / 6
+            </div>
+
+            <div class="buttons">
+              <button onclick="changeHealth(-1)">−</button>
+              <button onclick="changeHealth(1)">+</button>
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="stats">
+            <div class="stat">
+              🛡️
+              <span>Defense: 2</span>
+            </div>
+            <div class="stat">
+              ⚔️
+              <span>Attack: 3</span>
+            </div>
+          </div>
         </div>
 
-  </div>
+        <!-- Actions -->
+        <div class="actions-container">
 
-  <script>
-    const maxHealth = 6;
-    let currentHealth = 6;
+          <section class="actions-section">
+            <h2>Turn Actions</h2>
+            <ul>
+              <li><strong>Move –</strong> Move up to 2 adjacent tiles</li>
+              <li><strong>Action –</strong> Choose one:</li>
+            </ul>
+            <ul class="sub-actions">
+              <li>Attack</li>
+              <li>Seal a Portal</li>
+              <li>Loot a Ruin</li>
+              <li>End Turn</li>
+            </ul>
+          </section>
 
-    function changeHealth(amount) {
-      currentHealth += amount;
+          <section class="actions-section">
+            <h2>Special Actions</h2>
+            <p class="indent">
+              <strong>Shield Wall –</strong> Once per round, reduce incoming damage by 1.
+            </p>
+          </section>
 
-      if (currentHealth < 0) currentHealth = 0;
-      if (currentHealth > maxHealth) currentHealth = maxHealth;
+            <section class="actions-section monster-section">
+            <h2>Monster Phase</h2>
 
-      updateHealthBar();
-    }
+          <!-- Monsters Table -->
+          <!--<h3>Monsters</h3>-->
 
-    function updateHealthBar() {
-      const healthFill = document.getElementById("healthFill");
-      const healthValue = document.getElementById("healthValue");
+          <table class="monster-table">
+            <tr>
+              <th>Monster</th>
+              <th>Attack</th>
+              <th>Defense</th>
+              <th>Health</th>
+            </tr>
+            <tr>
+              <td>Grunt</td>
+              <td>2</td>
+              <td>0</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>Brute</td>
+              <td>3</td>
+              <td>1</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>Boss</td>
+              <td>4</td>
+              <td>2</td>
+              <td>8</td>
+            </tr>
+          </table>
 
-      const percent = (currentHealth / maxHealth) * 100;
-      healthFill.style.width = percent + "%";
-      healthValue.textContent = currentHealth;
-    }
-  </script>
+          <!-- Monster Phase Steps -->
+          <h3>Step 1 – Spawn</h3>
+          <ul>
+            <li>Each open Portal spawns 1 Grunt.</li>
+            <li>Beginning Round 5, each open Portal spawns 1 Grunt and 1 Brute.</li>
+          </ul>
 
-    <script>
-        function toggleMenu() {
-        document.getElementById("sideMenu").classList.toggle("open");
-        document.getElementById("overlay").classList.toggle("show");
-      }
-    </script>
+          <h3>Step 2 – Target Priority</h3>
+          <ol>
+            <li>Adjacent Hero</li>
+            <li>Nearest Hero</li>
+            <li>Nearest Village</li>
+          </ol>
 
-</body>
+          <h3>Step 3 – Move</h3>
+          <p>Monsters move 1 tile toward their target.</p>
+
+          <h3>Step 4 – Attack</h3>
+          <ul>
+            <li>Monsters attack if on the same tile as their target.</li>
+            <li>Villages take 1 damage per attacking Monster.</li>
+          </ul>
+        </section>
+            </div>
+
+      </div>
+
+        <script>
+          const maxHealth = 6;
+
+          // Load saved health (or default to max)
+          let currentHealth = localStorage.getItem("warriorHealth")
+            ? parseInt(localStorage.getItem("warriorHealth"))
+            : maxHealth;
+
+          function changeHealth(amount) {
+            currentHealth += amount;
+
+            if (currentHealth < 0) currentHealth = 0;
+            if (currentHealth > maxHealth) currentHealth = maxHealth;
+
+            saveHealth();
+            updateHealthBar();
+          }
+
+          function saveHealth() {
+            localStorage.setItem("warriorHealth", currentHealth);
+          }
+
+          function updateHealthBar() {
+            const healthFill = document.getElementById("healthFill");
+            const healthValue = document.getElementById("healthValue");
+
+            const percent = (currentHealth / maxHealth) * 100;
+            healthFill.style.width = percent + "%";
+            healthValue.textContent = currentHealth;
+          }
+
+          // Initialize on page load
+          updateHealthBar();
+        </script>
+
+
+        <script>
+            function toggleMenu() {
+            document.getElementById("sideMenu").classList.toggle("open");
+            document.getElementById("overlay").classList.toggle("show");
+          }
+        </script>
+
+        <script>
+          function resetHealth() {
+            currentHealth = maxHealth;
+            localStorage.setItem("warriorHealth", currentHealth);
+            updateHealthBar();
+          }
+        </script>
+       
+        <div class="reset-container">
+          <button onclick="resetHealth()">Reset Health</button>
+        </div>
+        
+    </body>
 </html>
