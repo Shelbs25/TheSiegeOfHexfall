@@ -9,8 +9,10 @@
 
         <style> 
             body {
-              font-family: Arial, sans-serif;
+              font-family: cursive, arial;
               background-image: url(../Img.html/warriortheme.png);
+                Background-repeat: no-repeat;
+                background-size: cover;
               color: black;
               min-height: 100vh;
               padding: 20px;
@@ -33,6 +35,8 @@
               width: 100%;
               max-width: 360px;
               box-shadow: 0 0 20px rgba(0,0,0,0.6);
+              border-style: solid;
+              border-color: saddlebrown;
             }
 
             h1 {
@@ -54,7 +58,7 @@
             }
 
             .health-fill {
-              background: #d32f2f;
+              background: firebrick;
               height: 100%;
               width: 100%;
               transition: width 0.3s ease;
@@ -119,6 +123,8 @@
               border-radius: 10px;
               margin-bottom: 15px;
               box-shadow: 0 0 12px rgba(0,0,0,0.4);
+              border-style: solid;
+              border-color: saddlebrown;
             }
 
               .actions-sectionMON {
@@ -292,31 +298,10 @@
             .reset-container {
               display: flex;
               justify-content: center;
-              margin: 30px 0 10px;
+              margin: -7px 0 30px;
+              font-family: cursive, arial;
+              padding: 10px;
             }
-
-            .damage {
-              animation: shake 0.3s;
-            }
-
-            .heal {
-              animation: pulse 0.3s;
-            }
-
-            @keyframes shake {
-              0% { transform: translateX(0); }
-              25% { transform: translateX(-5px); }
-              50% { transform: translateX(5px); }
-              75% { transform: translateX(-5px); }
-              100% { transform: translateX(0); }
-            }
-
-            @keyframes pulse {
-              0% { transform: scale(1); }
-              50% { transform: scale(1.03); }
-              100% { transform: scale(1); }
-            }
-        
         </style>
     </head>
 
@@ -508,7 +493,7 @@
         </script>
        
         <div class="reset-container">
-          <button onclick="resetHealth()">Reset Health</button>
+          <button onclick="resetHealth()" class="reset-container">Reset Health</button>
         </div>
         
     </body>

@@ -1,11 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
+      <meta charset="UTF-8">
+        <title>Mage-Character Sheet</title>
+
+      <!-- REQUIRED for mobile -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style> 
+            body {
+              font-family: cursive, arial;
+              background-image: url(../Img.html/magetheme.png);
+                Background-repeat: no-repeat;
+                background-size: cover;
+              color: white;
+              min-height: 100vh;
+              padding: 20px;
+              margin: 0;
+            }
+
+            /* Page wrapper */
+            .page-wrapper {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 20px;
+            }
+
+            /* Card */
+            .card {
+              background: mediumblue;
+              padding: 25px;
+              border-radius: 12px;
+              width: 100%;
+              max-width: 360px;
+              box-shadow: 0 0 20px rgba(0,0,0,0.6);
+              border-style: solid;
+              border-color: goldenrod;
+            }
+
+            h1 {
+              text-align: center;
+              margin-bottom: 20px;
+              font-size: 24px;
+            }
+
+            /* Health Bar */
+            .health-container {
+              margin-bottom: 20px;
+            }
+
+            .health-bar {
+              background: mediumblue;
+              border-radius: 10px;
+              overflow: hidden;
+              height: 24px;
+            }
+
+            .health-fill {
+              background: firebrick;
+              height: 100%;
+              width: 100%;
+              transition: width 0.3s ease;
+            }
+
+            .health-text {
+              text-align: center;
+              margin-top: 6px;
+            }
+
+            /* Buttons */
+            .buttons {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 12px;
+            }
+
+            button {
+              width: 48%;
+              min-height: 44px;
+              font-size: 18px;
+              cursor: pointer;
+              border: none;
+              border-radius: 6px;
+              background: goldenrod;
+              color: #fff;
+            }
+
+            /*
+            button:hover {
+              background: #666;
+            }
+            */
+
+            /* Stats */
+            .stats {
+              display: flex;
+              justify-content: space-around;
+              margin-top: 20px;
+              font-size: 22px;
+            }
+
+            .stat {
+              text-align: center;
+            }
+
+            .stat span {
+              display: block;
+              font-size: 16px;
+              margin-top: 4px;
+            }
+
+            /* Actions */
+            .actions-container {
+              width: 100%;
+              max-width: 360px;
+            }
+
+            .actions-section {
+              background: mediumblue;
+              padding: 15px 20px;
+              border-radius: 10px;
+              margin-bottom: 15px;
+              box-shadow: 0 0 12px rgba(0,0,0,0.4);
+              border-style: solid;
+              border-color: goldenrod;
+            }
+
+              .actions-sectionMON {
+              background: #0a0a4f;
+              padding: 15px 20px;
+              border-radius: 10px;
+              margin-bottom: 15px;
+              box-shadow: 0 0 12px rgba(0,0,0,0.4);
+            }
+
+            .actions-section h2 {
+              margin-top: 0;
+              font-size: 18px;
+              border-bottom: 1px solid #555;
+              padding-bottom: 5px;
+            }
+
+            .actions-section ul {
+              list-style: none;
+              padding-left: 0;
+            }
+
+            .actions-section li {
+              margin: 6px 0;
+              font-size: 14px;
+            }
+
+            .sub-actions {
+              margin-left: 20px;
+              font-size: 13px;
+            }
+
+            .indent {
+              margin-left: 20px;
+              font-size: 14px;
+            }
+
+              .monster-table {
+              width: 100%;
+              border-collapse: collapse;
+              margin: 10px 0 20px;
+            }
+
+            .monster-table th,
+            .monster-table td {
+              border: 1px solid #aaa;
+              padding: 8px;
+              text-align: center;
+            }
+
+            .monster-table th {
+              background: #1a1a6b;
+            }
+
+              .monster-section {
+              background: #3b0000;       /* dark red */
+              color: #ffecec;            /* light text */
+              border: 2px solid #a30000;
+            }
+
+              .monster-section h2,
+            .monster-section h3 {
+              color: #ffb3b3;
+            }
+
+            .monster-section .monster-table th {
+              background: #5a0000;
+              color: #fff;
+            }
+
+            .monster-section .monster-table td {
+              color: #ffecec;
+            }   
+
+            .monster-section {
+              box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            }
+
+            .card-header {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+              margin-bottom: 15px;
+            }
+
+            /* Hamburger */
+            .menu-btn {
+              position: absolute;
+              left:-70px;
+
+              background: none;
+              border: none;
+              padding: 6px;
+
+              font-size: 32px;
+              color: white; /* or white depending on card */
+              cursor: pointer;
+            }
+
+            /* Title */
+            .card-header h1 {
+              margin: 0;
+              font-size: 22px;
+            }
+
+            /* SIDE MENU */
+            .side-menu {
+              position: fixed;
+              top: 0;
+              left: -260px;
+              width: 240px;
+              height: 100%;
+              background: #1b1b1b;
+              padding-top: 60px;
+
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+
+              transition: left 0.3s ease;
+              z-index: 1000;
+            }
+
+            .side-menu a {
+              color: #ddd;
+              text-decoration: none;
+              padding: 10px 20px;
+              font-size: 18px;
+            }
+
+            .side-menu a:hover {
+              background: #333;
+              color: #fff;
+            }
+
+            /* OPEN STATE */
+            .side-menu.open {
+              left: 0;
+            }
+
+            /* OVERLAY */
+            #overlay {
+              position: fixed;
+              inset: 0;
+              background: rgba(0,0,0,0.4);
+              display: none;
+              z-index: 900;
+            }
+
+            #overlay.show {
+              display: block;
+            }
+
+
+            /* Mobile tweaks */
+            @media (max-width: 480px) {
+              h1 {
+                font-size: 22px;
+              }
+
+            .stats {
+                font-size: 20px;
+              }
+
+            button {
+                font-size: 18px;
+              }
+            }
+
+            .reset-container {
+              display: flex;
+              justify-content: center;
+              margin: -7px 0 30px;
+              font-family: cursive, arial;
+              padding: 10px;
+            }
+        </style>
     </head>
+
     <body>
-       <h1>Mage</h1>
-    
+
+        <nav id="sideMenu" class="side-menu">
+          <a href="../index.html">Home</a>
+          <a href="warrior.html">Warrior</a>
+          <a href="Ranger.html">Ranger</a>
+          <!--<a href="mage.html">Mage</a>-->
+          <a href="Barbarian.html">Barbarian</a>
+        <a href="Instructions.html">Instructions</a>
+        </nav>
+
+        <div id="overlay" onclick="toggleMenu()"></div>
+
+
+      <div class="page-wrapper">
+
+        <!-- barbarian Card -->
+        <div class="card">
+            <div class="card-header">
+              <button class="menu-btn" onclick="toggleMenu()">☰</button>
+              <h1>Mage</h1>
+            </div>
+
+
+          <!-- Health -->
+          <div class="health-container">
+            <div class="health-bar">
+              <div id="healthFill" class="health-fill"></div>
+            </div>
+            <div class="health-text">
+              Health: <span id="healthValue">4</span> / 4
+            </div>
+
+            <div class="buttons">
+              <button onclick="changeHealth(-1)">−</button>
+              <button onclick="changeHealth(1)">+</button>
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="stats">
+            <div class="stat">
+              🛡️
+              <span>Defense: 1</span>
+            </div>
+            <div class="stat">
+              ⚔️
+              <span>Attack: 2</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-container">
+
+          <section class="actions-section">
+            <h2>Turn Actions</h2>
+            <ul>
+              <li><strong>Move –</strong> Move up to 2 adjacent tiles</li>
+              <li><strong>Action –</strong> Choose one:</li>
+            </ul>
+            <ul class="sub-actions">
+              <li>Attack</li>
+              <li>Seal a Portal</li>
+              <li>Loot a Ruin</li>
+              <li>End Turn</li>
+            </ul>
+          </section>
+
+          <section class="actions-section">
+            <h2>Special Actions</h2>
+            <p class="indent">
+              <strong>Arcane Seal –</strong> The Mage is more effective at sealing portals, succeeding on a roll of 3-6.
+            </p>
+          </section>
+
+            <section class="actions-section monster-section">
+            <h2>Monster Phase</h2>
+
+          <!-- Monsters Table -->
+          <!--<h3>Monsters</h3>-->
+
+          <table class="monster-table">
+            <tr>
+              <th>Monster</th>
+              <th>Attack</th>
+              <th>Defense</th>
+              <th>Health</th>
+            </tr>
+            <tr>
+              <td>Grunt</td>
+              <td>2</td>
+              <td>0</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>Brute</td>
+              <td>3</td>
+              <td>1</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>Boss</td>
+              <td>4</td>
+              <td>2</td>
+              <td>8</td>
+            </tr>
+          </table>
+
+          <!-- Monster Phase Steps -->
+          <h3>Step 1 – Spawn</h3>
+          <ul>
+            <li>Each open Portal spawns 1 Grunt.</li>
+            <li>Beginning Round 5, each open Portal spawns 1 Grunt and 1 Brute.</li>
+          </ul>
+
+          <h3>Step 2 – Target Priority</h3>
+          <ol>
+            <li>Adjacent Hero</li>
+            <li>Nearest Hero</li>
+            <li>Nearest Village</li>
+          </ol>
+
+          <h3>Step 3 – Move</h3>
+          <p>Monsters move 1 tile toward their target.</p>
+
+          <h3>Step 4 – Attack</h3>
+          <ul>
+            <li>Monsters attack if on the same tile as their target.</li>
+            <li>Villages take 1 damage per attacking Monster.</li>
+          </ul>
+        </section>
+            </div>
+
+      </div>
+
+        <script>
+          const maxHealth = 4;
+
+          // Load saved health (or default to max)
+          let currentHealth = localStorage.getItem("warriorHealth")
+            ? parseInt(localStorage.getItem("warriorHealth"))
+            : maxHealth;
+
+          function changeHealth(amount) {
+            currentHealth += amount;
+
+            if (currentHealth < 0) currentHealth = 0;
+            if (currentHealth > maxHealth) currentHealth = maxHealth;
+
+            saveHealth();
+            updateHealthBar();
+          }
+
+          function saveHealth() {
+            localStorage.setItem("warriorHealth", currentHealth);
+          }
+
+          function updateHealthBar() {
+            const healthFill = document.getElementById("healthFill");
+            const healthValue = document.getElementById("healthValue");
+
+            const percent = (currentHealth / maxHealth) * 100;
+            healthFill.style.width = percent + "%";
+            healthValue.textContent = currentHealth;
+          }
+
+          // Initialize on page load
+          updateHealthBar();
+        </script>
+
+
+        <script>
+            function toggleMenu() {
+            document.getElementById("sideMenu").classList.toggle("open");
+            document.getElementById("overlay").classList.toggle("show");
+          }
+        </script>
+
+        <script>
+          function resetHealth() {
+            currentHealth = maxHealth;
+            localStorage.setItem("warriorHealth", currentHealth);
+            updateHealthBar();
+          }
+        </script>
+       
+        <div class="reset-container">
+          <button onclick="resetHealth()" class="reset-container">Reset Health</button>
+        </div>
+        
     </body>
 </html>
