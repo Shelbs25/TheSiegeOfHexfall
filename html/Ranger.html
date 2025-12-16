@@ -446,8 +446,8 @@
           const maxHealth = 5;
 
           // Load saved health (or default to max)
-          let currentHealth = localStorage.getItem("warriorHealth")
-            ? parseInt(localStorage.getItem("warriorHealth"))
+          let currentHealth = localStorage.getItem("rangerHealth")
+            ? parseInt(localStorage.getItem("rangerHealth"))
             : maxHealth;
 
           function changeHealth(amount) {
@@ -461,7 +461,7 @@
           }
 
           function saveHealth() {
-            localStorage.setItem("warriorHealth", currentHealth);
+            localStorage.setItem("rangerHealth", currentHealth);
           }
 
           function updateHealthBar() {
@@ -488,7 +488,7 @@
         <script>
           function resetHealth() {
             currentHealth = maxHealth;
-            localStorage.setItem("warriorHealth", currentHealth);
+            localStorage.setItem("rangerHealth", currentHealth);
             updateHealthBar();
           }
         </script>
