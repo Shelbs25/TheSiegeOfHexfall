@@ -144,6 +144,7 @@
               border-radius: 10px;
               margin-bottom: 15px;
               box-shadow: 0 0 12px rgba(0,0,0,0.4);
+              box-sizing: border-box;
             }
 
             .actions-section h2 {
@@ -173,8 +174,9 @@
               font-size: 14px;
             }
 
-              .monster-table {
+            .monster-table {
               width: 100%;
+                max-width: 100%;
               border-collapse: collapse;
               margin: 10px 0 20px;
             }
@@ -214,6 +216,12 @@
               box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
             }
 
+            .table-wrapper {
+                width: 100%;
+                overflow-x: auto;
+             }
+
+            
             /*
             .card-header {
               display: flex;
@@ -339,16 +347,20 @@
                 font-size: 20px;
               }
 
-            .stats {
-                font-size: 20px;
-              }
-                
-            .card {
-                padding: 18px;
-              }
-            button {
-                font-size: 18px;
-              }
+                .stats {
+                    font-size: 20px;
+                }
+
+                .card {
+                    padding: 18px;
+                }
+                button {
+                    font-size: 18px;
+                }
+                .card,
+                  .actions-container {
+                    max-width: 340px;
+                }
             }
             
             /*
@@ -360,13 +372,6 @@
             }
             */
 
-            @media (max-width: 480px) {
-              .card,
-              .actions-container {
-                max-width: 340px;
-              }
-            }
-
             .reset-container {
               display: flex;
               justify-content: center;
@@ -374,16 +379,6 @@
                 font-family: "Metamorphous",arial;
                 padding: 10px
             }
-            
-            .table-wrapper {
-              width: 100%;
-              overflow-x: auto;
-            }
-
-            .monster-table {
-              min-width: 300px;
-            }
-
         </style>
     </head>
 
