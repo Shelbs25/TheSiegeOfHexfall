@@ -12,6 +12,10 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <style> 
+            hmtl,body{
+                overflow-x: hidden;
+            }
+            
             body {
               font-family: "Metamorphous", arial;
               background-image: url(../Img.html/magetheme.png);
@@ -29,6 +33,9 @@
               flex-direction: column;
               align-items: center;
               gap: 20px;
+                
+              padding: 0 12px; /* 👈 THIS is key */
+              box-sizing: border-box;
             }
 
             /* Card */
@@ -207,6 +214,7 @@
               box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
             }
 
+            /*
             .card-header {
               display: flex;
               align-items: center;
@@ -214,8 +222,16 @@
               position: relative;
               margin-bottom: 15px;
             }
+            */
+            .card-header {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 10px;
+            }
 
             /* Hamburger */
+            /*
             .menu-btn {
               position: absolute;
               left:-70px;
@@ -225,9 +241,18 @@
               padding: 6px;
 
               font-size: 32px;
-              color: white; /* or white depending on card */
+              color: white;  or white depending on card 
               cursor: pointer;
             }
+            */
+            .menu-btn {
+              background: none;
+              border: none;
+              padding: 4px;
+              font-size: 26px;
+              cursor: pointer;
+            }
+
 
             /* Title */
             .card-header h1 {
@@ -287,17 +312,35 @@
             /* Mobile tweaks */
             @media (max-width: 480px) {
               h1 {
-                font-size: 22px;
+                font-size: 20px;
               }
 
             .stats {
                 font-size: 20px;
               }
-
+                s
+            .card {
+                padding: 18px;
+              }
             button {
                 font-size: 18px;
               }
             }
+            
+            @media (max-width: 480px) {
+              .menu-btn {
+                left: 8px;        /* inside the card */
+                font-size: 28px;
+              }
+            }
+
+            @media (max-width: 480px) {
+              .card,
+              .actions-container {
+                max-width: 340px;
+              }
+            }
+
 
             .reset-container {
               display: flex;
