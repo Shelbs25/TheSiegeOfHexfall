@@ -12,7 +12,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <style> 
-            hmtl,body{
+            html, body {
                 overflow-x: hidden;
             }
             
@@ -223,13 +223,23 @@
               margin-bottom: 15px;
             }
             */
+            /*
             .card-header {
               display: flex;
               align-items: center;
               justify-content: space-between;
               gap: 10px;
             }
+            */
+            .card-header {
+              position: relative;
+              display: flex;
+              justify-content: center; /* TRUE center */
+              align-items: center;
+              margin-bottom: 15px;
+            }
 
+            
             /* Hamburger */
             /*
             .menu-btn {
@@ -245,12 +255,26 @@
               cursor: pointer;
             }
             */
+            /*
             .menu-btn {
               background: none;
               border: none;
               padding: 4px;
               font-size: 26px;
               cursor: pointer;
+            }
+            */
+            .menu-btn {
+              position: absolute;
+              left: 8px;           /* stays inside card */
+              top: 50%;
+              transform: translateY(-50%);
+              background: none;
+              border: none;
+              padding: 4px;
+              font-size: 26px;
+              cursor: pointer;
+              color: white;
             }
 
 
@@ -318,7 +342,7 @@
             .stats {
                 font-size: 20px;
               }
-                s
+                
             .card {
                 padding: 18px;
               }
@@ -327,12 +351,14 @@
               }
             }
             
+            /*
             @media (max-width: 480px) {
               .menu-btn {
-                left: 8px;        /* inside the card */
+                left: 8px;         inside the card 
                 font-size: 28px;
               }
             }
+            */
 
             @media (max-width: 480px) {
               .card,
@@ -341,7 +367,6 @@
               }
             }
 
-
             .reset-container {
               display: flex;
               justify-content: center;
@@ -349,6 +374,16 @@
                 font-family: "Metamorphous",arial;
                 padding: 10px
             }
+            
+            .table-wrapper {
+              width: 100%;
+              overflow-x: auto;
+            }
+
+            .monster-table {
+              min-width: 300px;
+            }
+
         </style>
     </head>
 
@@ -433,33 +468,35 @@
 
           <!-- Monsters Table -->
           <!--<h3>Monsters</h3>-->
-
-          <table class="monster-table">
-            <tr>
-              <th>Monster</th>
-              <th>Attack</th>
-              <th>Defense</th>
-              <th>Health</th>
-            </tr>
-            <tr>
-              <td>Grunt</td>
-              <td>2</td>
-              <td>0</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <td>Brute</td>
-              <td>3</td>
-              <td>1</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>Boss</td>
-              <td>4</td>
-              <td>2</td>
-              <td>8</td>
-            </tr>
-          </table>
+        <div class="table-wraper">
+            <table class="monster-table">
+                <tr>
+                  <th>Monster</th>
+                  <th>Attack</th>
+                  <th>Defense</th>
+                  <th>Health</th>
+                </tr>
+                <tr>
+                  <td>Grunt</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>Brute</td>
+                  <td>3</td>
+                  <td>1</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <td>Boss</td>
+                  <td>4</td>
+                  <td>2</td>
+                  <td>8</td>
+                </tr>
+            </table>
+        </div>
+          
 
           <!-- Monster Phase Steps -->
           <h3>Step 1 – Spawn</h3>
