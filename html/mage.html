@@ -12,39 +12,42 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <style> 
-        
             body {
               font-family: "Metamorphous", arial;
               background-image: url(../Img.html/magetheme.png);
-                Background-repeat: no-repeat;
-                background-size: cover;
+              background-repeat: no-repeat;
+              background-size: cover;
               color: white;
               min-height: 100vh;
               padding: 20px;
               margin: 0;
             }
 
+            *{
+                touch-action: manipulation;
+            }
+            
             /* Page wrapper */
             .page-wrapper {
               display: flex;
               flex-direction: column;
               align-items: center;
-              gap: 20px;
-                
-              padding: 0 12px; /* 👈 THIS is key */
+              gap: 15px;
+              padding: 0 20px;
               box-sizing: border-box;
             }
 
             /* Card */
             .card {
               background: mediumblue;
-              padding: 25px;
-              border-radius: 12px;
+              padding: 35px; 
+              border-radius: 12px; 
               width: 100%;
-              max-width: 360px;
+              max-width: 380px;
               box-shadow: 0 0 20px rgba(0,0,0,0.6);
               border-style: solid;
               border-color: goldenrod;
+              box-sizing: border-box;
             }
 
             h1 {
@@ -66,7 +69,7 @@
             }
 
             .health-fill {
-              background: firebrick;
+              background: red;
               height: 100%;
               width: 100%;
               transition: width 0.3s ease;
@@ -122,26 +125,18 @@
             /* Actions */
             .actions-container {
               width: 100%;
-              max-width: 360px;
+              max-width: 380px;
+              box-sizing: border-box;
             }
 
             .actions-section {
               background: mediumblue;
-              padding: 10px;
+              padding: 15px 20px;
               border-radius: 10px;
               margin-bottom: 15px;
               box-shadow: 0 0 12px rgba(0,0,0,0.4);
               border-style: solid;
               border-color: goldenrod;
-            }
-
-              .actions-sectionMON {
-              background: #0a0a4f;
-              padding: 15px 20px;
-              border-radius: 10px;
-              margin-bottom: 15px;
-              box-shadow: 0 0 12px rgba(0,0,0,0.4);
-              box-sizing: border-box;
             }
 
             .actions-section h2 {
@@ -163,7 +158,7 @@
 
             .sub-actions {
               margin-left: 20px;
-              font-size: 13px;
+              /*font-size: 6px;*/
             }
 
             .indent {
@@ -171,9 +166,8 @@
               font-size: 14px;
             }
 
-            .monster-table {
+              .monster-table {
               width: 100%;
-                max-width: 100%;
               border-collapse: collapse;
               margin: 10px 0 20px;
             }
@@ -181,8 +175,9 @@
             .monster-table th,
             .monster-table td {
               border: 1px solid #aaa;
-              padding: 8px;
+              padding: 1px; /* changed to 1*/
               text-align: center;
+              font-size: 14px; 
             }
 
             .monster-table th {
@@ -190,8 +185,8 @@
             }
 
               .monster-section {
-              background: #3b0000;       /* dark red */
-              color: #ffecec;            /* light text */
+              background: #3b0000;     
+              color: #ffecec;           
               border: 2px solid #a30000;
             }
 
@@ -202,7 +197,7 @@
 
             .monster-section .monster-table th {
               background: #5a0000;
-              color: #fff;
+              color: white;
             }
 
             .monster-section .monster-table td {
@@ -213,13 +208,6 @@
               box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
             }
 
-            .table-wrapper {
-                width: 100%;
-                overflow-x: auto;
-             }
-
-            
-            /*
             .card-header {
               display: flex;
               align-items: center;
@@ -227,26 +215,8 @@
               position: relative;
               margin-bottom: 15px;
             }
-            */
-            /*
-            .card-header {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              gap: 10px;
-            }
-            */
-            .card-header {
-              position: relative;
-              display: flex;
-              justify-content: center; /* TRUE center */
-              align-items: center;
-              margin-bottom: 15px;
-            }
 
-            
             /* Hamburger */
-            /*
             .menu-btn {
               position: absolute;
               left:-70px;
@@ -256,32 +226,9 @@
               padding: 6px;
 
               font-size: 32px;
-              color: white;  or white depending on card 
+              color: white; /* or white depending on card */
               cursor: pointer;
             }
-            */
-            /*
-            .menu-btn {
-              background: none;
-              border: none;
-              padding: 4px;
-              font-size: 26px;
-              cursor: pointer;
-            }
-            */
-            .menu-btn {
-              position: absolute;
-              left: 8px;           /* stays inside card */
-              top: 50%;
-              transform: translateY(-50%);
-              background: none;
-              border: none;
-              padding: 4px;
-              font-size: 26px;
-              cursor: pointer;
-              color: white;
-            }
-
 
             /* Title */
             .card-header h1 {
@@ -337,45 +284,29 @@
               display: block;
             }
 
-
             /* Mobile tweaks */
             @media (max-width: 480px) {
               h1 {
+                font-size: 22px;
+              }
+
+            .stats {
                 font-size: 20px;
               }
 
-                .stats {
-                    font-size: 20px;
-                }
-
-                .card {
-                    padding: 18px;
-                }
-                button {
-                    font-size: 18px;
-                }
-                .card,
-                  .actions-container {
-                    max-width: 340px;
-                }
-            }
-            
-            /*
-            @media (max-width: 480px) {
-              .menu-btn {
-                left: 8px;         inside the card 
-                font-size: 28px;
+            button {
+                font-size: 18px;
               }
             }
-            */
 
             .reset-container {
               display: flex;
               justify-content: center;
               margin: -7px 0 30px;
-                font-family: "Metamorphous",arial;
-                padding: 10px
+              font-family: "Metamorphous", arial;
+              padding: 10px;
             }
+
         </style>
     </head>
 
@@ -505,7 +436,9 @@
           </ol>
 
           <h3>Step 3 – Move</h3>
-          <p>Monsters move 1 tile toward their target.</p>
+           <ul>
+            <li>Monsters move 1 tile toward their target.</li>    
+          </ul>
 
           <h3>Step 4 – Attack</h3>
           <ul>
