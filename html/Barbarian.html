@@ -18,6 +18,7 @@
               background-repeat: no-repeat;
               background-size: cover;
               color: white;
+              background-color: darkred
               min-height: 100vh;
               padding: 20px;
               margin: 0;
@@ -307,6 +308,41 @@
               padding: 10px;
             }
 
+            .rage-card {
+              text-align: center;
+              width: 100%;
+              max-height: 180px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            }
+
+            .rage-markers {
+              display: flex;
+              justify-content: center;
+              gap: 25px;
+              margin: 0px 0;
+            }
+
+            .rage-marker {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              border: 2px solid darkorange;
+              background: transparent;
+              cursor: pointer;
+              box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+            }
+
+            .rage-marker.active {
+              background: crimson;
+              box-shadow: 0 0 10px rgba(255,50,50,0.9);
+            }
+
+            .rage-text {
+              font-weight: bold;
+            }
+            
         </style>
     </head>
 
@@ -349,7 +385,7 @@
             </div>
           </div>
 
-          <!-- Stats -->
+           <!--Stats -->
           <div class="stats">
             <div class="stat">
               🛡️
@@ -362,6 +398,18 @@
           </div>
         </div>
 
+          <div class="card rage-card">
+              <h1>Rage</h1>
+
+              <div class="rage-markers">
+                <button class="rage-marker" data-index="1"></button>
+                <button class="rage-marker" data-index="2"></button>
+              </div>
+
+              <p class="rage-text">+0 Attack</p>
+            </div>
+
+          
         <!-- Actions -->
         <div class="actions-container">
 
@@ -497,6 +545,36 @@
             localStorage.setItem("barbarianHealth", currentHealth);
             updateHealthBar();
           }
+        </script>
+        
+        <script>
+            let rageCount = 0;
+            const markers = document.querySelectorAll('.rage-marker');
+            const rageText = document.querySelector('.rage-text');
+
+            markers.forEach((marker, index) => {
+              marker.addEventListener('click', () => {
+                const clickedLevel = index + 1;
+
+                // TOGGLE LOGIC
+                if (rageCount === clickedLevel) {
+                  rageCount--; // unclick
+                } else {
+                  rageCount = clickedLevel;
+                }
+
+                updateRageUI();
+              });
+            });
+
+            function updateRageUI() {
+              markers.forEach((marker, i) => {
+              marker.classList.toggle('active', i < rageCount);
+              });
+
+              rageText.textContent =
+              rageCount === 0 ? 'Not Enraged' : `+${rageCount} Attack`;
+            }
         </script>
        
         <div class="reset-container">
