@@ -1,30 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
+        
         <meta charset="UTF-8" />
         <title>The Siege of Hexfall</title>
-        <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
         
      <style> 
             body{
-                background-image: url(Img.html/homepage.png);
-
+              background-image: url(Img.html/homepage.png);
+              font-family: "Metamorphous", arial;
+              background-repeat: no-repeat;
+              background-size: cover;
+              color: white;
+              padding: 100px;
+              
             }
+         
+            .button {
+              display: inline-block;
+              padding: 10px 20px;
+              background-color: #007BFF;
+              color: white;
+              text-decoration: none;
+              border-radius: 5px;
+              text-align: center;
+            }
+         
+            .button-container {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+              gap: 15px;
+            }
+
      </style>
     </head>
     
         <body>
-            <h1 class="title">The Siege of Hexfall</h1>
+            <h1 class="title">Welcome to The Siege of Hexfall</h1>
             <br />
 
-            <p>Explanation of site</p>
+            <p>Hexfall stands on the brink.<br>
+                Portals tear open across the land, spilling monsters into villages and ruins long forgotten.<br>
+                You are the last line of defense.<br>
+                <br>
+                This site is your companion during play — here you’ll find your hero’s abilities, track your health, and manage special powers as the battle unfolds.<br>
+                <br>
+                Gather your party.<br>
+                Seal the portals.<br>
+                Hold the line.</p>
 
-            <a href="html/Instructions.html">Instructions</a>
-            <a href="html/warrior.html">Warrior</a>
-            <a href="html/Barbarian.html">Barbarian</a>
-            <a href="html/mage.html">Mage</a>
-            <a href="html/Ranger.html">Ranger</a>
-            <!--<button onclick="buttonClicked()">Click me</button>-->
+            <div class="button-container"> 
+                <a href="html/Instructions.html" class="button">Instructions</a>
+                <a href="html/warrior.html" class="button">Warrior</a>
+                <a href="html/Barbarian.html" class="button">Barbarian</a>
+                <a href="html/mage.html" class="button">Mage</a>
+                <a href="html/Ranger.html" class="button">Ranger</a>
+                <!--<button onclick="buttonClicked()">Click me</button>-->
+            </div>
+                
         </body>
 </html>
