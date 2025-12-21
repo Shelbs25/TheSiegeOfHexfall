@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <title>The Siege of Hexfall – Instructions</title>
 
-  <!-- Mobile support -->
+  <!-- Mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fantasy font -->
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
@@ -17,23 +17,33 @@
       margin: 0;
       padding: 20px;
       font-family: "Metamorphous", serif;
-      background: url("../images/parchment.png") center / cover fixed;
+      background: url("../Img.html/parchment.png") center / cover fixed;
       color: #2b1b0f;
     }
 
-    h1, h2, h3 {
-      text-align: center;
+    .content {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(245,236,215,0.9);
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 0 18px rgba(0,0,0,0.4);
     }
 
     h1 {
-      font-size: 2.5em;
+      text-align: center;
+      font-size: 2.6em;
       margin-bottom: 10px;
     }
 
     h2 {
-      margin-top: 40px;
-      border-bottom: 2px solid #5c4326;
-      padding-bottom: 5px;
+      margin-top: 35px;
+      border-bottom: 2px solid #6b4c2c;
+      padding-bottom: 6px;
+    }
+
+    h3 {
+      margin-top: 20px;
     }
 
     p, li {
@@ -41,20 +51,28 @@
       line-height: 1.6;
     }
 
-    .content {
-      max-width: 900px;
-      margin: auto;
-      background: rgba(245, 236, 215, 0.85);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    ul, ol {
+      margin-left: 25px;
     }
 
-    ul {
-      margin-left: 20px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0 25px;
     }
 
-    /* Hamburger button */
+    th, td {
+      border: 1px solid #6b4c2c;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background: #6b4c2c;
+      color: white;
+    }
+
+    /* Hamburger */
     .menu-btn {
       position: fixed;
       top: 15px;
@@ -62,12 +80,11 @@
       background: none;
       border: none;
       font-size: 32px;
-      color: #2b1b0f;
       cursor: pointer;
+      color: #2b1b0f;
       z-index: 1100;
     }
 
-    /* Side menu */
     .side-menu {
       position: fixed;
       top: 0;
@@ -98,7 +115,6 @@
       left: 0;
     }
 
-    /* Overlay */
     #overlay {
       position: fixed;
       inset: 0;
@@ -110,32 +126,20 @@
     #overlay.show {
       display: block;
     }
-
-    @media print {
-      .menu-btn,
-      .side-menu,
-      #overlay {
-        display: none;
-      }
-      body {
-        background: none;
-      }
-    }
   </style>
 </head>
 
 <body>
 
-<!-- Hamburger -->
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-<!-- Side Menu -->
 <nav id="sideMenu" class="side-menu">
   <a href="../index.html">Home</a>
   <a href="warrior.html">Warrior</a>
   <a href="Ranger.html">Ranger</a>
   <a href="mage.html">Mage</a>
   <a href="Barbarian.html">Barbarian</a>
+  <a href="Instructions.html">Instructions</a>
 </nav>
 
 <div id="overlay" onclick="toggleMenu()"></div>
@@ -143,72 +147,127 @@
 <div class="content">
 
   <h1>The Siege of Hexfall</h1>
-  <h3>Rulebook & Instructions</h3>
+  <p style="text-align:center;">
+    <em>A cooperative heroes-vs-the-game board game</em>
+  </p>
 
   <h2>Objective</h2>
   <p>
-    The heroes must work together to survive the assault on Hexfall by sealing all portals
-    and defeating the monsters that emerge. The game itself controls the monsters —
-    players control only the heroes.
+    Heroes must work together to <strong>seal all Portals</strong> and
+    <strong>defeat the Boss</strong>.  
+    If all Heroes are defeated or all Villages are destroyed, the game is lost.
   </p>
 
-  <h2>Components</h2>
-  <ul>
-    <li>19 Hex Tiles (1 center, 6 inner ring, 12 outer ring)</li>
-    <li>Hero Miniatures (Warrior, Ranger, Mage, Barbarian)</li>
-    <li>Monster Miniatures (Grunts, Brutes, Boss)</li>
-    <li>Portal, Ruin, and Village Tokens</li>
-    <li>Health Rings or Trackers</li>
-    <li>Dice</li>
-  </ul>
-
-  <h2>Setup</h2>
-  <ul>
-    <li>Arrange the 19 hexes in a flower configuration.</li>
-    <li>Place exactly 3 Villages, 3 Ruins, and 3 Portals.</li>
-    <li>Heroes start on the center hex.</li>
-    <li>Set monster decks and trackers nearby.</li>
-  </ul>
-
-  <h2>Game Rounds</h2>
-  <p>Each round consists of the following phases:</p>
+  <h2>Round Structure</h2>
   <ol>
     <li>Hero Phase</li>
-    <li>Monster Spawn Phase</li>
-    <li>Monster Action Phase</li>
-    <li>End Phase</li>
+    <li>Monster Phase</li>
+    <li>End of Round</li>
   </ol>
 
-  <h2>Monster Spawning</h2>
+  <h2>Hero Phase</h2>
+  <p>Each Hero takes a turn in any order.</p>
   <ul>
-    <li>Before any portals are sealed, Grunts spawn from portals.</li>
-    <li>After the first portal is sealed, only Brutes spawn.</li>
-    <li>On the Boss Round, only the Boss spawns at a single portal.</li>
+    <li><strong>Move:</strong> Up to 2 adjacent tiles</li>
+    <li><strong>Action:</strong> Choose one</li>
+  </ul>
+  <ul>
+    <li>Attack</li>
+    <li>Seal a Portal</li>
+    <li>Loot a Ruin</li>
+    <li>End Turn</li>
   </ul>
 
-  <h2>Monster Attacks</h2>
+  <h2>Monster Phase</h2>
+
+  <table>
+    <tr>
+      <th>Monster</th>
+      <th>Attack</th>
+      <th>Defense</th>
+      <th>Health</th>
+    </tr>
+    <tr>
+      <td>Grunt</td>
+      <td>-2</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Brute</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Boss</td>
+      <td>2</td>
+      <td>2</td>
+      <td>8</td>
+    </tr>
+  </table>
+
+  <h3>Step 1 – Spawn</h3>
   <ul>
-    <li>Monsters attack in order from smallest to largest.</li>
-    <li>If multiple heroes occupy a hex, damage may be split between them.</li>
-    <li>If two heroes share a hex, they gain <strong>Hero’s Ally</strong>:
-      <ul>
-        <li>Heroes may combine defense.</li>
-        <li>Damage may be divided between heroes.</li>
-      </ul>
+    <li>Before any Portals are sealed, each open Portal spawns 1 Grunt.</li>
+    <li>
+      Once the <strong>first Portal is sealed</strong>, Grunts stop spawning.
+      Each open Portal now spawns 1 Brute instead.
+    </li>
+    <li>
+      On a <strong>Boss Round</strong>, only the Boss spawns at a single active
+      Portal of the Heroes’ choice. No other monsters spawn.
     </li>
   </ul>
 
-  <h2>Hero Progression</h2>
+  <h3>Step 2 – Target Priority</h3>
+  <ol>
+    <li>Adjacent Hero</li>
+    <li>Nearest Hero</li>
+    <li>Nearest Village</li>
+  </ol>
+
+  <h3>Step 3 – Move</h3>
   <ul>
-    <li>After each round, heroes may improve one stat.</li>
-    <li>Heroes may heal a small amount between rounds.</li>
+    <li>Monsters move 1 tile toward their target.</li>
   </ul>
 
-  <h2>Winning & Losing</h2>
+  <h3>Step 4 – Attack</h3>
+  <ul>
+    <li>
+      Monsters attack if they are on the same tile as their target.
+    </li>
+    <li>
+      Resolve monster attacks in order from
+      <strong>smallest to largest</strong>:
+      Grunts → Brutes → Bosses.
+    </li>
+  </ul>
+
+  <h3>Multiple Monsters & Heroes</h3>
+  <ul>
+    <li>
+      If multiple Monsters are on the same tile as multiple Heroes,
+      monsters distribute their attacks among the Heroes.
+    </li>
+    <li>
+      Heroes on the same tile may activate <strong>Hero’s Ally</strong>:
+      Heroes may combine their Defense and split incoming damage
+      however they choose.
+    </li>
+  </ul>
+
+  <h2>Villages</h2>
   <p>
-    Heroes win by sealing all portals and defeating all monsters.
-    Heroes lose if all heroes are defeated.
+    Villages take 1 damage for each Monster attacking them.
+    If all Villages are destroyed, the Heroes lose.
   </p>
+
+  <h2>Victory & Defeat</h2>
+  <ul>
+    <li><strong>Heroes Win:</strong> All Portals are sealed and the Boss is defeated.</li>
+    <li><strong>Heroes Lose:</strong> All Heroes are defeated or all Villages are destroyed.</li>
+  </ul>
 
 </div>
 
