@@ -139,7 +139,6 @@
   <a href="Ranger.html">Ranger</a>
   <a href="mage.html">Mage</a>
   <a href="Barbarian.html">Barbarian</a>
-  <a href="Instructions.html">Instructions</a>
 </nav>
 
 <div id="overlay" onclick="toggleMenu()"></div>
@@ -357,7 +356,6 @@
     </ul>
 
     <h3>8.2 Looting a Ruin</h3>
-    <p>Roll 1 die:</p>
     <ul>
       <li>1–2: Heal 5 Health</li>
       <li>3–4: +1 Attack for the next combat</li>
@@ -417,10 +415,7 @@
     <ul>
       <li>If no Portals are sealed, each open Portal spawns 1 Grunt.</li>
       <li>If one Portal is sealed, each remaining open Portal spawns 1 Brute instead.</li>
-      <li>
-        <strong>Boss Round Exception:</strong> During a Boss round, only the Boss spawns.
-        No Grunts or Brutes spawn from any Portals.
-      </li>
+      <li><strong>Boss Round Exception:</strong> During a Boss round, only the Boss spawns. No Grunts or Brutes spawn from any Portals.</li>
     </ul>
 
     <h3>Step 2 – Target Priority</h3>
@@ -498,4 +493,11 @@
 
 <script>
   function toggleMenu() {
-    document.getElementById("sideMenu").class
+    const menu = document.getElementById("sideMenu");
+    const overlay = document.getElementById("overlay");
+    menu.classList.toggle("open");
+    overlay.classList.toggle("show");
+  }
+</script>
+
+</body>
