@@ -285,8 +285,8 @@
 
         <h3>Step 1 – Spawn</h3>
         <ul>
-          <li>Each open Portal spawns 1 Grunt.</li>
-          <li>Beginning Round 5, each open Portal spawns 1 Grunt and 1 Brute.</li>
+          <li>If no Portals are sealed, each open Portal spawns 1 Grunt.</li>
+          <li>If one Portal is sealed, each remaining open Portal spawns 1 Brute instead.</li>
           <li>
             <strong>Boss Round Exception:</strong> During a Boss round, only the Boss spawns.
             No Grunts or Brutes spawn from any Portals.
@@ -307,11 +307,14 @@
         <h3>Step 4 – Attack</h3>
         <ul>
           <li>Monsters attack if on the same tile as their target.</li>
-          <li>Villages take 1 damage per attacking Monster.</li>
-          <li>
-            Resolve Monster attacks in the following order:
+          <li>Resolve Monster attacks in the following order:
             <strong>Grunts → Brutes → Boss</strong>.
           </li>
+          <li>
+            If multiple Monsters and multiple Heroes are on the same tile, each Monster attacks once.
+            Heroes may choose how to assign Monster attacks among Heroes on that tile.
+          </li>
+          <li>Villages take 1 damage per attacking Monster.</li>
         </ul>
       </section>
 
@@ -354,7 +357,7 @@
         <h2>15. Difficulty Adjustments (Optional)</h2>
         <ul>
           <li><strong>Easy:</strong> Portals spawn Monsters every other round.</li>
-          <li><strong>Hard:</strong> Portals spawn +1 Grunt each round.</li>
+          <li><strong>Hard:</strong> Each open Portal spawns +1 Monster of its current type.</li>
         </ul>
       </section>
 
