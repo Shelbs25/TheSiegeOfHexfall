@@ -1,383 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Instructions</title>
-    </head>
-    <body>
-        <h1>Instructions</h1>
-        
-        <section>
-        <h2>1. Game Overview</h2>
-        <p><strong>Players:</strong> 2–4</p>
-        <p><strong>Play Time:</strong> 30–45 minutes</p>
-        <p><strong>Recommended Age:</strong> 10+</p>
+<head>
+  <meta charset="UTF-8">
+  <title>The Siege of Hexfall – Instructions</title>
 
-        <p>
-          <em>The Siege of Hexfall</em> is a fully cooperative board game in which players take the roles of Heroes
-          defending the land of Hexfall from an ever-growing monster invasion. Monsters emerge from arcane
-          portals and relentlessly advance toward villages and heroes. Players must coordinate movement,
-          manage risk, and make sacrifices to seal portals and defeat the Monster Boss.
-        </p>
+  <!-- Mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <p>
-          There is no Monster player. All monster actions are controlled by the game rules.
-        </p>
-      </section>
+  <!-- Fantasy font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
 
-      <section>
-        <h2>2. Objective</h2>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: "Metamorphous", serif;
+      background: url("../images/parchment.png") center / cover fixed;
+      color: #2b1b0f;
+    }
 
-        <h3>Heroes Win If:</h3>
-        <ul>
-          <li>All Portals are sealed</li>
-          <li>The Monster Boss is defeated</li>
-        </ul>
+    h1, h2, h3 {
+      text-align: center;
+    }
 
-        <h3>Heroes Lose If:</h3>
-        <ul>
-          <li>All Villages are destroyed</li>
-          <li>All Heroes are defeated</li>
-        </ul>
-      </section>
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
 
-      <section>
-        <h2>3. Components</h2>
+    h2 {
+      margin-top: 40px;
+      border-bottom: 2px solid #5c4326;
+      padding-bottom: 5px;
+    }
 
-        <h3>3.1 Board Components</h3>
-        <ul>
-          <li>19 Modular hex tiles</li>
-          <li>3 Portal tiles</li>
-          <li>3 Village tiles</li>
-          <li>3 Ruin tiles</li>
-          <li>10 Plain tiles</li>
-        </ul>
+    p, li {
+      font-size: 1.05em;
+      line-height: 1.6;
+    }
 
-        <h3>3.2 Structures</h3>
-        <ul>
-          <li>3 Portal towers</li>
-          <li>3 Village buildings</li>
-          <li>3 Ruin structures</li>
-        </ul>
+    .content {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(245, 236, 215, 0.85);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
 
-        <h3>3.3 Heroes</h3>
-        <ul>
-          <li>Warrior miniature</li>
-          <li>Ranger miniature</li>
-          <li>Mage miniature</li>
-          <li>Barbarian miniature</li>
-        </ul>
+    ul {
+      margin-left: 20px;
+    }
 
-        <h3>3.4 Monsters</h3>
-        <ul>
-          <li>8 Monster Grunts</li>
-          <li>4 Monster Brutes</li>
-          <li>1 Monster Boss</li>
-        </ul>
+    /* Hamburger button */
+    .menu-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: none;
+      border: none;
+      font-size: 32px;
+      color: #2b1b0f;
+      cursor: pointer;
+      z-index: 1100;
+    }
 
-        <h3>3.5 Tokens &amp; Markers</h3>
-        <ul>
-          <li>12 Health tokens</li>
-          <li>6 Portal Seal markers</li>
-          <li>6 Village Damage markers</li>
-          <li>10 Loot tokens</li>
-          <li>2 Rage markers (Barbarian)</li>
-          <li>1 Round Tracker token</li>
-        </ul>
+    /* Side menu */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 240px;
+      height: 100%;
+      background: #1b1b1b;
+      padding-top: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
 
-        <h3>3.6 Dice</h3>
-        <ul>
-          <li>1 six-sided dice (d6)</li>
-        </ul>
-      </section>
+    .side-menu a {
+      color: #eee;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 18px;
+    }
 
-      <section>
-        <h2>4. Setup</h2>
-        <ol>
-          <li>Assemble the board using the 19 hex tiles in a hex-flower pattern.</li>
-          <li>Place 1 Portal tile on three outer edge hexes.</li>
-          <li>Place 1 Village tile adjacent to each Portal tile.</li>
-          <li>Place 1 Ruin tile on three remaining inner hexes.</li>
-          <li>Place the matching structure on each special tile.</li>
-          <li>Each player selects one Hero and places their miniature on any Village tile.</li>
-          <li>Place 2 Monster Grunts on each Portal tile.</li>
-          <li>Set the Round Tracker to Round 1.</li>
-        </ol>
-      </section>
+    .side-menu a:hover {
+      background: #333;
+    }
 
-      <section>
-        <h2>5. Heroes</h2>
+    .side-menu.open {
+      left: 0;
+    }
 
-        <h3>5.1 Hero Stats</h3>
-        <table border="1" cellpadding="6">
-          <thead>
-            <tr>
-              <th>Hero</th>
-              <th>Attack</th>
-              <th>Defense</th>
-              <th>Health</th>
-              <th>Ability</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Warrior</td>
-              <td>3</td>
-              <td>2</td>
-              <td>12</td>
-              <td>Shield Wall</td>
-            </tr>
-            <tr>
-              <td>Ranger</td>
-              <td>2</td>
-              <td>1</td>
-              <td>10</td>
-              <td>Ranged Shot</td>
-            </tr>
-            <tr>
-              <td>Mage</td>
-              <td>2</td>
-              <td>1</td>
-              <td>8</td>
-              <td>Arcane Seal</td>
-            </tr>
-            <tr>
-              <td>Barbarian</td>
-              <td>4</td>
-              <td>0</td>
-              <td>14</td>
-              <td>Rage</td>
-            </tr>
-          </tbody>
-        </table>
+    /* Overlay */
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      z-index: 900;
+    }
 
-        <p>Heroes begin the game at full Health.</p>
+    #overlay.show {
+      display: block;
+    }
 
-        <h3>5.2 Hero Abilities</h3>
-        <p><strong>Shield Wall (Warrior):</strong> Once per round, reduce incoming damage by 1.</p>
-        <p><strong>Ranged Shot (Ranger):</strong> The Ranger may attack a Monster on an adjacent tile without moving.</p>
-        <p><strong>Arcane Seal (Mage):</strong> The Mage is more effective at sealing Portals and only takes 2 damage on a failed roll.</p>
-        <p>
-          <strong>Rage (Barbarian):</strong> When the Barbarian takes damage, place 1 Rage marker on their base
-          (maximum 2). Each Rage marker grants +1 Attack. At the end of the Barbarian’s turn, remove 1 Rage marker.
-        </p>
-      </section>
+    @media print {
+      .menu-btn,
+      .side-menu,
+      #overlay {
+        display: none;
+      }
+      body {
+        background: none;
+      }
+    }
+  </style>
+</head>
 
-      <section>
-        <h2>6. Round Structure</h2>
-        <p>Each round consists of two phases:</p>
-        <ol>
-          <li>Hero Phase</li>
-          <li>Monster Phase</li>
-        </ol>
-        <p>After the Monster Phase, advance the Round Tracker by one.</p>
-      </section>
+<body>
 
-      <section>
-        <h2>7. Hero Phase</h2>
-        <p>Heroes may act in any order. Each Hero takes one turn per round.</p>
+<!-- Hamburger -->
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-        <h3>Hero Turn Structure</h3>
-        <ol>
-          <li>Move – Move up to 2 adjacent tiles.</li>
-          <li>
-            Action – Choose one:
-            <ul>
-              <li>Attack</li>
-              <li>Seal a Portal</li>
-              <li>Loot a Ruin</li>
-              <li>End Turn</li>
-            </ul>
-          </li>
-        </ol>
-      </section>
+<!-- Side Menu -->
+<nav id="sideMenu" class="side-menu">
+  <a href="../index.html">Home</a>
+  <a href="warrior.html">Warrior</a>
+  <a href="Ranger.html">Ranger</a>
+  <a href="mage.html">Mage</a>
+  <a href="Barbarian.html">Barbarian</a>
+</nav>
 
-      <section>
-        <h2>8. Special Hero Actions</h2>
+<div id="overlay" onclick="toggleMenu()"></div>
 
-        <h3>8.1 Sealing a Portal</h3>
-        <p>Any Hero standing on a Portal tile may attempt to seal it instead of attacking.</p>
+<div class="content">
 
-        <table border="1" cellpadding="6">
-          <tr>
-            <th>Hero</th>
-            <th>Success Roll</th>
-          </tr>
-          <tr>
-            <td>Mage</td>
-            <td>3–6</td>
-          </tr>
-          <tr>
-            <td>Other Heroes</td>
-            <td>5–6</td>
-          </tr>
-        </table>
+  <h1>The Siege of Hexfall</h1>
+  <h3>Rulebook & Instructions</h3>
 
-        <ul>
-          <li>Roll 1 die.</li>
-          <li>On success, place a Portal Seal marker on the Portal and all heroes gain 5 HP.</li>
-          <li>Sealed Portals no longer spawn Monsters.</li>
-          <li>On failure, the Hero suffers 5 damage.</li>
-          <li>A sealed Portal cannot be reopened.</li>
-        </ul>
+  <h2>Objective</h2>
+  <p>
+    The heroes must work together to survive the assault on Hexfall by sealing all portals
+    and defeating the monsters that emerge. The game itself controls the monsters —
+    players control only the heroes.
+  </p>
 
-        <h3>8.2 Looting a Ruin</h3>
-        <p>Roll 1 die:</p>
-        <ul>
-          <li>1–2: Heal 5 Health</li>
-          <li>3–4: +1 Attack for the next combat</li>
-          <li>5–6: +1 Defense for the next attack</li>
-        </ul>
+  <h2>Components</h2>
+  <ul>
+    <li>19 Hex Tiles (1 center, 6 inner ring, 12 outer ring)</li>
+    <li>Hero Miniatures (Warrior, Ranger, Mage, Barbarian)</li>
+    <li>Monster Miniatures (Grunts, Brutes, Boss)</li>
+    <li>Portal, Ruin, and Village Tokens</li>
+    <li>Health Rings or Trackers</li>
+    <li>Dice</li>
+  </ul>
 
-        <h3>8.3 Mage’s Last Stand</h3>
-        <p>
-          When the Mage is defeated, before removing the miniature from the board, the Mage may immediately choose one:
-        </p>
-        <ul>
-          <li><strong>Final Seal:</strong> Seal one open Portal anywhere on the board.</li>
-          <li><strong>Arcane Collapse:</strong> All open Portals spawn one fewer Monster for the rest of the game (minimum 0).</li>
-        </ul>
-      </section>
+  <h2>Setup</h2>
+  <ul>
+    <li>Arrange the 19 hexes in a flower configuration.</li>
+    <li>Place exactly 3 Villages, 3 Ruins, and 3 Portals.</li>
+    <li>Heroes start on the center hex.</li>
+    <li>Set monster decks and trackers nearby.</li>
+  </ul>
 
-      <section>
-        <h2>9. Combat</h2>
-        <ol>
-          <li>Attacker rolls 1 die and adds their Attack value.</li>
-          <li>Defender subtracts their Defense value.</li>
-          <li>Remaining value is dealt as damage (minimum 0).</li>
-          <li>Remove Health tokens accordingly.</li>
-        </ol>
-      </section>
+  <h2>Game Rounds</h2>
+  <p>Each round consists of the following phases:</p>
+  <ol>
+    <li>Hero Phase</li>
+    <li>Monster Spawn Phase</li>
+    <li>Monster Action Phase</li>
+    <li>End Phase</li>
+  </ol>
 
-      <section>
-        <h2>10. Monsters</h2>
+  <h2>Monster Spawning</h2>
+  <ul>
+    <li>Before any portals are sealed, Grunts spawn from portals.</li>
+    <li>After the first portal is sealed, only Brutes spawn.</li>
+    <li>On the Boss Round, only the Boss spawns at a single portal.</li>
+  </ul>
 
-        <table border="1" cellpadding="6">
-          <tr>
-            <th>Monster</th>
-            <th>Attack</th>
-            <th>Defense</th>
-            <th>Health</th>
-          </tr>
-          <tr>
-            <td>Grunt</td>
-            <td>-2</td>
-            <td>0</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>Brute</td>
-            <td>0</td>
-            <td>1</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            <td>Boss</td>
-            <td>2</td>
-            <td>2</td>
-            <td>8</td>
-          </tr>
-        </table>
-      </section>
+  <h2>Monster Attacks</h2>
+  <ul>
+    <li>Monsters attack in order from smallest to largest.</li>
+    <li>If multiple heroes occupy a hex, damage may be split between them.</li>
+    <li>If two heroes share a hex, they gain <strong>Hero’s Ally</strong>:
+      <ul>
+        <li>Heroes may combine defense.</li>
+        <li>Damage may be divided between heroes.</li>
+      </ul>
+    </li>
+  </ul>
 
-      <section>
-        <h2>11. Monster Phase (Game-Controlled)</h2>
+  <h2>Hero Progression</h2>
+  <ul>
+    <li>After each round, heroes may improve one stat.</li>
+    <li>Heroes may heal a small amount between rounds.</li>
+  </ul>
 
-        <h3>Step 1 – Spawn</h3>
-        <ul>
-          <li>If no Portals are sealed, each open Portal spawns 1 Grunt.</li>
-          <li>If one Portal is sealed, each remaining open Portal spawns 1 Brute instead.</li>
-          <li>
-            <strong>Boss Round Exception:</strong> During a Boss round, only the Boss spawns.
-            No Grunts or Brutes spawn from any Portals.
-          </li>
-        </ul>
+  <h2>Winning & Losing</h2>
+  <p>
+    Heroes win by sealing all portals and defeating all monsters.
+    Heroes lose if all heroes are defeated.
+  </p>
 
-        <h3>Step 2 – Target Priority</h3>
-        <p>Monsters target in the following order:</p>
-        <ol>
-          <li>Adjacent Hero</li>
-          <li>Nearest Hero</li>
-          <li>Nearest Village</li>
-        </ol>
+</div>
 
-        <h3>Step 3 – Move</h3>
-        <p>Monsters move 1 tile toward their target.</p>
+<script>
+  function toggleMenu() {
+    document.getElementById("sideMenu").classList.toggle("open");
+    document.getElementById("overlay").classList.toggle("show");
+  }
+</script>
 
-        <h3>Step 4 – Attack</h3>
-        <ul>
-          <li>Monsters attack if on the same tile as their target.</li>
-          <li>Resolve Monster attacks in the following order:
-            <strong>Grunts → Brutes → Boss</strong>.
-          </li>
-          <li>
-            If multiple Monsters and multiple Heroes are on the same tile, each Monster attacks once.
-            Heroes may choose how to assign Monster attacks among Heroes on that tile.
-          </li>
-          <li>Villages take 1 damage per attacking Monster.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>12. Boss Phase</h2>
-
-        <h3>Boss Spawn</h3>
-        <p>
-          When two Portals are sealed, spawn the Boss at the remaining open Portal.
-          If no Portals remain, spawn the Boss at the nearest Ruin.
-        </p>
-
-        <h3>Boss Rules</h3>
-        <ul>
-          <li>Moves up to 2 tiles per Monster Phase</li>
-          <li>Attacks all Heroes on its tile</li>
-          <li>Ignores Village Defense</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>13. Villages</h2>
-        <ul>
-          <li>Each Village has 3 Health.</li>
-          <li>Place a Village Damage marker each time it takes damage.</li>
-          <li>When a Village reaches 3 damage, remove the structure.</li>
-          <li>If two Villages are destroyed, the Heroes lose.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>14. Hero Defeat</h2>
-        <ul>
-          <li>When a Hero’s Health reaches 0, they are defeated and removed from play.</li>
-          <li>The remaining Heroes may continue as long as at least one Hero remains.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>15. Difficulty Adjustments (Optional)</h2>
-        <ul>
-          <li><strong>Easy:</strong> Portals spawn Monsters every other round.</li>
-          <li><strong>Hard:</strong> Each open Portal spawns +1 Monster of its current type.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>16. Design Notes</h2>
-        <p>This game emphasizes:</p>
-        <ul>
-          <li>Cooperative strategy</li>
-          <li>Tactical positioning</li>
-          <li>Risk vs. reward decisions</li>
-          <li>Physical clarity through 3D components</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>17. End of Game</h2>
-        <p>If the Heroes seal all Portals and defeat the Boss, Hexfall is saved.</p>
-        <p>If the Villages fall or the Heroes are defeated, Hexfall is overrun.</p>
-        <p><strong>Thank you for playing <em>The Siege of Hexfall</em>.</strong></p>
-      </section>
-
-    </body>
+</body>
 </html>
