@@ -1,128 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <title>The Siege of Hexfall</title>
 
-  <meta charset="UTF-8" />
-  <title>The Siege of Hexfall</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      background-image:
-        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-        url("Img.html/homepage.png");
-      font-family: "Metamorphous", arial;
-      background-repeat: repeat;
-      background-size: cover;
-      background-position: center;
-      color: white;
-      margin: 0;
-      min-height: 100vh;
-      font-size: 18px;
-      padding: 60px 20px;
-      box-sizing: border-box;
-    }
+    <style>
+        body {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url("Img.html/homepage.png");
+            background-repeat: repeat;
+            background-size: cover;
+            background-position: center;
 
-    .page {
-      max-width: 900px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
-    }
+            font-family: "Metamorphous", arial;
+            color: white;
 
-    /* INTRO CARD */
-    .intro {
-      text-align: center;
-      background: rgba(0,0,0,0.55);
-      padding: 45px 35px;
-      border-radius: 18px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
-    }
+            margin: 0;
+            padding: 80px 40px;
+            min-height: 100vh;
+            font-size: 18px;
 
-    .intro h1 {
-      font-size: 36px;
-      margin-bottom: 25px;
-    }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
 
-    .intro p {
-      line-height: 1.7;
-      font-size: 19px;
-    }
+        /* Intro / Story Card */
+        .intro-card {
+            max-width: 800px;
+            text-align: center;
+            background: rgba(0,0,0,0.55);
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(255,255,255,0.15);
+        }
 
-    /* BUTTONS */
-    .button {
-      font-size: 22px;
-      background-color: teal;
-      color: white;
-      box-shadow: 0 0 25px rgba(255,255,255,0.5);
-      text-decoration: none;
-      padding: 26px 50px;
-      border-radius: 12px;
-      text-align: center;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
+        .intro-card h1 {
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
 
-    .button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 35px rgba(255,255,255,0.8);
-    }
+        /* Primary Button */
+        .primary-button {
+            font-size: 24px;
+            background-color: teal;
+            color: white;
+            text-decoration: none;
+            padding: 30px 70px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px white;
+            text-align: center;
+            display: inline-block;
+        }
 
-    /* PRIMARY BUTTON */
-    .primary-button {
-      display: flex;
-      justify-content: center;
-    }
+        /* Hero Selection Container */
+        .hero-container {
+            background: rgba(0,0,0,0.45);
+            padding: 35px 45px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(255,255,255,0.1);
+            text-align: center;
+        }
 
-    /* HERO BUTTON GRID */
-    .hero-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 25px;
-    }
-  </style>
+        .hero-container h2 {
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 30px;
+        }
+
+        /* Secondary Buttons */
+        .button {
+            font-size: 20px;
+            background-color: teal;
+            color: white;
+            text-decoration: none;
+            padding: 22px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 18px rgba(255,255,255,0.6);
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
 
-  <div class="page">
+    <div class="intro-card">
+        <h1>Welcome to The Siege of Hexfall</h1>
 
-    <!-- INTRO / STORY -->
-    <section class="intro">
-      <h1>Welcome to The Siege of Hexfall</h1>
+        <p>
+            Hexfall stands on the brink.<br>
+            Portals tear open across the land, spilling monsters into villages and ruins long forgotten.<br>
+            You are the last line of defense.<br><br>
 
-      <p>
-        Hexfall stands on the brink.<br>
-        Portals tear open across the land, spilling monsters into villages and ruins long forgotten.<br>
-        You are the last line of defense.
-        <br><br>
-        This site is your companion during play — here you’ll find your hero’s abilities, track your health,
-        and manage special powers as the battle unfolds.
-        <br><br>
-        Gather your party.
-        <br><br>
-        Seal the portals.
-        <br><br>
-        Hold the line.
-      </p>
-    </section>
+            This site is your companion during play — here you’ll find your hero’s abilities, track your health, and manage special powers as the battle unfolds.<br><br>
 
-    <!-- INSTRUCTIONS BUTTON -->
-    <div class="primary-button">
-      <a href="html/Instructions.html" class="button">Instructions</a>
+            Gather your party.<br><br>
+            Seal the portals.<br><br>
+            Hold the line.
+        </p>
     </div>
 
-    <!-- HERO BUTTONS -->
-    <div class="hero-buttons">
-      <a href="html/warrior.html" class="button">Warrior</a>
-      <a href="html/Barbarian.html" class="button">Barbarian</a>
-      <a href="html/mage.html" class="button">Mage</a>
-      <a href="html/Ranger.html" class="button">Ranger</a>
-    </div>
+    <!-- Primary Action -->
+    <a href="html/Instructions.html" class="primary-button">Instructions</a>
 
-  </div>
+    <!-- Hero Selection -->
+    <div class="hero-container">
+        <h2>Choose Your Hero</h2>
+
+        <div class="hero-grid">
+            <a href="html/warrior.html" class="button">Warrior</a>
+            <a href="html/Barbarian.html" class="button">Barbarian</a>
+            <a href="html/mage.html" class="button">Mage</a>
+            <a href="html/Ranger.html" class="button">Ranger</a>
+        </div>
+    </div>
 
 </body>
 </html>
