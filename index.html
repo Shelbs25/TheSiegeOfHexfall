@@ -10,15 +10,20 @@
 
     <style>
         body {
+            /* Background image commented out */
+            /*
             background-image:
                 linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
                 url("Img.html/homepage.png");
+            */
+
+            background-color: #f4ecd8; /* parchment base */
+            background-image: url("Img.html/parchment.png"); /* optional parchment texture */
             background-repeat: repeat;
-            background-size: cover;
-            background-position: center;
+            background-size: auto;
 
             font-family: "Metamorphous", arial;
-            color: white;
+            color: #2b1d0e;
 
             margin: 0;
             padding: 80px 40px;
@@ -33,12 +38,13 @@
 
         /* Intro / Story Card */
         .intro-card {
-            max-width: 800px;
+            max-width: 850px;
             text-align: center;
-            background: rgba(0,0,0,0.55);
-            padding: 40px 50px;
+            background: rgba(255, 248, 220, 0.85);
+            padding: 45px 55px;
             border-radius: 12px;
-            box-shadow: 0 0 30px rgba(255,255,255,0.15);
+            border: 2px solid #c2a86a;
+            box-shadow: 0 0 20px rgba(0,0,0,0.25);
         }
 
         .intro-card h1 {
@@ -49,22 +55,24 @@
         /* Primary Button */
         .primary-button {
             font-size: 24px;
-            background-color: teal;
-            color: white;
+            background-color: #6b4f1d;
+            color: #fff8dc;
             text-decoration: none;
             padding: 30px 70px;
             border-radius: 10px;
-            box-shadow: 0 0 30px white;
+            border: 2px solid #4a3713;
+            box-shadow: 0 0 18px rgba(0,0,0,0.4);
             text-align: center;
             display: inline-block;
         }
 
         /* Hero Selection Container */
         .hero-container {
-            background: rgba(0,0,0,0.45);
+            background: rgba(255, 248, 220, 0.8);
             padding: 35px 45px;
             border-radius: 12px;
-            box-shadow: 0 0 25px rgba(255,255,255,0.1);
+            border: 2px solid #c2a86a;
+            box-shadow: 0 0 18px rgba(0,0,0,0.25);
             text-align: center;
         }
 
@@ -82,12 +90,13 @@
         /* Secondary Buttons */
         .button {
             font-size: 20px;
-            background-color: teal;
-            color: white;
+            background-color: #6b4f1d;
+            color: #fff8dc;
             text-decoration: none;
             padding: 22px 40px;
             border-radius: 8px;
-            box-shadow: 0 0 18px rgba(255,255,255,0.6);
+            border: 2px solid #4a3713;
+            box-shadow: 0 0 14px rgba(0,0,0,0.35);
             text-align: center;
         }
     </style>
