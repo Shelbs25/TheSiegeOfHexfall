@@ -1,146 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>The Siege of Hexfall</title>
-
-  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
 
+  <meta charset="UTF-8" />
+  <title>The Siege of Hexfall</title>
+
   <style>
     body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: "Metamorphous", serif;
       background-image:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
         url("Img.html/homepage.png");
+      font-family: "Metamorphous", arial;
+      background-repeat: repeat;
       background-size: cover;
       background-position: center;
-      display: flex;
-      justify-content: center;
-      padding: 40px;
-      color: #eee;
+      color: white;
+      margin: 0;
+      min-height: 100vh;
+      font-size: 18px;
+      padding: 60px 20px;
+      box-sizing: border-box;
     }
 
-    .container {
-      max-width: 1000px;
-      width: 100%;
+    .page {
+      max-width: 900px;
+      margin: auto;
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 50px;
     }
 
-    .header-panel {
-      background: rgba(20, 20, 20, 0.75);
-      border: 2px solid #6b4c2c;
-      border-radius: 16px;
-      padding: 40px;
+    /* INTRO CARD */
+    .intro {
       text-align: center;
-      box-shadow: 0 0 25px rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.55);
+      padding: 45px 35px;
+      border-radius: 18px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
     }
 
-    h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-      color: #f0e6d2;
-    }
-
-    .tagline {
-      font-style: italic;
-      opacity: 0.9;
-    }
-
-    .story {
-      margin-top: 25px;
-      line-height: 1.7;
-      font-size: 1.05em;
-    }
-
-    .action-panel {
-      background: rgba(15, 15, 15, 0.8);
-      border: 2px solid #3f2c1c;
-      border-radius: 16px;
-      padding: 35px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.7);
-    }
-
-    .action-title {
-      text-align: center;
+    .intro h1 {
+      font-size: 36px;
       margin-bottom: 25px;
-      font-size: 1.6em;
-      color: #f0e6d2;
     }
 
-    .button-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+    .intro p {
+      line-height: 1.7;
+      font-size: 19px;
     }
 
+    /* BUTTONS */
     .button {
-      padding: 18px;
-      font-size: 20px;
-      text-align: center;
+      font-size: 22px;
+      background-color: teal;
+      color: white;
+      box-shadow: 0 0 25px rgba(255,255,255,0.5);
       text-decoration: none;
-      color: #f0e6d2;
-      background: linear-gradient(145deg, #2b6f6b, #1e4f4c);
-      border-radius: 14px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.6);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      padding: 26px 50px;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .button:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 25px rgba(0,0,0,0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(255,255,255,0.8);
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.3em;
-      }
+    /* PRIMARY BUTTON */
+    .primary-button {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* HERO BUTTON GRID */
+    .hero-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 25px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+  <div class="page">
 
-    <div class="header-panel">
-      <h1>The Siege of Hexfall</h1>
-      <div class="tagline">A cooperative heroes-vs-the-game board game</div>
+    <!-- INTRO / STORY -->
+    <section class="intro">
+      <h1>Welcome to The Siege of Hexfall</h1>
 
-      <div class="story">
-        <p>
-          Hexfall stands on the brink.<br>
-          Portals tear open across the land, spilling monsters into villages and ruins long forgotten.<br>
-          You are the last line of defense.
-          <br><br>
-          This site is your companion during play — here you’ll find your hero’s abilities,
-          track your health, and manage special powers as the battle unfolds.
-          <br><br>
-          Gather your party.
-          <br><br>
-          Seal the portals.
-          <br><br>
-          Hold the line.
-        </p>
-      </div>
+      <p>
+        Hexfall stands on the brink.<br>
+        Portals tear open across the land, spilling monsters into villages and ruins long forgotten.<br>
+        You are the last line of defense.
+        <br><br>
+        This site is your companion during play — here you’ll find your hero’s abilities, track your health,
+        and manage special powers as the battle unfolds.
+        <br><br>
+        Gather your party.
+        <br><br>
+        Seal the portals.
+        <br><br>
+        Hold the line.
+      </p>
+    </section>
+
+    <!-- INSTRUCTIONS BUTTON -->
+    <div class="primary-button">
+      <a href="html/Instructions.html" class="button">Instructions</a>
     </div>
 
-    <div class="action-panel">
-      <div class="action-title">Choose Your Path</div>
-
-      <div class="button-grid">
-        <a href="html/Instructions.html" class="button">Instructions</a>
-        <a href="html/warrior.html" class="button">Warrior</a>
-        <a href="html/Barbarian.html" class="button">Barbarian</a>
-        <a href="html/mage.html" class="button">Mage</a>
-        <a href="html/Ranger.html" class="button">Ranger</a>
-      </div>
+    <!-- HERO BUTTONS -->
+    <div class="hero-buttons">
+      <a href="html/warrior.html" class="button">Warrior</a>
+      <a href="html/Barbarian.html" class="button">Barbarian</a>
+      <a href="html/mage.html" class="button">Mage</a>
+      <a href="html/Ranger.html" class="button">Ranger</a>
     </div>
 
   </div>
