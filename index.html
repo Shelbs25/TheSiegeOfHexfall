@@ -15,92 +15,91 @@
       min-height: 100vh;
       font-family: "Metamorphous", serif;
       background-image:
-        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
         url("Img.html/homepage.png");
       background-size: cover;
       background-position: center;
-      background-repeat: repeat;
       display: flex;
-      align-items: center;
       justify-content: center;
       padding: 40px;
+      color: #eee;
     }
 
-    .main-panel {
-      max-width: 900px;
+    .container {
+      max-width: 1000px;
       width: 100%;
-      background: rgba(245,236,215,0.92);
-      color: #2b1b0f;
-      padding: 50px;
-      border-radius: 18px;
-      box-shadow: 0 0 35px rgba(0,0,0,0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .header-panel {
+      background: rgba(20, 20, 20, 0.75);
+      border: 2px solid #6b4c2c;
+      border-radius: 16px;
+      padding: 40px;
       text-align: center;
+      box-shadow: 0 0 25px rgba(0,0,0,0.7);
     }
 
     h1 {
       font-size: 3em;
       margin-bottom: 10px;
+      color: #f0e6d2;
     }
 
-    .subtitle {
+    .tagline {
       font-style: italic;
-      margin-bottom: 30px;
+      opacity: 0.9;
     }
 
-    .prologue {
-      font-style: italic;
+    .story {
+      margin-top: 25px;
       line-height: 1.7;
-      padding: 25px;
-      margin: 30px 0;
-      border-left: 4px solid #6b4c2c;
-      border-right: 4px solid #6b4c2c;
-      background: rgba(255,255,255,0.35);
-      border-radius: 8px;
+      font-size: 1.05em;
     }
 
-    .divider {
-      margin: 40px auto;
-      width: 60%;
-      height: 2px;
-      background: #6b4c2c;
+    .action-panel {
+      background: rgba(15, 15, 15, 0.8);
+      border: 2px solid #3f2c1c;
+      border-radius: 16px;
+      padding: 35px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.7);
     }
 
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
+    .action-title {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1.6em;
+      color: #f0e6d2;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
     }
 
     .button {
-      display: block;
-      width: 280px;
       padding: 18px;
-      font-size: 22px;
+      font-size: 20px;
+      text-align: center;
       text-decoration: none;
-      color: white;
-      background-color: #2b6f6b;
-      border-radius: 12px;
+      color: #f0e6d2;
+      background: linear-gradient(145deg, #2b6f6b, #1e4f4c);
+      border-radius: 14px;
       box-shadow: 0 0 15px rgba(0,0,0,0.6);
-      transition: transform 0.2s ease, background-color 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .button:hover {
-      background-color: #3c8f8a;
-      transform: scale(1.04);
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px rgba(0,0,0,0.9);
     }
 
     @media (max-width: 600px) {
-      .main-panel {
-        padding: 30px;
-      }
-
       h1 {
-        font-size: 2.2em;
-      }
-
-      .button {
-        width: 100%;
+        font-size: 2.3em;
       }
     }
   </style>
@@ -108,34 +107,38 @@
 
 <body>
 
-  <div class="main-panel">
-    <h1>Welcome to The Siege of Hexfall</h1>
-    <div class="subtitle">A cooperative heroes-vs-the-game board game</div>
+  <div class="container">
 
-    <div class="prologue">
-      <p>
-        Hexfall stands on the brink.<br>
-        Portals tear open across the land, spilling monsters into villages and ruins long forgotten.<br>
-        You are the last line of defense.
-        <br><br>
-        This site is your companion during play — here you’ll find your hero’s abilities, track your health,
-        and manage special powers as the battle unfolds.
-        <br><br>
-        Gather your party.<br>
-        Seal the portals.<br>
-        Hold the line.
-      </p>
+    <div class="header-panel">
+      <h1>The Siege of Hexfall</h1>
+      <div class="tagline">A cooperative heroes-vs-the-game board game</div>
+
+      <div class="story">
+        <p>
+          Hexfall stands on the brink.<br>
+          Portals tear open across the land, spilling monsters into villages and ruins long forgotten.<br>
+          You are the last line of defense.
+          <br><br>
+          This site is your companion during play — here you’ll find your hero’s abilities,
+          track your health, and manage special powers as the battle unfolds.
+          <br><br>
+          Gather your party. Seal the portals. Hold the line.
+        </p>
+      </div>
     </div>
 
-    <div class="divider"></div>
+    <div class="action-panel">
+      <div class="action-title">Choose Your Path</div>
 
-    <div class="button-container">
-      <a href="html/Instructions.html" class="button">Instructions</a>
-      <a href="html/warrior.html" class="button">Warrior</a>
-      <a href="html/Barbarian.html" class="button">Barbarian</a>
-      <a href="html/mage.html" class="button">Mage</a>
-      <a href="html/Ranger.html" class="button">Ranger</a>
+      <div class="button-grid">
+        <a href="html/Instructions.html" class="button">Instructions</a>
+        <a href="html/warrior.html" class="button">Warrior</a>
+        <a href="html/Barbarian.html" class="button">Barbarian</a>
+        <a href="html/mage.html" class="button">Mage</a>
+        <a href="html/Ranger.html" class="button">Ranger</a>
+      </div>
     </div>
+
   </div>
 
 </body>
