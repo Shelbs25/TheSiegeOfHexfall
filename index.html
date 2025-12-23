@@ -1,89 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
-        
-        <meta charset="UTF-8" />
-        <title>The Siege of Hexfall</title>
-        
-     <style> 
-            body{
-              background-image:
-                linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                url("Img.html/homepage.png");
-            /*background-image: url(Img.html/homepage.png);*/
-              font-family: "Metamorphous", arial;
-              background-repeat:repeat;
-              background-size:cover;
-              background-position: center;
-              color: white;
-              padding: 100px;
-              margin: 0;
-              min-height: 100vh;
-                font-size: 18px;
-            }
-         
-            .button {
-              font-size: 22px;
-              background-color: teal;
-              color: white;
-              box-shadow: 0 0 25px white;
-              text-decoration: none;
-              padding: 38px 67px;
-              text-align: center;
-            }
-         
-            .button-container {
-                display: flex;
-                flex-direction: column;   /* stack vertically */
-                align-items: center;      /* center horizontally */
-                /*justify-content: center;   center vertically */
-                /*height: 100vh;             full screen height */
-                gap: 20px; 
-            }
-         
-            .header {
-                text-align: center;
-                font-size: 30px;
-            }
-         
-            .center {
-             text-align: center;
-             font-size: 18px;
-            }
-     </style>
-    </head>
-    
-        <body>
-            <div class="header">
-                <h1>Welcome to The Siege of Hexfall</h1>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="center"> 
-            <p>Hexfall stands on the brink.<br>
-                Portals tear open across the land, spilling monsters into villages and ruins long forgotten.<br>
-                You are the last line of defense.<br>
-                <br>
-                This site is your companion during play — here you’ll find your hero’s abilities, track your health, and manage special powers as the battle unfolds.<br>
-                <br>
-                Gather your party.<br>
-                Seal the portals.<br>
-                Hold the line.</p><br>
-            </div>
-            
-            <div class="button-container"> 
-                <a href="html/Instructions.html" class="button">Instructions</a>
-                <a href="html/warrior.html" class="button">Warrior</a>
-                <a href="html/Barbarian.html" class="button">Barbarian</a>
-                <a href="html/mage.html" class="button">Mage</a>
-                <a href="html/Ranger.html" class="button">Ranger</a>
-                <!--<button onclick="buttonClicked()">Click me</button>-->
-            </div>
-                
-        </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>The Siege of Hexfall</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Metamorphous", serif;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url("Img.html/homepage.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .main-panel {
+      max-width: 900px;
+      width: 100%;
+      background: rgba(245,236,215,0.92);
+      color: #2b1b0f;
+      padding: 50px;
+      border-radius: 18px;
+      box-shadow: 0 0 35px rgba(0,0,0,0.7);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+
+    .prologue {
+      font-style: italic;
+      line-height: 1.7;
+      padding: 25px;
+      margin: 30px 0;
+      border-left: 4px solid #6b4c2c;
+      border-right: 4px solid #6b4c2c;
+      background: rgba(255,255,255,0.35);
+      border-radius: 8px;
+    }
+
+    .divider {
+      margin: 40px auto;
+      width: 60%;
+      height: 2px;
+      background: #6b4c2c;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .button {
+      display: block;
+      width: 280px;
+      padding: 18px;
+      font-size: 22px;
+      text-decoration: none;
+      color: white;
+      background-color: #2b6f6b;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .button:hover {
+      background-color: #3c8f8a;
+      transform: scale(1.04);
+    }
+
+    @media (max-width: 600px) {
+      .main-panel {
+        padding: 30px;
+      }
+
+      h1 {
+        font-size: 2.2em;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main-panel">
+    <h1>Welcome to The Siege of Hexfall</h1>
+    <div class="subtitle">A cooperative heroes-vs-the-game board game</div>
+
+    <div class="prologue">
+      <p>
+        Hexfall stands on the brink.<br>
+        Portals tear open across the land, spilling monsters into villages and ruins long forgotten.<br>
+        You are the last line of defense.
+        <br><br>
+        This site is your companion during play — here you’ll find your hero’s abilities, track your health,
+        and manage special powers as the battle unfolds.
+        <br><br>
+        Gather your party.<br>
+        Seal the portals.<br>
+        Hold the line.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="button-container">
+      <a href="html/Instructions.html" class="button">Instructions</a>
+      <a href="html/warrior.html" class="button">Warrior</a>
+      <a href="html/Barbarian.html" class="button">Barbarian</a>
+      <a href="html/mage.html" class="button">Mage</a>
+      <a href="html/Ranger.html" class="button">Ranger</a>
+    </div>
+  </div>
+
+</body>
 </html>
