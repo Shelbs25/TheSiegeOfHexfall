@@ -548,7 +548,7 @@
         </script>
         
         <script>
-            let rageCount = 0;
+            let rageCount = parseInt(localStorage.getItem('rageCount'), 10) || 0;
             const markers = document.querySelectorAll('.rage-marker');
             const rageText = document.querySelector('.rage-text');
 
@@ -563,6 +563,8 @@
                   rageCount = clickedLevel;
                 }
 
+                localStorage.setItem('rageCount', rageCount);
+
                 updateRageUI();
               });
             });
@@ -575,6 +577,10 @@
               rageText.textContent =
               rageCount === 0 ? 'Not Enraged' : `+${rageCount} Attack`;
             }
+
+            updateRageUI();
+            updateAttackStat();
+
         </script>
        
         <div class="reset-container">
