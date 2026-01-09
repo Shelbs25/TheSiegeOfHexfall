@@ -14,10 +14,10 @@
         <style> 
             body {
               font-family: "Metamorphous", arial;
-              background-image: url(../Img.html/magetheme.png);
+              background-image: url(../Img.html/magetheme2.0.PNG);
               background-repeat: no-repeat;
               background-size: cover;
-              color: white;
+              color: black;
               min-height: 100vh;
               padding: 20px;
               margin: 0;
@@ -39,7 +39,7 @@
 
             /* Card */
             .card {
-              background: mediumblue;
+              background: white;
               padding: 35px; 
               border-radius: 12px; 
               width: 100%;
@@ -62,7 +62,7 @@
             }
 
             .health-bar {
-              background: mediumblue;
+              background: white;
               border-radius: 10px;
               overflow: hidden;
               height: 24px;
@@ -130,7 +130,7 @@
             }
 
             .actions-section {
-              background: mediumblue;
+              background: white;
               padding: 15px 20px;
               border-radius: 10px;
               margin-bottom: 15px;
@@ -226,7 +226,7 @@
               padding: 6px;
 
               font-size: 32px;
-              color: white; /* or white depending on card */
+              color: black; /* or white depending on card */
               cursor: pointer;
             }
 
@@ -382,7 +382,7 @@
           <section class="actions-section">
             <h2>Special Actions</h2>
             <p class="indent">
-              <strong>Arcane Seal –</strong> The Mage is more effective at sealing portals, succeeding on a roll of 3-6.
+              <strong>Arcane Seal –</strong> The Mage is more effective at sealing portals, succeeding on a roll of 4-6 and only takes 2 damage on a failed seal. With a Portal Shard the Mage can seal a Portal using an Action.
             </p>
           </section>
 
@@ -401,20 +401,20 @@
                 </tr>
                 <tr>
                   <td>Grunt</td>
+                  <td>-2</td>
                   <td>2</td>
-                  <td>0</td>
                   <td>2</td>
                 </tr>
                 <tr>
                   <td>Brute</td>
+                  <td>0</td>
                   <td>3</td>
-                  <td>1</td>
                   <td>4</td>
                 </tr>
                 <tr>
                   <td>Boss</td>
-                  <td>4</td>
                   <td>2</td>
+                  <td>4</td>
                   <td>8</td>
                 </tr>
             </table>
@@ -424,15 +424,15 @@
           <!-- Monster Phase Steps -->
           <h3>Step 1 – Spawn</h3>
           <ul>
-            <li>Each open Portal spawns 1 Grunt.</li>
-            <li>Beginning Round 5, each open Portal spawns 1 Grunt and 1 Brute.</li>
+              <li>If no Portals are sealed, each open Portal spawns 1 Grunt.</li>
+              <li>If one Portal is sealed, each remaining open Portal spawns 1 Brute instead.</li>
+              <li><strong>Boss Round Exception:</strong> During a Boss round, only the Boss spawns. No Grunts or Brutes spawn from any Portals.</li>
           </ul>
 
           <h3>Step 2 – Target Priority</h3>
           <ol>
-            <li>Adjacent Hero</li>
-            <li>Nearest Hero</li>
-            <li>Nearest Village</li>
+            <li>Closest Hero</li>
+            <li>Closest Village</li>
           </ol>
 
           <h3>Step 3 – Move</h3>
