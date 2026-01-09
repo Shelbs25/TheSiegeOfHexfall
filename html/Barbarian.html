@@ -449,20 +449,20 @@
             </tr>
             <tr>
               <td>Grunt</td>
-              <td>-2</td>
               <td>2</td>
+              <td>0</td>
               <td>2</td>
             </tr>
             <tr>
               <td>Brute</td>
-              <td>0</td>
               <td>3</td>
+              <td>1</td>
               <td>4</td>
             </tr>
             <tr>
               <td>Boss</td>
-              <td>2</td>
               <td>4</td>
+              <td>2</td>
               <td>8</td>
             </tr>
           </table>
@@ -470,15 +470,15 @@
           <!-- Monster Phase Steps -->
           <h3>Step 1 – Spawn</h3>
           <ul>
-              <li>If no Portals are sealed, each open Portal spawns 1 Grunt.</li>
-              <li>If one Portal is sealed, each remaining open Portal spawns 1 Brute instead.</li>
-              <li><strong>Boss Round Exception:</strong> During a Boss round, only the Boss spawns. No Grunts or Brutes spawn from any Portals.</li>
+            <li>Each open Portal spawns 1 Grunt.</li>
+            <li>Beginning Round 5, each open Portal spawns 1 Grunt and 1 Brute.</li>
           </ul>
 
           <h3>Step 2 – Target Priority</h3>
           <ol>
-            <li>Closest Hero</li>
-            <li>Closest Village</li>
+            <li>Adjacent Hero</li>
+            <li>Nearest Hero</li>
+            <li>Nearest Village</li>
           </ol>
 
           <h3>Step 3 – Move</h3>
@@ -548,9 +548,10 @@
         </script>
         
         <script>
-            let rageCount = 0;
             const markers = document.querySelectorAll('.rage-marker');
             const rageText = document.querySelector('.rage-text');
+            let rageCount = parseInt(localStorage.getItem('rageCount'), 10) || 0;
+
 
             markers.forEach((marker, index) => {
               marker.addEventListener('click', () => {
@@ -562,6 +563,9 @@
                 } else {
                   rageCount = clickedLevel;
                 }
+
+                localStorage.setItem('rageCount', rageCount);
+
 
                 updateRageUI();
               });
@@ -575,6 +579,10 @@
               rageText.textContent =
               rageCount === 0 ? 'Not Enraged' : `+${rageCount} Attack`;
             }
+
+            updateRageUI();
+            updateAttackStat();
+
         </script>
        
         <div class="reset-container">
