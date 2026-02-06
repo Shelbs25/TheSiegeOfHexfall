@@ -10,28 +10,29 @@
         body {
             background-image: url(background.img);
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size:cover;
             color: white;
         }
     
+        .links a {
+          color: white;
+          text-decoration: none;   /* remove underline */
+          margin: 0 15px;          /* space between links */
+          font-weight: bold;
+        }
 
         .hero {
-          min-height: 75vh;
-          background:
-            /*linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),*/
-            /*url("background.img") center/cover no-repeat;*/
-          color: white;
+          min-height: auto;
           position: relative;
         }
 
         .hero-content {
           text-align: center;
-          margin-top: 25px;
         }
 
         .hero h1 {
           font-size: 3rem;
-          margin: -7px 0;
+          margin: 24px 0; /*Space btwn h1 and hexfall section*/
         }
 
         .hero h1 span {
@@ -40,10 +41,10 @@
         }
         
         .hero-logo {
-          max-width: 320px;   /* adjust this */
+          max-width: 320px;
           width: 100%;
           height: auto;
-          margin-bottom: 20px;
+          margin-bottom: 0px; /* space btwn logo and h1 */
         }
 
         .cta-btn {
@@ -65,35 +66,66 @@
           box-shadow: 0 0 30px rgba(124,255,79,0.9);
         }
 
-        .game-section {
-          display
-          gap: 2px;
-          align-items: center;
-          padding: 8px;
-          background: rgba(0,0,0,0.6);
-          border-style: double;
-        }
+      .game-section {
+        display: flex;
+        gap: 20px;
+        text-align: left;
+        padding: 0px 20px 20px 20px;  /* top right bottom left */
+        margin: 0px auto;
+        max-width: 650px;
+        background: rgba(0,0,0,0.6);
+        border: 3px double rgba(255,255,255,0.7);
+        border-radius: 8px;
+      }
 
-        .game-info{
-            
+      .game-image {
+        width: 220px;        /* control size */
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      }
+
+      .home-sections {
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .why-section {
+        /*display: flex;*/
+        gap: 20px;
+        text-align: left;
+        padding: 0px 20px 20px 20px;  /* top right bottom left */
+        margin: 0px auto;
+        max-width: 650px;
+        background: rgba(0,0,0,0.6);
+        border: 3px double rgba(255,255,255,0.7);
+        border-radius: 8px;
+      }
+
+      @media (max-width: 900px) {
+        .home-sections {
+          flex-direction: column;
         }
-        
+      }
+      
     </style>
     
     <body>
-        <a href="siegemain.html">The Siege of Hexfall</a>
-        
-    </body>
-    
+        <!--<a href="siegemain.html">The Siege of Hexfall</a>-->
+      <p>&nbsp;</p>
     <section class="hero">
-        <nav class="nav">
-            <!-- <img src="logo.png" alt="Roll Again Games" class="logo"> -->
-              <a href="siegemain.html">Home</a>
-              <a href="#">About</a>
-            <a href="#">Games</a>
-              <a href="#">Contact</a>
-        </nav>
-
+      <div class="links"> 
+        <!--<a href="siegemain.html">Home</a>-->
+          <a href="#">About</a>
+          <a href="#">Games</a>
+          <a href="#">Contact</a>
+      </div>
+    
       <div class="hero-content">
         <img src="logo.png" alt="Roll Again Games" class="hero-logo">
 
@@ -103,9 +135,11 @@
       </div>
     </section>
         
+    <div class="home-sections">
+      
     <section class="game-section">
-      <!--<img src="hexfall-box.png" class="game-img">-->
-
+      <img src="images/hero.png" alt="The Siege of Hexfall Box" class="game-image">
+      
       <div class="game-info">
         <h1>The Siege of <span>Hexfall</span></h1>
         <p>Lead brave heroes and defend the realm in this cooperative strategy game.</p>
@@ -119,7 +153,7 @@
       </div>
     </section>
     
-    <section>
+    <section class="why-section">
         <h1>Why Roll Again Games?</h1>
         
         <ul>
@@ -128,7 +162,14 @@
             <li>Clear rules, deep choices</li>
             <li>Built to grow with expansions</li>
         </ul>
-    
     </section>
     
+    </div>
+   
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </body>  
+  
 </html>
