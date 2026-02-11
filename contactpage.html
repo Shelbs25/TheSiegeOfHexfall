@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Roll Again Games</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1e1c3a;
+      color: #f5f5f5;
+      padding: 40px;
+    }
+
+    .contact-container {
+      max-width: 650px;
+      margin: auto;
+      background: #118818;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #f5f5f5;
+      font-size: 0.95rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+      background: #cdcdcd;
+      color: #fff;
+    }
+
+    input:focus, textarea:focus {
+      outline: 2px solid #cdcdcd;
+    }
+
+    textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 14px;
+      font-size: 1.1rem;
+      background: #cdcdcd;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      background: #cdcdcd;
+    }
+
+    .success-note {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contact-container">
+    <h1>Contact Roll Again Games</h1>
+    <div class="subtitle">
+      Questions, partnerships, or feedback? Send us a message below.
+    </div>
+
+    <form action="https://formspree.io/f/mdaladng" method="POST">
+
+      <!-- Reply-to email -->
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <!-- Subject -->
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" required>
+
+      <!-- Message -->
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <!-- Hidden fields for Formspree -->
+      <input type="hidden" name="_subject" value="New Contact Form Submission - Roll Again Games">
+      <input type="hidden" name="_template" value="table">
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="success-note">
+      We typically respond within 1–2 business days.
+    </div>
+  </div>
+
+</body>
+</html>
