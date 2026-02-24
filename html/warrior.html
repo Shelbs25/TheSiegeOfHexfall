@@ -405,32 +405,32 @@
           <!-- Monsters Table -->
           <!--<h3>Monsters</h3>-->
 
-          <table class="monster-table">
-            <tr>
-              <th>Monster</th>
-              <th>Attack</th>
-              <th>Defense</th>
-              <th>Health</th>
-            </tr>
-            <tr>
-              <td>Grunt</td>
-              <td>-2</td>
-              <td>2</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <td>Brute</td>
-              <td>0</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>Boss</td>
-              <td>2</td>
-              <td>4</td>
-              <td>8</td>
-            </tr>
-          </table>
+         <table class="monster-table">
+<tr>
+  <th>Monster</th>
+  <th>Attack</th>
+  <th>Defense</th>
+  <th>Health</th>
+<tr/>
+<tr>
+  <td>Grunt</td>
+  <td id="gruntAtk">-2</td>
+  <td id="gruntDef">2</td>
+  <td id="gruntHp">2</td>
+</tr>
+<tr>
+  <td>Brute</td>
+  <td id="bruteAtk">0</td>
+  <td id="bruteDef">3</td>
+  <td id="bruteHp">4</td>
+</tr>
+<tr>
+  <td>Boss</td>
+  <td id="bossAtk">2</td>
+  <td id="bossDef">4</td>
+  <td id="bossHp">8</td>
+</tr>
+    </table>
 
           <!-- Monster Phase Steps -->
           <h3>Step 1 – Spawn</h3>
@@ -460,6 +460,20 @@
             </div>
 
       </div>
+
+              </div>
+<div style="text-align:center; margin:15px 0 10px 0;">
+  <!-- <strong>Difficulty:</strong><br><br> -->
+    <p style="text-align:center; margin-bottom:10px;">
+  <strong>Current Difficulty: 
+    <span id="currentDifficulty">Normal</span><br>
+  </strong>
+</p>
+  <button style="font-size:18px;" onclick="setDifficulty('easy')">Easy</button><br><br>
+  <button style="font-size:18px;" onclick="setDifficulty('normal')">Normal</button><br><br>
+  <button style="font-size:18px;" onclick="setDifficulty('hard')">Hard</button><br><br>
+  <button style="font-size:18px;" onclick="setDifficulty('extreme')">Extreme</button><br><br>
+</div>
 
         <script>
           const maxHealth = 12;
@@ -511,6 +525,71 @@
             updateHealthBar();
           }
         </script>
+
+         <script>
+  function toggleMenu() {
+    const menu = document.getElementById("sideMenu");
+    const overlay = document.getElementById("overlay");
+    menu.classList.toggle("open");
+    overlay.classList.toggle("show");
+  }
+
+  const difficultyStats = {
+    easy: {
+      grunt: { atk: -2, def: 1, hp: 2 },
+      brute: { atk: 0, def: 2, hp: 4 },
+      boss:  { atk: 2, def: 3, hp: 8 }
+    },
+    normal: {
+      grunt: { atk: -2, def: 2, hp: 2 },
+      brute: { atk: 0, def: 3, hp: 4 },
+      boss:  { atk: 2, def: 4, hp: 8 }
+    },
+    hard: {
+      grunt: { atk: -1, def: 2, hp: 2 },
+      brute: { atk: 1, def: 3, hp: 4 },
+      boss:  { atk: 3, def: 4, hp: 8 }
+    },
+    extreme: {
+      grunt: { atk: 0, def: 2, hp: 2 },
+      brute: { atk: 2, def: 3, hp: 4 },
+      boss:  { atk: 4, def: 4, hp: 8 }
+    }
+  };
+
+  function setDifficulty(level) {
+    const data = difficultyStats[level];
+
+    document.getElementById("gruntAtk").textContent = data.grunt.atk;
+    document.getElementById("gruntDef").textContent = data.grunt.def;
+    document.getElementById("gruntHp").textContent = data.grunt.hp;
+
+    document.getElementById("bruteAtk").textContent = data.brute.atk;
+    document.getElementById("bruteDef").textContent = data.brute.def;
+    document.getElementById("bruteHp").textContent = data.brute.hp;
+
+    document.getElementById("bossAtk").textContent = data.boss.atk;
+    document.getElementById("bossDef").textContent = data.boss.def;
+    document.getElementById("bossHp").textContent = data.boss.hp;
+
+    document.getElementById("currentDifficulty").textContent =
+      level.charAt(0).toUpperCase() + level.slice(1);
+
+    // 🔥 Save selection locally
+    localStorage.setItem("hexfallDifficulty", level);
+  }
+
+  // 🔥 Load saved difficulty when page loads
+  window.onload = function () {
+    const savedDifficulty = localStorage.getItem("hexfallDifficulty");
+
+    if (savedDifficulty && difficultyStats[savedDifficulty]) {
+      setDifficulty(savedDifficulty);
+    } else {
+      setDifficulty("normal"); // default if nothing saved
+    }
+  };
+</script>
        
         <div class="reset-container">
           <button onclick="resetHealth()" class="reset-container">Reset Health</button>
