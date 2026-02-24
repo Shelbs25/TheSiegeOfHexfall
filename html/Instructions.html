@@ -328,29 +328,23 @@
     <h2>7. Monster Phase (Game Controlled)</h2>
     <table>
       <tr>
-        <th>Monster</th>
-        <th>Attack</th>
-        <th>Defense</th>
-        <th>Health</th>
-      </tr>
-      <tr>
-        <td>Grunt</td>
-        <td>-2</td>
-        <td>2</td>
-        <td>2</td>
-      </tr>
-      <tr>
-        <td>Brute</td>
-        <td>0</td>
-        <td>3</td>
-        <td>4</td>
-      </tr>
-      <tr>
-        <td>Boss</td>
-        <td>2</td>
-        <td>4</td>
-        <td>8</td>
-      </tr>
+  <td>Grunt</td>
+  <td id="gruntAtk">-2</td>
+  <td id="gruntDef">2</td>
+  <td id="gruntHp">2</td>
+</tr>
+<tr>
+  <td>Brute</td>
+  <td id="bruteAtk">0</td>
+  <td id="bruteDef">3</td>
+  <td id="bruteHp">4</td>
+</tr>
+<tr>
+  <td>Boss</td>
+  <td id="bossAtk">2</td>
+  <td id="bossDef">4</td>
+  <td id="bossHp">8</td>
+</tr>
     </table>
     <p>There are four steps per monster phase as described below. It is recommended that one player resolve all monster actions, one step at a time with other players helping track or making suggestions as appropriate.</p>
 
@@ -461,9 +455,21 @@
   </section>
 
   <section>
-    <h2>11. Difficulty Adjustments (Optional)</h2>
-    <p>When setting up the game, turn all the hex tiles upside down, mix them up, and form a rough draft of a map you want. Then flip them over and connect them. This will completely randomize the locations of the Portals, Villages, and Ruins.</p>
-  </section>
+  <h2>11. Difficulty Adjustments (Optional)</h2>
+
+  <div style="text-align:center; margin-bottom:15px;">
+    <button onclick="setDifficulty('easy')">Easy</button>
+    <button onclick="setDifficulty('normal')">Normal</button>
+    <button onclick="setDifficulty('hard')">Hard</button>
+  </div>
+
+  <p style="text-align:center;"><strong>Current Difficulty: <span id="currentDifficulty">Normal</span></strong></p>
+
+  <p>
+    When setting up the game, turn all the hex tiles upside down, mix them up, and form a rough draft of a map you want.
+    Then flip them over and connect them.
+  </p>
+</section>
 
   <section>
     <h2>12. Design Notes</h2>
@@ -491,6 +497,43 @@
     const overlay = document.getElementById("overlay");
     menu.classList.toggle("open");
     overlay.classList.toggle("show");
+  }
+
+  const difficultyStats = {
+    easy: {
+      grunt: { atk: -3, def: 1, hp: 1 },
+      brute: { atk: -1, def: 2, hp: 3 },
+      boss:  { atk: 1, def: 3, hp: 6 }
+    },
+    normal: {
+      grunt: { atk: -2, def: 2, hp: 2 },
+      brute: { atk: 0, def: 3, hp: 4 },
+      boss:  { atk: 2, def: 4, hp: 8 }
+    },
+    hard: {
+      grunt: { atk: -1, def: 3, hp: 3 },
+      brute: { atk: 1, def: 4, hp: 5 },
+      boss:  { atk: 3, def: 5, hp: 10 }
+    }
+  };
+
+  function setDifficulty(level) {
+    const data = difficultyStats[level];
+
+    document.getElementById("gruntAtk").textContent = data.grunt.atk;
+    document.getElementById("gruntDef").textContent = data.grunt.def;
+    document.getElementById("gruntHp").textContent = data.grunt.hp;
+
+    document.getElementById("bruteAtk").textContent = data.brute.atk;
+    document.getElementById("bruteDef").textContent = data.brute.def;
+    document.getElementById("bruteHp").textContent = data.brute.hp;
+
+    document.getElementById("bossAtk").textContent = data.boss.atk;
+    document.getElementById("bossDef").textContent = data.boss.def;
+    document.getElementById("bossHp").textContent = data.boss.hp;
+
+    document.getElementById("currentDifficulty").textContent =
+      level.charAt(0).toUpperCase() + level.slice(1);
   }
 </script>
 
