@@ -327,7 +327,13 @@
 <section>
     <h2>7. Monster Phase (Game Controlled)</h2>
     <table>
-      <tr>
+<tr>
+  <th>Monster</th>
+  <th>Attack</th>
+  <th>Defense</th>
+  <th>Health</th>
+<tr/>
+<tr>
   <td>Grunt</td>
   <td id="gruntAtk">-2</td>
   <td id="gruntDef">2</td>
@@ -534,7 +540,21 @@
 
     document.getElementById("currentDifficulty").textContent =
       level.charAt(0).toUpperCase() + level.slice(1);
+
+    // 🔥 Save selection locally
+    localStorage.setItem("hexfallDifficulty", level);
   }
+
+  // 🔥 Load saved difficulty when page loads
+  window.onload = function () {
+    const savedDifficulty = localStorage.getItem("hexfallDifficulty");
+
+    if (savedDifficulty && difficultyStats[savedDifficulty]) {
+      setDifficulty(savedDifficulty);
+    } else {
+      setDifficulty("normal"); // default if nothing saved
+    }
+  };
 </script>
 
 </body>
