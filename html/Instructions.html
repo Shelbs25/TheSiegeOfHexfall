@@ -467,6 +467,7 @@
     <button onclick="setDifficulty('easy')">Easy</button>
     <button onclick="setDifficulty('normal')">Normal</button>
     <button onclick="setDifficulty('hard')">Hard</button>
+    <button onclick="setDifficulty('extreme')">Extreme</button>
   </div>
 
   <p style="text-align:center;"><strong>Current Difficulty: <span id="currentDifficulty">Normal</span></strong></p>
@@ -507,9 +508,9 @@
 
   const difficultyStats = {
     easy: {
-      grunt: { atk: -3, def: 1, hp: 1 },
-      brute: { atk: -1, def: 2, hp: 3 },
-      boss:  { atk: 1, def: 3, hp: 6 }
+      grunt: { atk: -2, def: 1, hp: 2 },
+      brute: { atk: 0, def: 2, hp: 4 },
+      boss:  { atk: 2, def: 3, hp: 8 }
     },
     normal: {
       grunt: { atk: -2, def: 2, hp: 2 },
@@ -517,9 +518,14 @@
       boss:  { atk: 2, def: 4, hp: 8 }
     },
     hard: {
-      grunt: { atk: -1, def: 3, hp: 3 },
-      brute: { atk: 1, def: 4, hp: 5 },
-      boss:  { atk: 3, def: 5, hp: 10 }
+      grunt: { atk: -1, def: 2, hp: 2 },
+      brute: { atk: 1, def: 3, hp: 4 },
+      boss:  { atk: 3, def: 4, hp: 8 }
+    },
+    extreme: {
+      grunt: { atk: 0, def: 2, hp: 2 },
+      brute: { atk: 2, def: 3, hp: 4 },
+      boss:  { atk: 4, def: 4, hp: 8 }
     }
   };
 
