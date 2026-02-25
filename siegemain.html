@@ -3,6 +3,7 @@
 <head>
     <link rel="icon" href="/favicon.png">
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Siege of Hexfall</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +13,10 @@
     <style>
         * {
             box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden;
         }
 
         /* ================= NAVBAR ================= */
@@ -31,8 +36,8 @@
         }
 
         .hamburger {
-            width: 30px;
-            height: 22px;
+            width: 32px;
+            height: 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -73,7 +78,7 @@
             gap: 30px;
             transition: left 0.3s ease;
             z-index: 999;
-            font-family: Arial, sans-serif; /* isolate from fantasy font */
+            font-family: Arial, sans-serif;
         }
 
         .side-menu a {
@@ -107,11 +112,6 @@
             visibility: visible;
         }
 
-        .hero {
-            padding-top: 100px;
-            position: relative;
-        }
-
         /* ================= PAGE STYLING ================= */
 
         body {
@@ -119,7 +119,7 @@
                 linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
                 url("Img.html/homepage.png");
 
-            font-family: "Metamorphous", arial;
+            font-family: "Metamorphous", Arial;
             color: #2b1d0e;
 
             background-repeat: repeat;
@@ -127,9 +127,8 @@
             background-position: center;
 
             margin: 0;
-            padding: 120px 40px 40px 40px; /* push below navbar */
+            padding: 100px 20px 40px 20px;
             min-height: 100vh;
-            font-size: 18px;
 
             display: flex;
             flex-direction: column;
@@ -137,42 +136,48 @@
             gap: 40px;
         }
 
-        .intro-card {
+        /* ===== Cards ===== */
+
+        .intro-card,
+        .hero-container {
+            width: 100%;
             max-width: 850px;
-            text-align: center;
-            background: rgba(255, 248, 220, 0.85);
-            padding: 20px;
+            background: rgba(255, 248, 220, 0.9);
+            padding: clamp(20px, 4vw, 35px);
             border-radius: 12px;
             border: 2px solid #c2a86a;
             box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            text-align: center;
         }
 
-        .intro-card h1 {
-            font-size: 36px;
-            margin-bottom: 25px;
+        .intro-card h1,
+        .hero-container h1 {
+            font-size: clamp(24px, 5vw, 36px);
+            margin-bottom: 20px;
         }
+
+        .intro-card p {
+            font-size: clamp(16px, 4vw, 18px);
+            line-height: 1.6;
+        }
+
+        /* ===== Primary Button ===== */
 
         .primary-button {
-            font-size: 28px;
+            font-size: clamp(18px, 4vw, 26px);
             background-color: #6b4f1d;
             color: #fff8dc;
             text-decoration: none;
-            padding: 12px 20px;
+            padding: 14px 28px;
             border-radius: 10px;
             border: 2px solid #4a3713;
             box-shadow: 0 0 18px rgba(0,0,0,0.5);
-            text-align: center;
             display: inline-block;
+            text-align: center;
+            min-width: 200px;
         }
 
-        .hero-container {
-            background: rgba(255, 248, 220, 0.85);
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px solid #c2a86a;
-            box-shadow: 0 0 18px rgba(0,0,0,0.4);
-            text-align: center;
-        }
+        /* ===== Hero Grid ===== */
 
         .hero-grid {
             display: grid;
@@ -181,16 +186,40 @@
         }
 
         .button {
-            font-size: 24px;
+            font-size: clamp(16px, 4vw, 22px);
             background-color: #6b4f1d;
             color: #fff8dc;
             text-decoration: none;
-            padding: 10px 18px;
+            padding: 14px;
             border-radius: 8px;
             border: 2px solid #4a3713;
             box-shadow: 0 0 14px rgba(0,0,0,0.45);
             text-align: center;
+            display: block;
         }
+
+        /* ================= MOBILE BREAKPOINT ================= */
+
+        @media (max-width: 768px) {
+
+            body {
+                padding: 90px 16px 40px 16px;
+                gap: 30px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .primary-button {
+                width: 100%;
+            }
+        }
+
     </style>
 </head>
 
@@ -208,8 +237,6 @@
     <!-- SIDE MENU -->
     <nav class="side-menu" id="sideMenu">
         <a href="index.html">Home</a>
-        <!-- <a href="#">About</a> -->
-        <!-- <a href="#">Games</a> -->
         <a href="contactpage.html">Contact</a>
     </nav>
 
