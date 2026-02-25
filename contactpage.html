@@ -1,156 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Contact Roll Again Games</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Contact Roll Again Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-image: url(background.img);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      color: #f5f5f5;
-      padding: 40px 20px;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url(background.img);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #f5f5f5;
+  padding: 100px 20px 40px 20px; /* top padding for navbar */
+}
 
-    .contact-container {
-      max-width: 650px;
-      margin: auto;
-      background: rgba(0,0,0,0.75);
-      padding: 40px;
-      border-radius: 12px;
-      border: 3px double rgba(255,255,255,0.7);
-      box-shadow: 
-        0 0 30px rgba(0,0,0,0.8),
-        0 0 20px rgba(124,255,79,0.25);
-      backdrop-filter: blur(6px);
-    }
+/* ================= NAVBAR ================= */
 
-    h1 {
-      text-align: center;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
 
-    .subtitle {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 0.95rem;
-      opacity: 0.9;
-    }
+.hamburger {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
 
-    label {
-      display: block;
-      margin-top: 18px;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
+.hamburger span {
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
 
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.2);
-      font-size: 1rem;
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      transition: border 0.2s, box-shadow 0.2s;
-    }
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(9px);
+}
 
-    input:focus, textarea:focus {
-      outline: none;
-      border: 1px solid #7CFF4F;
-      box-shadow: 0 0 8px rgba(124,255,79,0.6);
-    }
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
 
-    textarea {
-      min-height: 160px;
-      resize: vertical;
-    }
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-9px);
+}
 
-    button {
-      margin-top: 30px;
-      width: 100%;
-      padding: 15px;
-      font-size: 1.05rem;
-      background: linear-gradient(#7CFF4F, #3FAF1B);
-      color: white;
-      border: none;
-      border-radius: 40px;
-      cursor: pointer;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-      box-shadow:
-        0 0 20px rgba(124,255,79,0.6),
-        inset 0 2px 0 rgba(255,255,255,0.3);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 250px;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  padding-top: 100px;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
 
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(124,255,79,0.9);
-    }
+.side-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.2s;
+}
 
-    .success-note {
-      text-align: center;
-      margin-top: 18px;
-      font-size: 0.85rem;
-      opacity: 0.85;
-    }
+.side-menu a:hover {
+  color: #7CFF4F;
+}
 
-    /* Mobile */
-    @media (max-width: 600px) {
-      body {
-        padding: 20px 15px;
-      }
+.side-menu.active {
+  left: 0;
+}
 
-      .contact-container {
-        padding: 25px;
-      }
-    }
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 500;
+}
 
-  </style>
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ================= CONTACT CARD ================= */
+
+.contact-container {
+  max-width: 650px;
+  margin: auto;
+  background: rgba(0,0,0,0.75);
+  padding: 40px;
+  border-radius: 12px;
+  border: 3px double rgba(255,255,255,0.7);
+  box-shadow:
+    0 0 30px rgba(0,0,0,0.8),
+    0 0 20px rgba(124,255,79,0.25);
+  backdrop-filter: blur(6px);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+label {
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 1rem;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border: 1px solid #7CFF4F;
+  box-shadow: 0 0 8px rgba(124,255,79,0.6);
+}
+
+textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+button {
+  margin-top: 30px;
+  width: 100%;
+  padding: 15px;
+  font-size: 1.05rem;
+  background: linear-gradient(#7CFF4F, #3FAF1B);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  box-shadow:
+    0 0 20px rgba(124,255,79,0.6),
+    inset 0 2px 0 rgba(255,255,255,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(124,255,79,0.9);
+}
+
+.success-note {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 90px 15px 30px 15px;
+  }
+  .contact-container {
+    padding: 25px;
+  }
+}
+</style>
 </head>
+
 <body>
 
-  <div class="contact-container">
-    <h1>Contact Roll Again Games</h1>
-    <div class="subtitle">
-      Questions, partnerships, or feedback? Send us a message below.
-    </div>
-
-    <form action="https://formspree.io/f/mdaladng" method="POST">
-
-      <label for="name">Your Name</label>
-      <input type="text" id="name" name="name" required>
-    
-      <label for="email">Your Email</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="subject">Subject</label>
-      <input type="text" id="subject" name="subject" required>
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" required></textarea>
-
-      <input type="hidden" name="_subject" value="New Contact Form Submission - Roll Again Games">
-      <input type="hidden" name="_template" value="table">
-
-      <button type="submit">Send Message</button>
-    </form>
-
-    <div class="success-note">
-      We typically respond within 1–2 business days.
-    </div>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
+</div>
+
+<div class="side-menu" id="sideMenu">
+  <a href="index.html">Home</a>
+  <a href="#">About</a>
+  <a href="#">Games</a>
+  <!-- <a href="contactpage.html">Contact</a> -->
+</div>
+
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<!-- CONTACT CARD -->
+<div class="contact-container">
+  <h1>Contact Roll Again Games</h1>
+  <div class="subtitle">
+    Questions, partnerships, or feedback? Send us a message below.
+  </div>
+
+  <form action="https://formspree.io/f/mdaladng" method="POST">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Your Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="subject">Subject</label>
+    <input type="text" id="subject" name="subject" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <input type="hidden" name="_subject" value="New Contact Form Submission - Roll Again Games">
+    <input type="hidden" name="_template" value="table">
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <div class="success-note">
+    We typically respond within 1–2 business days.
+  </div>
+</div>
+
+<script>
+function toggleMenu() {
+  document.getElementById("sideMenu").classList.toggle("active");
+  document.getElementById("overlay").classList.toggle("active");
+  document.getElementById("hamburger").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
