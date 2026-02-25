@@ -14,48 +14,51 @@
             box-sizing: border-box;
         }
 
-        /* ===== HAMBURGER MENU (MATCHES CONTACT PAGE EXACTLY) ===== */
+/* ===== LOCKED CONSISTENT MENU ===== */
 
-        .menu-toggle {
-            position: fixed;
-            top: 25px;
-            left: 25px;
-            font-size: 32px;
-            cursor: pointer;
-            z-index: 2000;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
+.menu-toggle {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    width: 36px;
+    height: 36px;
+    font-size: 34px;
+    line-height: 36px;
+    cursor: pointer;
+    z-index: 9999;
+    color: white;
+    font-family: Arial, sans-serif;
+}
 
-        .side-menu {
-            position: fixed;
-            top: 0;
-            left: -260px;
-            width: 260px;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            padding-top: 100px;
-            transition: left 0.3s ease;
-            z-index: 1500;
-            font-family: Arial, sans-serif;
-        }
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100vh;
+    background: #000;
+    padding-top: 110px;
+    transition: left 0.3s ease;
+    z-index: 9998;
+    font-family: Arial, sans-serif;
+}
 
-        .side-menu a {
-            display: block;
-            padding: 18px 30px;
-            font-size: 18px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.side-menu a {
+    display: block;
+    padding: 20px 35px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        .side-menu a:hover {
-            background: rgba(124,255,79,0.2);
-        }
+.side-menu a:hover {
+    background: rgba(124,255,79,0.25);
+}
 
-        .side-menu.active {
-            left: 0;
-        }
+.side-menu.active {
+    left: 0;
+}
 
         /* ===== PAGE STYLING ===== */
 
