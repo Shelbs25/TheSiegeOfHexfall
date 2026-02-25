@@ -6,20 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background: #1e1c3a;
+      background-image: url(background.img);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
       color: #f5f5f5;
-      padding: 40px;
+      padding: 40px 20px;
     }
 
     .contact-container {
       max-width: 650px;
       margin: auto;
-      background: #118818;
-      padding: 35px;
+      background: rgba(0,0,0,0.75);
+      padding: 40px;
       border-radius: 12px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      border: 3px double rgba(255,255,255,0.7);
+      box-shadow: 
+        0 0 30px rgba(0,0,0,0.8),
+        0 0 20px rgba(124,255,79,0.25);
+      backdrop-filter: blur(6px);
     }
 
     h1 {
@@ -31,8 +43,8 @@
     .subtitle {
       text-align: center;
       margin-bottom: 30px;
-      color: #f5f5f5;
       font-size: 0.95rem;
+      opacity: 0.9;
     }
 
     label {
@@ -45,15 +57,18 @@
     input, textarea {
       width: 100%;
       padding: 12px;
-      border-radius: 6px;
-      border: none;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
       font-size: 1rem;
-      background: #979797;
+      background: rgba(255,255,255,0.1);
       color: #fff;
+      transition: border 0.2s, box-shadow 0.2s;
     }
 
     input:focus, textarea:focus {
-      outline: 2px solid #979797;
+      outline: none;
+      border: 1px solid #7CFF4F;
+      box-shadow: 0 0 8px rgba(124,255,79,0.6);
     }
 
     textarea {
@@ -62,29 +77,46 @@
     }
 
     button {
-      margin-top: 25px;
+      margin-top: 30px;
       width: 100%;
-      padding: 14px;
-      font-size: 1.1rem;
-      background: #cdcdcd;
-      color: #000;
+      padding: 15px;
+      font-size: 1.05rem;
+      background: linear-gradient(#7CFF4F, #3FAF1B);
+      color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 40px;
       cursor: pointer;
       font-weight: bold;
       letter-spacing: 0.5px;
+      box-shadow:
+        0 0 20px rgba(124,255,79,0.6),
+        inset 0 2px 0 rgba(255,255,255,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     button:hover {
-      background: #cdcdcd;
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(124,255,79,0.9);
     }
 
     .success-note {
       text-align: center;
-      margin-top: 15px;
+      margin-top: 18px;
       font-size: 0.85rem;
-      color: #f5f5f5;
+      opacity: 0.85;
     }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 15px;
+      }
+
+      .contact-container {
+        padding: 25px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -97,22 +129,18 @@
 
     <form action="https://formspree.io/f/mdaladng" method="POST">
 
-      <!-- Reply-to email -->
       <label for="name">Your Name</label>
       <input type="text" id="name" name="name" required>
     
       <label for="email">Your Email</label>
       <input type="email" id="email" name="email" required>
 
-      <!-- Subject -->
       <label for="subject">Subject</label>
       <input type="text" id="subject" name="subject" required>
 
-      <!-- Message -->
       <label for="message">Message</label>
       <textarea id="message" name="message" required></textarea>
 
-      <!-- Hidden fields for Formspree -->
       <input type="hidden" name="_subject" value="New Contact Form Submission - Roll Again Games">
       <input type="hidden" name="_template" value="table">
 
