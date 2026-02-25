@@ -4,209 +4,299 @@
     <meta charset="UTF-8">
     <title>Roll Again Games</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-    
+
 <style>
-    * {
-        box-sizing: border-box;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    body {
-        margin: 0;
-        background-image: url(background.img);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        color: white;
-        font-family: Arial, sans-serif;
-    }
+body {
+    margin: 0;
+    background-image: url(background.img);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
 
-    .links {
-        text-align: center;
-        padding: 15px 10px;
-    }
+/* ================= NAVBAR ================= */
 
-    .links a {
-        display: inline-block;
-        color: white;
-        text-decoration: none;
-        margin: 8px 15px;
-        font-weight: bold;
-    }
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
 
-    .hero {
-        position: relative;
-        padding: 20px;
-    }
+/* Animated Hamburger */
+.hamburger {
+    width: 30px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
 
-    .hero-content {
-        text-align: center;
-    }
+.hamburger span {
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
 
-    .hero h1 {
-        font-size: clamp(1.8rem, 5vw, 3rem);
-        margin: 24px 0;
-        line-height: 1.2;
-    }
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(9px);
+}
 
-    .hero h1 span {
-        color: #7CFF4F;
-        text-shadow: 0 0 10px rgba(124,255,79,0.6);
-    }
-        
-    .hero-logo {
-        max-width: 320px;
-        width: 90%;
-        height: auto;
-        margin-bottom: 10px;
-    }
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
 
-    .cta-btn {
-        display: inline-block;
-        padding: 15px 40px;
-        border-radius: 40px;
-        background: linear-gradient(#7CFF4F, #3FAF1B);
-        color: white;
-        font-weight: bold;
-        text-decoration: none;
-        box-shadow:
-            0 0 20px rgba(124,255,79,0.6),
-            inset 0 2px 0 rgba(255,255,255,0.3);
-        transition: transform 0.2s, box-shadow 0.2s;
-        text-align: center;
-    }
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-9px);
+}
 
-    .cta-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0 30px rgba(124,255,79,0.9);
+/* Side Menu */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 250px;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    padding-top: 100px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    transition: left 0.3s ease;
+    z-index: 999;
+}
+
+.side-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.side-menu a:hover {
+    color: #7CFF4F;
+}
+
+.side-menu.active {
+    left: 0;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 500;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Push content below navbar */
+.hero {
+    padding-top: 100px;
+    position: relative;
+}
+
+/* ================= HERO ================= */
+
+.hero-content {
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin: 24px 0;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: #7CFF4F;
+    text-shadow: 0 0 10px rgba(124,255,79,0.6);
+}
+
+.hero-logo {
+    max-width: 320px;
+    width: 90%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* ================= BUTTON ================= */
+
+.cta-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    border-radius: 40px;
+    background: linear-gradient(#7CFF4F, #3FAF1B);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow:
+        0 0 20px rgba(124,255,79,0.6),
+        inset 0 2px 0 rgba(255,255,255,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(124,255,79,0.9);
+}
+
+/* ================= GAME SECTION ================= */
+
+.game-section {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto 20px auto;
+    max-width: 650px;
+    background: rgba(0,0,0,0.6);
+    border: 3px double rgba(255,255,255,0.7);
+    border-radius: 8px;
+}
+
+.game-image {
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+.game-info {
+    text-align: left;
+}
+
+.game-info ul {
+    padding-left: 20px;
+}
+
+/* ================= HOME SECTIONS ================= */
+
+.home-sections {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.why-section {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 650px;
+    background: rgba(0,0,0,0.6);
+    border: 3px double rgba(255,255,255,0.7);
+    border-radius: 8px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .home-sections {
+        flex-direction: column;
+        gap: 20px;
     }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
 
     .game-section {
-        display: flex;
-        gap: 20px;
-        text-align: left;
-        padding: 20px;
-        margin: 0 auto 20px auto;
-        max-width: 650px;
-        background: rgba(0,0,0,0.6);
-        border: 3px double rgba(255,255,255,0.7);
-        border-radius: 8px;
+        flex-direction: column;
+        text-align: center;
     }
 
-    .game-image {
-        width: 220px;
-        max-width: 100%;
-        height: auto;
-        border-radius: 6px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.6);
-    }
-    
     .game-info {
         text-align: left;
     }
 
-    .game-info ul {
-        padding-left: 20px;
-    }
-    
-    .home-sections {
-        display: flex;
-        gap: 40px;
-        align-items: flex-start;
-        max-width: 1200px;
-        margin: 40px auto;
-        padding: 0 20px;
-    }
-
-    .why-section {
-        gap: 20px;
-        text-align: left;
-        padding: 20px;
+    .game-image {
+        width: 100%;
+        max-width: 300px;
         margin: 0 auto;
-        max-width: 650px;
-        background: rgba(0,0,0,0.6);
-        border: 3px double rgba(255,255,255,0.7);
-        border-radius: 8px;
     }
 
-    /* Tablet */
-    @media (max-width: 900px) {
-        .home-sections {
-            flex-direction: column;
-            gap: 20px;
-        }
+    .cta-btn {
+        width: 100%;
+        padding: 15px;
     }
-
-    /* Mobile */
-    @media (max-width: 600px) {
-
-        .links a {
-            display: block;
-            margin: 10px 0;
-        }
-
-        .game-section {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .game-image {
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .cta-btn {
-            width: 100%;
-            padding: 15px;
-        }
-
-        .why-section {
-            text-align: left;
-        }
-    }
-
+}
 </style>
-    
+</head>
+
 <body>
 
-<p>&nbsp;</p>
-
-<section class="hero">
-    <div class="links"> 
-        <a href="#">About</a>
-        <a href="#">Games</a>
-        <a href="contactpage.html">Contact</a>
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
-    
+</div>
+
+<div class="side-menu" id="sideMenu">
+    <a href="#">About</a>
+    <a href="#">Games</a>
+    <a href="contactpage.html">Contact</a>
+</div>
+
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<!-- HERO -->
+<section class="hero">
     <div class="hero-content">
         <img src="logo.PNG" alt="Roll Again Games" class="hero-logo">
-
         <h1>Tabletop games worth <span>one more roll.</span></h1>
     </div>
 </section>
-        
+
+<!-- CONTENT -->
 <div class="home-sections">
-      
+
 <section class="game-section">
     <img src="Img.html/Siege.JPG" alt="The Siege of Hexfall Box" class="game-image">
-      
+
     <div class="game-info">
         <h1>The Siege of <span>Hexfall</span></h1>
         <p>Lead brave heroes and defend the realm in this cooperative strategy game.</p>
         <ul>
             <li>Cooperative fantasy strategy game</li>
             <li>1–4 players</li>
-            <li>Modular hex map, heroes, portals &amp; evolving threats</li>
+            <li>Modular hex map, heroes, portals & evolving threats</li>
         </ul>
-
         <a href="siegemain.html" class="cta-btn">View Game Details</a>
     </div>
 </section>
-    
+
 <section class="why-section">
     <h1>Why Roll Again Games?</h1>
-        
     <ul>
         <li>Games designed for replayability</li>
         <li>Physical components that matter</li>
@@ -214,13 +304,16 @@
         <li>Built to grow with expansions</li>
     </ul>
 </section>
-    
-</div>
-   
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 
-</body>  
+</div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("sideMenu").classList.toggle("active");
+    document.getElementById("overlay").classList.toggle("active");
+    document.getElementById("hamburger").classList.toggle("active");
+}
+</script>
+
+</body>
 </html>
