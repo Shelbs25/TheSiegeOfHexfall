@@ -175,6 +175,18 @@ th {
     color: white;
 }
 
+    .button {
+    font-size: clamp(16px, 4vw, 22px);
+    background-color: #6b4f1d;
+    color: #fff8dc;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 8px;
+    border: 2px solid #4a3713;
+    box-shadow: 0 0 14px rgba(0,0,0,0.45);
+    text-align: center;
+    display: block;
+}
 </style>
 </head>
 
@@ -384,10 +396,10 @@ th {
     <h2>7. Monster Phase (Game Controlled)</h2>
   <div style="text-align:center; margin:15px 0 10px 0;">
   <strong>Difficulty:</strong><br><br>
-  <button style="font-size:18px;" onclick="setDifficulty('easy')">Easy</button><br><br>
-  <button style="font-size:18px;" onclick="setDifficulty('normal')">Normal</button><br><br>
-  <button style="font-size:18px;" onclick="setDifficulty('hard')">Hard</button><br><br>
-  <button style="font-size:18px;" onclick="setDifficulty('extreme')">Extreme</button><br><br>
+  <button class="button" style="font-size:18px;" onclick="setDifficulty('easy')">Easy</button><br><br>
+  <button class="button" style="font-size:18px;" onclick="setDifficulty('normal')">Normal</button><br><br>
+  <button class="button" style="font-size:18px;" onclick="setDifficulty('hard')">Hard</button><br><br>
+  <button class="button" style="font-size:18px;" onclick="setDifficulty('extreme')">Extreme</button><br><br>
 </div>
 
 <p style="text-align:center; margin-bottom:10px;">
