@@ -1,159 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Siege of Hexfall – Instructions</title>
+<meta charset="UTF-8">
+<title>The Siege of Hexfall – Instructions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Mobile -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
 
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
+<style>
+* {
+    box-sizing: border-box;
+}
 
-  <style>
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: "Metamorphous", serif;
-      background: url("../Img.html/homepage.png");
-      color: #2b1b0f;
-    }
+/* ================= NAVBAR ================= */
 
-    .content {
-      max-width: 900px;
-      margin: auto;
-      background: rgba(245,236,215,0.9);
-      padding: 30px;
-      border-radius: 14px;
-      box-shadow: 0 0 18px rgba(0,0,0,0.4);
-    }
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
 
-    h1 {
-      text-align: center;
-      font-size: 2.6em;
-      margin-bottom: 10px;
-    }
+.hamburger {
+    width: 30px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
 
-    h2 {
-      margin-top: 35px;
-      border-bottom: 2px solid #6b4c2c;
-      padding-bottom: 6px;
-    }
+.hamburger span {
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
 
-    h3 {
-      margin-top: 20px;
-    }
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(9px);
+}
 
-    p, li {
-      font-size: 1.05em;
-      line-height: 1.6;
-    }
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
 
-    ul, ol {
-      margin-left: 25px;
-    }
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-9px);
+}
 
-    table {
-      width: calc(100% + 30px);
-      border-collapse: collapse;
-      margin-left: -15px;
-      margin-right:15px;
-      margin-top: 15px;
-      margin-bottom: 25px;
-    }
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 250px;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    padding-top: 100px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    transition: left 0.3s ease;
+    z-index: 999;
+    font-family: Arial, sans-serif;
+}
 
-    th, td {
-      border: 1px solid #6b4c2c;
-      padding: 1px;
-      text-align: center;
-      font-size: 14px;
-    }
+.side-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.2s;
+}
 
-    th {
-      background: #6b4c2c;
-      color: white;
-    }
+.side-menu a:hover {
+    color: #7CFF4F;
+}
 
-    /* Hamburger */
-    .menu-btn {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      background: none;
-      border: none;
-      font-size: 32px;
-      cursor: pointer;
-      color: #2b1b0f;
-      z-index: 1100;
-    }
+.side-menu.active {
+    left: 0;
+}
 
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: -260px;
-      width: 240px;
-      height: 100%;
-      background: #1b1b1b;
-      padding-top: 60px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      transition: left 0.3s ease;
-      z-index: 1000;
-    }
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 500;
+}
 
-    .side-menu a {
-      color: #eee;
-      text-decoration: none;
-      padding: 10px 20px;
-      font-size: 18px;
-    }
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
 
-    .side-menu a:hover {
-      background: #333;
-    }
+/* ================= PAGE STYLING ================= */
 
-    .side-menu.open {
-      left: 0;
-    }
+body {
+    margin: 0;
+    padding: 100px 20px 40px 20px; /* pushes below navbar */
+    font-family: "Metamorphous", serif;
+    background: url("../Img.html/homepage.png");
+    color: #2b1b0f;
+}
 
-    #overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-      display: none;
-      z-index: 900;
-    }
+.content {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(245,236,215,0.95);
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 0 18px rgba(0,0,0,0.4);
+}
 
-    #overlay.show {
-      display: block;
-    }
-  </style>
+h1 {
+    text-align: center;
+    font-size: 2.6em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-top: 35px;
+    border-bottom: 2px solid #6b4c2c;
+    padding-bottom: 6px;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+p, li {
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+ul, ol {
+    margin-left: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #6b4c2c;
+    padding: 6px;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background: #6b4c2c;
+    color: white;
+}
+</style>
 </head>
 
 <body>
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
 
-<nav id="sideMenu" class="side-menu">
-  <a href="../index.html">Home</a>
-  <a href="../siegemain.html">Siege of Hexfall</a>
-  <!-- <a href="Instructions.html">Instructions</a> -->
-  <a href="Barbarian.html">Barbarian</a>
-  <a href="mage.html">Mage</a>
-  <a href="Ranger.html">Ranger</a>
-  <a href="warrior.html">Warrior</a>
-  
+<!-- SIDE MENU -->
+<nav class="side-menu" id="sideMenu">
+    <a href="../index.html">Home</a>
+    <a href="../siegemain.html">Siege of Hexfall</a>
+    <a href="Barbarian.html">Barbarian</a>
+    <a href="mage.html">Mage</a>
+    <a href="Ranger.html">Ranger</a>
+    <a href="warrior.html">Warrior</a>
 </nav>
 
-<div id="overlay" onclick="toggleMenu()"></div>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
+<!-- CONTENT -->
 <div class="content">
 
-  <h1>The Siege of Hexfall</h1>
-  <p style="text-align:center;"><em>A cooperative Heroes-vs-the-game board game</em></p>
+<h1>The Siege of Hexfall</h1>
+<p style="text-align:center;"><em>A cooperative Heroes-vs-the-game board game</em></p>
 
   <section>
     <h2>1. Game Overview</h2>
@@ -578,5 +624,13 @@
     }
   };
 </script>
-
+  
+<script>
+function toggleMenu() {
+    document.getElementById("hamburger").classList.toggle("active");
+    document.getElementById("sideMenu").classList.toggle("active");
+    document.getElementById("overlay").classList.toggle("active");
+}
+</script>
+  
 </body>
