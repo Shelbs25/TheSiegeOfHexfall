@@ -307,11 +307,68 @@
               padding: 10px;
             }
 
+/* ================= NAVBAR ================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(255,255,255,0.9);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Animated Hamburger */
+.hamburger {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 100%;
+  background: black;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(9px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-9px);
+}
+
+/* Push content below navbar */
+.page-wrapper {
+  padding-top: 80px;
+}            
         </style>
     </head>
 
     <body>
-
+<div class="navbar">
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+        
         <nav id="sideMenu" class="side-menu">
           <a href="../index.html">Home</a>
           <a href="../siegemain.html">Siege of Hexfall</a>
@@ -330,7 +387,7 @@
         <!-- barbarian Card -->
         <div class="card">
             <div class="card-header">
-              <button class="menu-btn" onclick="toggleMenu()">☰</button>
+              <!-- <button class="menu-btn" onclick="toggleMenu()">☰</button> -->
               <h1>Mage</h1>
             </div>
 
@@ -527,9 +584,10 @@
 
         <script>
             function toggleMenu() {
-            document.getElementById("sideMenu").classList.toggle("open");
-            document.getElementById("overlay").classList.toggle("show");
-          }
+              document.getElementById("sideMenu").classList.toggle("open");
+              document.getElementById("overlay").classList.toggle("show");
+              document.getElementById("hamburger").classList.toggle("active");
+            }
         </script>
 
         <script>
