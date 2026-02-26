@@ -156,7 +156,6 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    table-layout: fixed; /* 🔥 Add this */
 }
 
 th, td {
@@ -164,13 +163,17 @@ th, td {
     padding: 6px;
     text-align: center;
     font-size: 14px;
-    word-wrap: break-word; /* 🔥 Add this */
 }
 
 th {
     background: #6b4c2c;
     color: white;
 }
+    .table-scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+    
 </style>
 </head>
 
@@ -307,6 +310,7 @@ th {
   <section>
     <h2>5. Heroes</h2>
     <h3>5.1 Hero Stats</h3>
+      <div class="table-scroll">
     <table>
       <thead>
         <tr>
@@ -348,6 +352,9 @@ th {
         </tr>
       </tbody>
     </table>
+        
+      </div>
+
     <p>Heroes begin the game at full Health.</p>
 
     <h3>5.2 Hero Abilities</h3>
