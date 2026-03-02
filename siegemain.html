@@ -198,6 +198,22 @@
             display: block;
         }
 
+        .barbarian-btn {
+    background-color: darkred;
+}
+
+.mage-btn {
+    background-color: white;
+}
+
+.ranger-btn {
+    background-color: blue;
+}
+
+.warrior-btn {
+    background-color: gold;
+}
+        
         /* ================= MOBILE BREAKPOINT ================= */
 
         @media (max-width: 768px) {
@@ -257,15 +273,15 @@
 
     <a href="html/Instructions.html" class="primary-button">Instructions</a>
 
-    <div class="hero-container">
-        <h1>Choose Your Hero</h1>
-        <div class="hero-grid">
-            <a href="html/Barbarian.html" class="button">Barbarian</a>
-            <a href="html/mage.html" class="button">Mage</a>
-            <a href="html/Ranger.html" class="button">Ranger</a>
-            <a href="html/warrior.html" class="button">Warrior</a>
-        </div>
+<div class="hero-container">
+    <h1>Choose Your Hero</h1>
+    <div class="hero-grid">
+        <a href="html/Barbarian.html" class="button barbarian-btn">Barbarian</a>
+        <a href="html/mage.html" class="button mage-btn">Mage</a>
+        <a href="html/Ranger.html" class="button ranger-btn">Ranger</a>
+        <a href="html/warrior.html" class="button warrior-btn">Warrior</a>
     </div>
+</div>
 
     <script>
         function toggleMenu() {
