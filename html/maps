@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link rel="icon" href="/favicon.png">
+<meta charset="UTF-8">
+<title>Hexfall Components – Siege of Hexfall</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+box-sizing: border-box;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 60px;
+background: rgba(0,0,0,0.9);
+display: flex;
+align-items: center;
+padding: 0 20px;
+z-index: 1000;
+border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.hamburger {
+width: 30px;
+height: 22px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+cursor: pointer;
+}
+
+.hamburger span {
+height: 3px;
+width: 100%;
+background: white;
+border-radius: 2px;
+transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+transform: rotate(45deg) translateY(9px);
+}
+
+.hamburger.active span:nth-child(2) {
+opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+transform: rotate(-45deg) translateY(-9px);
+}
+
+.side-menu {
+position: fixed;
+top: 0;
+left: -260px;
+width: 250px;
+height: 100%;
+background: rgba(0,0,0,0.95);
+padding-top: 100px;
+padding-left: 30px;
+display: flex;
+flex-direction: column;
+gap: 25px;
+transition: left 0.3s ease;
+z-index: 999;
+font-family: inherit;
+}
+
+.side-menu a {
+color: white;
+text-decoration: none;
+font-size: 1.2rem;
+font-weight: bold;
+transition: color 0.2s;
+}
+
+.side-menu a:hover {
+color: #7CFF4F;
+}
+
+.side-menu.active {
+left: 0;
+}
+
+.overlay {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.6);
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease;
+z-index: 500;
+}
+
+.overlay.active {
+opacity: 1;
+visibility: visible;
+}
+
+/* ================= PAGE STYLING ================= */
+
+body {
+margin: 0;
+padding: 100px 20px 40px 20px;
+font-family: "Metamorphous", serif;
+background: url("../Img.html/homepage.png");
+color: #2b1b0f;
+}
+
+.content {
+max-width: 900px;
+margin: auto;
+background: rgba(245,236,215,0.95);
+padding: 30px;
+border-radius: 14px;
+box-shadow: 0 0 18px rgba(0,0,0,0.4);
+}
+
+h1 {
+text-align: center;
+font-size: 2.6em;
+margin-bottom: 10px;
+}
+
+h2 {
+margin-top: 35px;
+border-bottom: 2px solid #6b4c2c;
+padding-bottom: 6px;
+}
+
+p {
+font-size: 1.05em;
+line-height: 1.6;
+}
+
+/* ================= TABLE ================= */
+
+table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 15px;
+}
+
+th, td {
+border: 1px solid #6b4c2c;
+padding: 10px;
+text-align: center;
+}
+
+th {
+background: #6b4c2c;
+color: white;
+}
+
+/* ================= IMAGE TABLE ================= */
+
+.image-table img {
+width: 80px;
+height: auto;
+border-radius: 6px;
+}
+
+.image-table td:first-child {
+width: 100px;
+}
+
+.image-table td:nth-child(2) {
+text-align: left;
+padding-left: 12px;
+font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+<div class="hamburger" id="hamburger" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+
+<!-- SIDE MENU -->
+
+<nav class="side-menu" id="sideMenu">
+<a href="../index.html">Home</a>
+<a href="../siegemain.html">Siege of Hexfall</a>
+<a href="Barbarian.html">Barbarian</a>
+<a href="mage.html">Mage</a>
+<a href="Ranger.html">Ranger</a>
+<a href="warrior.html">Warrior</a>
+</nav>
+
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<!-- CONTENT -->
+
+<div class="content">
+
+<h1>Map Configurations</h1>
+
+(* <p style="text-align:center;">
+A visual reference for pieces used in <em>The Siege of Hexfall</em>.
+</p>
+
+<section>
+
+<h2>Map Configurations</h2> *)
+
+<table class="image-table">
+
+<thead>
+<tr>
+<th>Layout</th>
+<th>Name</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td><img src="../Img.html/bottleneck.png" alt="Bottleneck"></td>
+<td>Monster Grunt</td>
+</tr>
+
+(* <tr>
+<td><img src="../Img.html/brute.png" alt="Monster Brute"></td>
+<td>Monster Brute</td>
+</tr>
+
+<tr>
+<td><img src="../Img.html/boss.png" alt="Monster Boss"></td>
+<td>Monster Boss</td>
+</tr>
+
+<tr>
+<td><img src="../Img.html/warrior.png" alt="Warrior"></td>
+<td>Warrior</td>
+</tr>
+
+<tr>
+<td><img src="../Img.html/ranger.png" alt="Ranger"></td>
+<td>Ranger</td>
+</tr>
+
+<tr>
+<td><img src="../Img.html/mage.png" alt="Mage"></td>
+<td>Mage</td>
+</tr>
+
+<tr>
+<td><img src="../Img.html/barbarian.png" alt="Barbarian"></td>
+<td>Barbarian</td>
+</tr>
+
+<tr>
+<td><img src="../Img.html/portal.png" alt="Portal Tower"></td>
+<td>Portal Tower</td>
+</tr>
+
+<tr>
+<td><img src="../Img.html/village.png" alt="Village"></td>
+<td>Village</td>
+</tr>
+
+<tr>
+<td><img src="../Img.html/ruin.png" alt="Ruin"></td>
+<td>Ruin</td>
+</tr>
+
+<tr>
+<td><img src="../Img.html/portalshard.png" alt="Portal Shard"></td>
+<td>Portal Shard</td>
+</tr>
+
+<tr>
+<td><img src="../Img.html/heart.png" alt="Health Token"></td>
+<td>Health Token</td>
+</tr> *)
+
+</tbody>
+
+</table>
+
+</section>
+
+</div>
+
+<script>
+
+function toggleMenu() {
+document.getElementById("hamburger").classList.toggle("active");
+document.getElementById("sideMenu").classList.toggle("active");
+document.getElementById("overlay").classList.toggle("active");
+}
+
+</script>
+
+</body>
+</html>
