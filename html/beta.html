@@ -3,25 +3,98 @@
 <head>
     <title>Beta Access</title>
     <meta name="robots" content="noindex">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1a1a1a;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .login-box {
+            background: #2b2b2b;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #cccccc;
+        }
+
+        input {
+            width: 90%;
+            padding: 15px;
+            font-size: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: none;
+            text-align: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: none;
+            background: #b22222;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #d13b3b;
+        }
+
+        #message {
+            margin-top: 15px;
+            color: #ff6666;
+        }
+    </style>
+
 </head>
 
 <body>
 
-<h1>Beta Tester Login</h1>
+<div class="login-box">
 
-<p>Enter your beta code:</p>
+    <h1>Beta Tester Access</h1>
 
-<input type="password" id="code">
-<button onclick="checkCode()">Enter</button>
+    <p>Enter your beta code:</p>
 
-<p id="message"></p>
+    <input 
+        type="password" 
+        id="code" 
+        placeholder="Enter Code"
+        onkeypress="if(event.key === 'Enter') checkCode()"
+    >
+
+    <button onclick="checkCode()">Enter</button>
+
+    <p id="message"></p>
+
+</div>
+
 
 <script>
 function checkCode() {
-    const password = document.getElementById("code").value;
+    const password = document.getElementById("code").value.trim();
 
     if (password === "SHADOWS") {
-        window.location.href = "shadowsmain.html";
+        window.location.href = "html/shadowsmain.html";
     } else {
         document.getElementById("message").innerHTML = "Incorrect code.";
     }
