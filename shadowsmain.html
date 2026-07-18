@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/favicon.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Siege of Hexfall</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hamburger {
+            width: 32px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 100%;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(9px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-9px);
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -260px;
+            width: 250px;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            padding-top: 100px;
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            transition: left 0.3s ease;
+            z-index: 999;
+            font-family: inherit;
+        }
+
+        .side-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .side-menu a:hover {
+            color: #7CFF4F;
+        }
+
+        .side-menu.active {
+            left: 0;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            z-index: 500;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ================= PAGE STYLING ================= */
+
+        body {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url("Img.html/homepage.png");
+
+            font-family: "Metamorphous", Arial;
+            color: #2b1d0e;
+
+            background-repeat: repeat;
+            background-size: cover;
+            background-position: center;
+
+            margin: 0;
+            padding: 100px 20px 40px 20px;
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* ===== Cards ===== */
+
+        .intro-card,
+        .hero-container {
+            width: 100%;
+            max-width: 850px;
+            background: rgba(255, 248, 220, 0.9);
+            padding: clamp(20px, 4vw, 35px);
+            border-radius: 12px;
+            border: 2px solid #c2a86a;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+
+        .intro-card h1,
+        .hero-container h1 {
+            font-size: clamp(24px, 5vw, 36px);
+            margin-bottom: 20px;
+        }
+
+        .intro-card p {
+            font-size: clamp(16px, 4vw, 18px);
+            line-height: 1.6;
+        }
+
+        /* ===== Primary Button ===== */
+
+        .primary-button {
+            font-size: clamp(18px, 4vw, 26px);
+            background-color: #6b4f1d;
+            color: #fff8dc;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            border: 2px solid #4a3713;
+            box-shadow: 0 0 18px rgba(0,0,0,0.5);
+            display: inline-block;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        /* ===== Hero Grid ===== */
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 30px;
+        }
+
+        .button {
+            font-size: clamp(16px, 4vw, 22px);
+            background-color: #6b4f1d;
+            color: #fff8dc;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 8px;
+            border: 2px solid #4a3713;
+            box-shadow: 0 0 14px rgba(0,0,0,0.45);
+            text-align: center;
+            display: block;
+        }
+
+.barbarian-btn {
+    background-color: darkred;
+    color: darkorange;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.bard-btn {
+    background-color: #FA8128;
+    color: #FFCE1B;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.mage-btn {
+    background-color: white;
+    color: goldenrod;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.ranger-btn {
+    background-color: #000030;
+    color: teal;
+    font-weight: bold;
+    font-size: 25px;
+}
+.rogue-btn {
+    background-color: #311432;
+    color: #784B84;
+    font-weight: bold;
+    font-size: 25px;
+}
+.warrior-btn {
+    background-color: gold;
+    color: saddlebrown;
+    font-weight: bold;
+    font-size: 25px;
+}
+        
+        /* ================= MOBILE BREAKPOINT ================= */
+
+        @media (max-width: 768px) {
+
+            body {
+                padding: 90px 16px 40px 16px;
+                gap: 30px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .primary-button {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- SIDE MENU -->
+    <nav class="side-menu" id="sideMenu">
+        <a href="index.html">Home</a>
+        <a href="contactpage.html">Contact</a>
+        <a href="../html/maps.html">Map Configurations</a>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <!-- CONTENT -->
+    <div class="intro-card">
+        <h1>Welcome to The Siege of Hexfall</h1>
+        <p>
+            Hexfall stands on the brink.<br>
+            Portals tear open across the land, spilling monsters into villages and ruins long forgotten.<br>
+            You are the last line of defense.<br><br>
+            Gather your party.<br>
+            Seal the portals.<br>
+            Hold the line.
+        </p>
+    </div>
+
+    <a href="html/Instructions.html" class="primary-button">Instructions</a>
+
+<div class="hero-container">
+    <h1>Choose Your Hero</h1>
+    <div class="hero-grid">
+        <a href="bard.html" class="button bard-btn">Bard</a>
+        <a href="Barbarian.html" class="button barbarian-btn">Barbarian</a>
+        <a href="mage.html" class="button mage-btn">Mage</a>
+        <a href="Ranger.html" class="button ranger-btn">Ranger</a>
+        <a href="rogue.html" class="button rogue-btn">Rogue</a>
+        <a href="warrior.html" class="button warrior-btn">Warrior</a>
+    </div>
+</div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("hamburger").classList.toggle("active");
+            document.getElementById("sideMenu").classList.toggle("active");
+            document.getElementById("overlay").classList.toggle("active");
+        }
+    </script>
+
+</body>
+</html>
