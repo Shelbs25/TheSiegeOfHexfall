@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beta Access</title>
+    <meta name="robots" content="noindex">
+</head>
+
+<body>
+
+<h1>Beta Tester Login</h1>
+
+<p>Enter your beta code:</p>
+
+<input type="password" id="code">
+<button onclick="checkCode()">Enter</button>
+
+<p id="message"></p>
+
+<script>
+function checkCode() {
+    const password = document.getElementById("code").value;
+
+    if (password === "SHADOWS2026") {
+        window.location.href = "html/shadowsmain.html";
+    } else {
+        document.getElementById("message").innerHTML = "Incorrect code.";
+    }
+}
+</script>
+
+</body>
+</html>
