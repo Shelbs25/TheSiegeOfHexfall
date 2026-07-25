@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/favicon.png">
+<meta charset="UTF-8">
+<title>The Siege of Hexfall – Instructions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.hamburger {
+    width: 30px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(9px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-9px);
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 250px;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    padding-top: 100px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    transition: left 0.3s ease;
+    z-index: 999;
+    font-family: inherit;
+}
+
+.side-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.side-menu a:hover {
+    color: #7CFF4F;
+}
+
+.side-menu.active {
+    left: 0;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 500;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ================= PAGE STYLING ================= */
+
+body {
+    margin: 0;
+    padding: 100px 20px 40px 20px; /* pushes below navbar */
+    font-family: "Metamorphous", serif;
+    background: url("../Img.html/shadowsmain.png");
+    color: #2b1b0f;
+}
+
+.content {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(245,236,215,0.95);
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 0 18px rgba(0,0,0,0.4);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.6em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-top: 35px;
+    border-bottom: 2px solid #6b4c2c;
+    padding-bottom: 6px;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+p, li {
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+ul, ol {
+    margin-left: 25px;
+}
+
+table {
+  width: calc(100% + 30px);
+  border-collapse: collapse;
+  margin-left: -15px;
+  margin-right:15px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+
+}
+
+th, td {
+  border: 1px solid #6b4c2c;
+  padding: 1px;
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+    background: #6b4c2c;
+    color: white;
+}
+
+    .button {
+    font-size: clamp(16px, 4vw, 22px);
+    font-family: inherit;
+    background-color: #6b4f1d;
+    color: #fff8dc;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 8px;
+    border: 2px solid #4a3713;
+    box-shadow: 0 0 14px rgba(0,0,0,0.45);
+    text-align: center;
+    display: block;
+}
+
+.difficulty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* centers buttons horizontally */
+  gap: 12px;
+  margin: 15px 0 10px 0;
+}
+
+.difficulty-container strong {
+  margin-bottom: 5px;
+}
+    
+.buy-game {
+    text-align: center;
+    margin: 40px 0;
+    color: white;
+}
+
+.buy-game a {
+    background-color: #6b4f1d;
+    color: white;
+    padding: 14px 28px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.buy-game a:hover {
+    background-color: crimson;
+}
+</style>
+</head>
+
+<body>
+
+    
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<!-- SIDE MENU -->
+<nav class="side-menu" id="sideMenu">
+    <a href="../index.html">Home</a>
+    <a href="../siegemain.html">Siege of Hexfall</a>
+    <a href="html/Barbarian.html">Barbarian</a>
+    <a href="html/mage.html">Mage</a>
+    <a href="html/Ranger.html">Ranger</a>
+    <a href="html/warrior.html">Warrior</a>
+    <a href="../html/maps.html">Map Configurations</a>
+</nav>
+
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<h1>Notes</h1>
+<!--<p style="text-align:center;"><em>A cooperative Heroes-vs-the-game board game</em></p>-->
+
+<section> <h2>What's new?</h2></section>
+    <ul>
+    <li>Rogue Hero</li>
+    <li>Bard Hero</li>
+    <li>Twice as many Grunts and Brutes Spawn during Monster Phase (See Instructions Section 7)</li>
+    <li>New Ancient One Monster now spawns after defeating the Boss (See Instructions Section 7)</li>
+    <li>Temple locations now available (See Instructions Section 10)</li>
+    </ul>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("sideMenu");
+    const overlay = document.getElementById("overlay");
+    menu.classList.toggle("open");
+    overlay.classList.toggle("show");
+  }
+
+  const difficultyStats = {
+    easy: {
+      grunt: { atk: -2, def: 1, hp: 2 },
+      brute: { atk: 0, def: 2, hp: 4 },
+      boss:  { atk: 2, def: 3, hp: 8 }
+    },
+    normal: {
+      grunt: { atk: -2, def: 2, hp: 2 },
+      brute: { atk: 0, def: 3, hp: 4 },
+      boss:  { atk: 2, def: 4, hp: 8 }
+    },
+    hard: {
+      grunt: { atk: -1, def: 2, hp: 2 },
+      brute: { atk: 1, def: 3, hp: 4 },
+      boss:  { atk: 3, def: 4, hp: 8 }
+    },
+    extreme: {
+      grunt: { atk: 0, def: 2, hp: 2 },
+      brute: { atk: 2, def: 3, hp: 4 },
+      boss:  { atk: 4, def: 4, hp: 8 }
+    }
+  };
+
+  function setDifficulty(level) {
+    const data = difficultyStats[level];
+
+    document.getElementById("gruntAtk").textContent = data.grunt.atk;
+    document.getElementById("gruntDef").textContent = data.grunt.def;
+    document.getElementById("gruntHp").textContent = data.grunt.hp;
+
+    document.getElementById("bruteAtk").textContent = data.brute.atk;
+    document.getElementById("bruteDef").textContent = data.brute.def;
+    document.getElementById("bruteHp").textContent = data.brute.hp;
+
+    document.getElementById("bossAtk").textContent = data.boss.atk;
+    document.getElementById("bossDef").textContent = data.boss.def;
+    document.getElementById("bossHp").textContent = data.boss.hp;
+
+    document.getElementById("currentDifficulty").textContent =
+      level.charAt(0).toUpperCase() + level.slice(1);
+
+    // 🔥 Save selection locally
+    localStorage.setItem("hexfallDifficulty", level);
+  }
+
+  // 🔥 Load saved difficulty when page loads
+  window.onload = function () {
+    const savedDifficulty = localStorage.getItem("hexfallDifficulty");
+
+    if (savedDifficulty && difficultyStats[savedDifficulty]) {
+      setDifficulty(savedDifficulty);
+    } else {
+      setDifficulty("normal"); // default if nothing saved
+    }
+  };
+</script>
+  
+<script>
+function toggleMenu() {
+    document.getElementById("hamburger").classList.toggle("active");
+    document.getElementById("sideMenu").classList.toggle("active");
+    document.getElementById("overlay").classList.toggle("active");
+}
+</script>
+<div class="buy-game">
+  <p>Enjoying the game?</p>
+  <a href="https://www.etsy.com/listing/4455922184/the-siege-of-hexfall?dd_referrer=" target="_blank">
+    Buy The Shadows of Hexfall
+  </a>
+</div>  
+</body>
