@@ -256,8 +256,8 @@ th {
 
   <section>
     <h2>1. Game Overview</h2>
-    <p><strong>Players:</strong> 2–4</p>
-    <p><strong>Play Time:</strong> 30–45 minutes</p>
+    <p><strong>Players:</strong> 2-6</p>
+    <p><strong>Play Time:</strong> 45–60 minutes</p>
     <p><strong>Recommended Age:</strong> 10+</p>
 
     <p>
@@ -269,7 +269,7 @@ th {
 
     <p>There is no Monster player. All monster actions are controlled by the game rules.</p>
 
-    <p>In order to balance out the difficulty when playing with fewer than 4 players, keep all the Heroes in play even if it means one or more players play two Heroes.</p>
+    <p>In order to balance out the difficulty when playing with fewer than 6 players, keep all the Heroes in play even if it means one or more players play two Heroes.</p>
   </section>
 
   <section>
@@ -304,7 +304,7 @@ th {
         -->
         <li>2 Brown Temple Tiles</li>
         <!--<li>10 Plain Green Tiles</li>-->
-        <li>5 Plain Brown Tiles</li>
+        <li>6 Plain Brown Tiles</li>
         </ul>
     </ul>
 
@@ -361,9 +361,9 @@ th {
   <li>Place the matching structure on each special tile.</li>
   <li>Place 1 Portal Shard on each Ruin tile.</li>
   <li>Each player selects one Hero and places their miniature on any Village tile.</li>
-  <li>Place 1 Monster Grunt on each Portal tile.</li>
+  <li>Place 2 Monster Grunt on each Portal tile.</li>
 </ol>
-    <p> See Section 11 for alternate methods for setting up the game.</p>
+    <!--<p> See Section 11 for alternate methods for setting up the game.</p>-->
   </section>
 
   <section>
@@ -513,10 +513,12 @@ th {
     
     <h3>Step 1 – Spawn</h3>
     <ul>
-      <li>If no Portals are sealed, each open Portal spawns 1 Grunt.</li>
-      <li>If one Portal is sealed, each remaining open Portal spawns 1 Brute instead.</li>
+      <li>If no Portals are sealed, each open Portal spawns 2 Grunts.</li>
+      <li>If one Portal is sealed, each remaining open Portal spawns 2 Brute instead.</li>
       <li>If two portals are sealed the Boss spawns at the remaining portal or the nearest ruin to the portal that was most recently sealed. Only the Boss spawns this turn but future rounds brutes will continue spawning at open portals. </li>
+      <li>Once the Boss has been defeated, the Ancient One spawns at the Temple tile closest to where the Boss was defeated.</li>
     </ul>
+ 
 
     <h3>Step 2 – Target Priority</h3>
     <ol>
@@ -581,7 +583,7 @@ th {
     </table>
     <p>While holding a Portal Shard, a Hero seals a Portal on a roll of 4–6. If a sealing attempt fails while holding a Portal Shard, the Hero only takes 2 damage. If a Hero fails an attempt and does not have a Portal Shard they take 5 damage. A Hero may hold only one Portal Shard at a time. If they gain another, they must immediately give one to a Hero on the same tile or discard it. Once a Portal Shard is used to successfully seal a Portal, it is removed from the game.</p> 
 
-    <p>When a Portal is sealed, each player gains 5 Helath Points up to their maximum.</p>
+    <p>When a Portal is sealed, each player gains 5 Health Points up to their maximum.</p>
 
      <h3>8.3 Loot a Ruin</h3>
      <p>Ruins contain Portal Shards that aid in sealing Portals and grant power-ups. A Hero may Loot a Ruin by moving to a Ruin tile and using their action to pick up a Portal Shard. Each Ruin may be looted only once. Doing so will grant the Hero one of the following power-ups, determined by rolling the die:</p>
@@ -596,10 +598,11 @@ th {
     </ul>
 
     <p>When a Hero is defeated, any Portal Shard they carried is dropped onto their tile. As an action, a Hero may pick up a Portal Shard dropped by a fallen companion and roll for a power-up as described above.</p>
+    
   </section>
 
 
-  
+  <section>
     <h2>9. Villages</h2>
     <ul>
       <li>Each Village has 3 Health as represented by the red heart health markers on the Village tile.</li>
@@ -609,25 +612,34 @@ th {
     </ul>
   </section>
 
+  
   <section>
-    <h2>10. Hero Defeat</h2>
+  <h2>10. Temples</h2>
+    <p>Temples are scattered across the lands of Hexfall and a Hero can choose to spend an Action to meditate at a Temple and regain 3 health.</p>
+    <p>If at any point there are 3 or more Monsters on the same tile as a Temple, that Temple is immediately destroyed.</p>
+  
+  
+  </section>
+  <section>
+    <h2>11. Hero Defeat</h2>
     <ul>
       <li>When a Hero’s Health reaches 0, they are defeated and removed from play. If the Mage dies, activate Mage's Last Stand (see section 5.2)</li>
       <li>The remaining Heroes may continue as long as at least one Hero remains.</li>
     </ul>
   </section>
 
+  <!--
   <section>
   <h2>11. Difficulty Adjustments (Optional)</h2>
 
-  <!-- <div style="text-align:center; margin-bottom:15px;">
+   <div style="text-align:center; margin-bottom:15px;">
     <button onclick="setDifficulty('easy')">Easy</button>
     <button onclick="setDifficulty('normal')">Normal</button>
     <button onclick="setDifficulty('hard')">Hard</button>
     <button onclick="setDifficulty('extreme')">Extreme</button>
   </div>
 
-  <p style="text-align:center;"><strong>Current Difficulty: <span id="currentDifficulty">Normal</span></strong></p> -->
+  <p style="text-align:center;"><strong>Current Difficulty: <span id="currentDifficulty">Normal</span></strong></p> 
 
   <p>
     When setting up the game, turn all the hex tiles upside down, mix them up, and form a rough draft of a map you want.
@@ -637,6 +649,7 @@ th {
 <p> See the Map Configurations page from the side bar for some ideas on how to arrange your map.</p>
       
 </section>
+-->
 
   <section>
     <h2>12. Design Notes</h2>
@@ -745,3 +758,4 @@ function toggleMenu() {
   </a>
 </div>  
 </body>
+</html>
