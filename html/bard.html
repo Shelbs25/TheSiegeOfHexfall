@@ -413,15 +413,13 @@
         
         <nav id="sideMenu" class="side-menu">
           <a href="../index.html">Home</a>
-          <a href="../shadowsmain.html">Shadows of Hexfall</a>
-          <a href="ExpansionInstructions.html">Instructions</a>
-          <!-- <a href="bard.html">Bard</a>         -->
-          <a href="Barbarianshadows.html">Barbarian</a>
-          <a href="mageshadows.html">Mage</a>
-          <a href="Rangershadows.html">Ranger</a>
-          <a href="rogue.html">Rogue</a>            
-          <a href="warriorshadows.html">Warrior</a>
-          <!-- <a href="../html/maps.html">Map Configurations</a> -->
+          <a href="../siegemain.html">Siege of Hexfall</a>
+          <a href="Instructions.html">Instructions</a>
+          <a href="Barbarian.html">Barbarian</a>
+          <a href="mage.html">Mage</a>
+          <!-- <a href="Ranger.html">Ranger</a> -->
+          <a href="warrior.html">Warrior</a>
+          <a href="../html/maps.html">Map Configurations</a>
         </nav>
 
         <div id="overlay" onclick="toggleMenu()"></div>
@@ -533,6 +531,12 @@
   <td id="bossDef">4</td>
   <td id="bossHp">8</td>
 </tr>
+<tr>
+  <td>Ancient One</td>
+  <td id="ancientoneAtk">3</td>
+  <td id="ancientoneDef">6</td>
+  <td id="ancientoneHp">10</td>
+</tr>
     </table>
 
           <!-- Monster Phase Steps -->
@@ -642,22 +646,26 @@
     easy: {
       grunt: { atk: -2, def: 1, hp: 2 },
       brute: { atk: 0, def: 2, hp: 4 },
-      boss:  { atk: 2, def: 3, hp: 8 }
+      boss:  { atk: 2, def: 3, hp: 8 },
+      ancientone: { atk: 3, def: 5, hp: 10 }
     },
     normal: {
       grunt: { atk: -2, def: 2, hp: 2 },
       brute: { atk: 0, def: 3, hp: 4 },
-      boss:  { atk: 2, def: 4, hp: 8 }
+      boss:  { atk: 2, def: 4, hp: 8 },
+      ancientone: { atk: 3, def: 6, hp: 10 }
     },
     hard: {
       grunt: { atk: -1, def: 2, hp: 2 },
       brute: { atk: 1, def: 3, hp: 4 },
-      boss:  { atk: 3, def: 4, hp: 8 }
+      boss:  { atk: 3, def: 4, hp: 8 },
+      ancientone: { atk: 4, def: 6, hp: 10 }
     },
     extreme: {
       grunt: { atk: 0, def: 2, hp: 2 },
       brute: { atk: 2, def: 3, hp: 4 },
-      boss:  { atk: 4, def: 4, hp: 8 }
+      boss:  { atk: 4, def: 4, hp: 8 },
+      ancientone: { atk: 5, def: 7, hp: 10 }
     }
   };
 
