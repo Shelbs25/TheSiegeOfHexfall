@@ -541,6 +541,12 @@
   <td id="bossDef">4</td>
   <td id="bossHp">8</td>
 </tr>
+<tr>
+  <td>Ancient One</td>
+  <td id="ancientoneAtk">3</td>
+  <td id="ancientoneDef">6</td>
+  <td id="ancientoneHp">10</td>
+</tr>
     </table>
         </div>
           
@@ -652,22 +658,26 @@
     easy: {
       grunt: { atk: -2, def: 1, hp: 2 },
       brute: { atk: 0, def: 2, hp: 4 },
-      boss:  { atk: 2, def: 3, hp: 8 }
+      boss:  { atk: 2, def: 3, hp: 8 },
+      ancientone: { atk: 3, def: 5, hp: 10 }
     },
     normal: {
       grunt: { atk: -2, def: 2, hp: 2 },
       brute: { atk: 0, def: 3, hp: 4 },
-      boss:  { atk: 2, def: 4, hp: 8 }
+      boss:  { atk: 2, def: 4, hp: 8 },
+      ancientone: { atk: 3, def: 6, hp: 10 }
     },
     hard: {
       grunt: { atk: -1, def: 2, hp: 2 },
       brute: { atk: 1, def: 3, hp: 4 },
-      boss:  { atk: 3, def: 4, hp: 8 }
+      boss:  { atk: 3, def: 4, hp: 8 },
+      ancientone: { atk: 4, def: 6, hp: 10 }
     },
     extreme: {
       grunt: { atk: 0, def: 2, hp: 2 },
       brute: { atk: 2, def: 3, hp: 4 },
-      boss:  { atk: 4, def: 4, hp: 8 }
+      boss:  { atk: 4, def: 4, hp: 8 },
+      ancientone: { atk: 5, def: 7, hp: 10 }
     }
   };
 
@@ -685,6 +695,10 @@
     document.getElementById("bossAtk").textContent = data.boss.atk;
     document.getElementById("bossDef").textContent = data.boss.def;
     document.getElementById("bossHp").textContent = data.boss.hp;
+
+    document.getElementById("ancientoneAtk").textContent = data.ancientone.atk;
+    document.getElementById("ancientoneDef").textContent = data.ancientone.def;
+    document.getElementById("ancientoneHp").textContent = data.ancientone.hp;
 
     document.getElementById("currentDifficulty").textContent =
       level.charAt(0).toUpperCase() + level.slice(1);
