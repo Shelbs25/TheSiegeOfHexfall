@@ -428,6 +428,17 @@
     font-weight: bold;
     border-radius: 8px;
 }
+            
+    .ability-row {
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 6px;
+    }
+
+    .ability-row.selected {
+      background: crimson;
+      box-shadow: 0 0 8px rgba(255,50,50,0.8);
+    }
 
 .buy-game a:hover {
     background-color: crimson;
@@ -491,11 +502,11 @@
           <div class="stats">
             <div class="stat">
               🛡️
-              <span>Defense: 0</span>
+              <span>Defense: <span id="defenseValue">0</span></span>
             </div>
             <div class="stat">
               ⚔️
-              <span>Attack: 4</span>
+              <span>Attack: <span id="attackValue">4</span></span>
             </div>
           </div>
         </div>
@@ -538,14 +549,16 @@
 
         <section class="actions-section">
             <h2>Looting a Ruin</h2>
-    
-            <ul>
-              <li><strong>1 - Strength: </strong>+2 Attack</li>
-              <li><strong>2 - Shield: </strong>+2 Defense</li>
-              <li><strong>3 - Vitality: </strong>+3 Health each round</li>
-              <li><strong>4 - Endurance: </strong>Extra action every round</li>
-              <li><strong>5 - Speed: </strong>+1 movement every round</li>
-              <li><strong>6 - Luck: </strong>Reroll any die once every round</li>
+
+            <p class="indent">Loot a Ruin for a random ability (roll 1–6). Tap an ability below to set it as your Portal Shard (a Hero may hold one).</p>
+
+            <ul id="abilityList">
+              <li class="ability-row" data-name="Strength"><strong>1 - Strength: </strong>+2 Attack</li>
+              <li class="ability-row" data-name="Shield"><strong>2 - Shield: </strong>+2 Defense</li>
+              <li class="ability-row" data-name="Vitality"><strong>3 - Vitality: </strong>+3 Health each round</li>
+              <li class="ability-row" data-name="Endurance"><strong>4 - Endurance: </strong>Extra action every round</li>
+              <li class="ability-row" data-name="Speed"><strong>5 - Speed: </strong>+1 movement every round</li>
+              <li class="ability-row" data-name="Luck"><strong>6 - Luck: </strong>Reroll any die once every round</li>
             </ul>
           </section>
 
@@ -675,10 +688,24 @@
             currentHealth = maxHealth;
             localStorage.setItem("barbarianHealth", currentHealth);
             updateHealthBar();
+
+            rageCount = 0;
+            localStorage.setItem("rageCount", rageCount);
+            updateRageUI();
+
+            shardChoice = "";
+            localStorage.setItem("shardChoice", shardChoice);
+            renderShard();
+
+            updateStats();
           }
         </script>
         
         <script>
+            const baseAttack = 4;
+            const baseDefense = 0;
+
+            // ---- Rage ----
             let rageCount = parseInt(localStorage.getItem('rageCount'), 10) || 0;
             const markers = document.querySelectorAll('.rage-marker');
             const rageText = document.querySelector('.rage-text');
@@ -697,6 +724,7 @@
                 localStorage.setItem('rageCount', rageCount);
 
                 updateRageUI();
+                updateStats();
               });
             });
 
@@ -709,8 +737,42 @@
               rageCount === 0 ? 'Not Enraged' : `+${rageCount} Attack`;
             }
 
+            // ---- Portal Shard (tracked from the Looting a Ruin list) ----
+            let shardChoice = localStorage.getItem("shardChoice") || "";
+
+            const abilityRows = document.querySelectorAll(".ability-row");
+
+            abilityRows.forEach(row => {
+              row.addEventListener("click", () => {
+                const name = row.dataset.name;
+                shardChoice = (shardChoice === name) ? "" : name;
+                localStorage.setItem("shardChoice", shardChoice);
+                renderShard();
+                updateStats();
+              });
+            });
+
+            function renderShard() {
+              abilityRows.forEach(row => {
+                row.classList.toggle("selected", row.dataset.name === shardChoice);
+              });
+            }
+
+            // ---- Combined Stats ----
+            function updateStats() {
+              let attackBonus = rageCount;
+              let defenseBonus = 0;
+
+              if (shardChoice === "Strength") attackBonus += 2;
+              if (shardChoice === "Shield") defenseBonus += 2;
+
+              document.getElementById("attackValue").textContent = baseAttack + attackBonus;
+              document.getElementById("defenseValue").textContent = baseDefense + defenseBonus;
+            }
+
             updateRageUI();
-            updateAttackStat();
+            renderShard();
+            updateStats();
 
         </script>
 
