@@ -4,24 +4,25 @@
   // they're shared and appear in the shadows deck too.
   const baseOrder = [
     "Barbarian.html",
+    "warrior.html",
+    "rogue.html",
     "mage.html",
-    "Ranger.html"
-    "warrior.html"
+    "Ranger.html",
+    "bard.html"
   ];
 
   const shadowsOrder = [
     "Barbarianshadows.html",
-    "bard.html",
+    "warriorshadows.html",
     "mageshadows.html",
     "Rangershadows.html",
     "rogue.html",
-    "warriorshadows.html"
-    
+    "bard.html"
   ];
 
   const current = window.location.pathname.split("/").pop();
   const order = current.toLowerCase().includes("shadows") ? shadowsOrder : baseOrder;
-  const idx = order.indexOf(current);
+  const idx = order.findIndex((f) => f.toLowerCase() === current.toLowerCase());
   if (idx === -1) return; // this page isn't part of either cycle, do nothing
 
   function goTo(i) {

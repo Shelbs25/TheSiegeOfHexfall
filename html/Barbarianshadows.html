@@ -697,18 +697,55 @@
             localStorage.setItem("barbarianHealth", currentHealth);
             updateHealthBar();
 
+            rageCount = 0;
+            localStorage.setItem("rageCount", rageCount);
+            updateRageUI();
+
             shardChoice = "";
             localStorage.setItem("barbarianShadowsShard", shardChoice);
             renderShard();
+
             updateStats();
           }
         </script>
 
         <script>
-          // ---- Portal Shard (tracked from the Looting a Ruin list) ----
           const baseAttack = 4;
           const baseDefense = 0;
 
+          // ---- Rage ----
+          let rageCount = parseInt(localStorage.getItem('rageCount'), 10) || 0;
+          const markers = document.querySelectorAll('.rage-marker');
+          const rageText = document.querySelector('.rage-text');
+
+          markers.forEach((marker, index) => {
+            marker.addEventListener('click', () => {
+              const clickedLevel = index + 1;
+
+              // TOGGLE LOGIC
+              if (rageCount === clickedLevel) {
+                rageCount--; // unclick
+              } else {
+                rageCount = clickedLevel;
+              }
+
+              localStorage.setItem('rageCount', rageCount);
+
+              updateRageUI();
+              updateStats();
+            });
+          });
+
+          function updateRageUI() {
+            markers.forEach((marker, i) => {
+            marker.classList.toggle('active', i < rageCount);
+            });
+
+            rageText.textContent =
+            rageCount === 0 ? 'Not Enraged' : `+${rageCount} Attack`;
+          }
+
+          // ---- Portal Shard (tracked from the Looting a Ruin list) ----
           let shardChoice = localStorage.getItem("barbarianShadowsShard") || "";
 
           const abilityRows = document.querySelectorAll(".ability-row");
@@ -729,8 +766,9 @@
             });
           }
 
+          // ---- Combined Stats ----
           function updateStats() {
-            let attackBonus = 0;
+            let attackBonus = rageCount;
             let defenseBonus = 0;
 
             if (shardChoice === "Strength") attackBonus += 2;
@@ -740,44 +778,9 @@
             document.getElementById("defenseValue").textContent = baseDefense + defenseBonus;
           }
 
+          updateRageUI();
           renderShard();
           updateStats();
-        </script>
-        
-        <script>
-            let rageCount = parseInt(localStorage.getItem('rageCount'), 10) || 0;
-            const markers = document.querySelectorAll('.rage-marker');
-            const rageText = document.querySelector('.rage-text');
-
-            markers.forEach((marker, index) => {
-              marker.addEventListener('click', () => {
-                const clickedLevel = index + 1;
-
-                // TOGGLE LOGIC
-                if (rageCount === clickedLevel) {
-                  rageCount--; // unclick
-                } else {
-                  rageCount = clickedLevel;
-                }
-
-                localStorage.setItem('rageCount', rageCount);
-
-                updateRageUI();
-              });
-            });
-
-            function updateRageUI() {
-              markers.forEach((marker, i) => {
-              marker.classList.toggle('active', i < rageCount);
-              });
-
-              rageText.textContent =
-              rageCount === 0 ? 'Not Enraged' : `+${rageCount} Attack`;
-            }
-
-            updateRageUI();
-            updateAttackStat();
-
         </script>
 
         <script>
