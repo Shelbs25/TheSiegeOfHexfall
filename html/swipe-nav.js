@@ -1,22 +1,28 @@
 (function () {
-  // Order controls which sheet is "next" / "previous" when swiping.
-  // Add/remove/reorder filenames here to change the cycle.
-  const order = [
+  // Two separate cycles: base-game heroes, and the shadows-expansion
+  // heroes. Rogue and Bard don't have their own shadows sheets, so
+  // they're shared and appear in the shadows deck too.
+  const baseOrder = [
     "Barbarian.html",
-    "Barbarianshadows.html",
-    "warrior.html",
-    "warriorshadows.html",
-    "rogue.html",
     "mage.html",
+    "Ranger.html"
+    "warrior.html"
+  ];
+
+  const shadowsOrder = [
+    "Barbarianshadows.html",
+    "bard.html",
     "mageshadows.html",
-    "Ranger.html",
     "Rangershadows.html",
-    "bard.html"
+    "rogue.html",
+    "warriorshadows.html"
+    
   ];
 
   const current = window.location.pathname.split("/").pop();
+  const order = current.toLowerCase().includes("shadows") ? shadowsOrder : baseOrder;
   const idx = order.indexOf(current);
-  if (idx === -1) return; // this page isn't part of the cycle, do nothing
+  if (idx === -1) return; // this page isn't part of either cycle, do nothing
 
   function goTo(i) {
     if (i < 0 || i >= order.length) return;
