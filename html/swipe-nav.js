@@ -2,20 +2,16 @@
   // Order controls which sheet is "next" / "previous" when swiping.
   // Add/remove/reorder filenames here to change the cycle.
   const order = [
-    //"Barbarian.html",
+    "Barbarian.html",
     "Barbarianshadows.html",
-    "bard.html",
-    "mageshadows.html",
-    "Rangershadows.html",
+    "warrior.html",
+    "warriorshadows.html",
     "rogue.html",
-    //"warrior.html",
-    "warriorshadows.html"
-    
-    //"mage.html",
-    
-    //"Ranger.html",
-    
- 
+    "mage.html",
+    "mageshadows.html",
+    "Ranger.html",
+    "Rangershadows.html",
+    "bard.html"
   ];
 
   const current = window.location.pathname.split("/").pop();
