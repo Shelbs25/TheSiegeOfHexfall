@@ -4,18 +4,19 @@
   // they're shared and appear in the shadows deck too.
   const baseOrder = [
     "Barbarian.html",
-    "warrior.html",
     "mage.html",
-    "Ranger.html"
+    "Ranger.html",
+    "warrior.html"
   ];
 
   const shadowsOrder = [
     "Barbarianshadows.html",
-    "warriorshadows.html",
+    "bard.html",
     "mageshadows.html",
     "Rangershadows.html",
     "rogue.html",
-    "bard.html"
+    "warriorshadows.html"
+
   ];
 
   const current = window.location.pathname.split("/").pop();
