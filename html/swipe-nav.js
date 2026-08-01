@@ -4,24 +4,30 @@
   // they're shared and appear in the shadows deck too.
   const baseOrder = [
     "Barbarian.html",
-    "mage.html",
-    "Ranger.html",
     "warrior.html",
+    "mage.html",
+    "Ranger.html"
   ];
 
   const shadowsOrder = [
     "Barbarianshadows.html",
-    "bard.html",
+    "warriorshadows.html",
     "mageshadows.html",
     "Rangershadows.html",
     "rogue.html",
-    "warriorshadows.html"
-
+    "bard.html"
   ];
 
   const current = window.location.pathname.split("/").pop();
-  const order = current.toLowerCase().includes("shadows") ? shadowsOrder : baseOrder;
-  const idx = order.findIndex((f) => f.toLowerCase() === current.toLowerCase());
+  const currentLower = current.toLowerCase();
+  // rogue and bard are shadows-exclusive classes (no "shadows" in their
+  // filename), so they need to be called out explicitly here.
+  const isShadowsPage =
+    currentLower.includes("shadows") ||
+    currentLower === "rogue.html" ||
+    currentLower === "bard.html";
+  const order = isShadowsPage ? shadowsOrder : baseOrder;
+  const idx = order.findIndex((f) => f.toLowerCase() === currentLower);
   if (idx === -1) return; // this page isn't part of either cycle, do nothing
 
   function goTo(i) {
